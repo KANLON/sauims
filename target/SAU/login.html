@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+</head>
+<body>
+
+<form>
+    账号&nbsp;&nbsp;<input type="text" size="10" name="账号"><br/>
+    密码&nbsp;&nbsp;<input type="text" size="10" name="密码"><br/>
+    验证码 <input type="text" size="10"> <img src="">
+    <input type="submit" name="" value="提交">
+</form>
+<hr/>
+<input type="button" value="点击获取返回数据" ><br/>
+<input type="button" value="点击获取mapjson数据">
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(":button:first").click(function(){
+        var url = "/SAU/login/code";
+        var sendData = null;
+        $.post(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(":button:last").click(function(){
+        var url = "/SAU/json";
+        var sendData = null;
+        $.post(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+
+</body>
+</html>

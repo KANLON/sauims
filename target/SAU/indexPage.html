@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+</head>
+<body>
+
+
+<input type="button" value="点击获取社团列表信息" >
+<br/>
+
+<input type="button" value="点击id=1的社团时" name="last">
+<input type="button" value="测试时间" >
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(":button:first").click(function(){
+        var url = "/SAU/index/club";
+        var sendData = null;
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+<!--
+
+<script type="text/javascript">
+    $(":button:last").click(function(){
+        var url = "/SAU/index/club/1";
+        var sendData =null;
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+-->
+
+
+<script type="text/javascript">
+    $(":button:last").click(function(){
+        var url = "/SAU/index/time";
+        var sendData ={
+            "date":new Date()
+        };
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+
+
+</body>
+</html>
