@@ -23,9 +23,10 @@ import static java.lang.System.out;
 @Controller
 @RequestMapping("/index")
 public class IndexPageController {
-    Map<String,Object> map;
-
-
+    /**
+     * 得到社团列表信息
+     * @return 社团列表信息（json数据）
+     */
     @RequestMapping(value = "/club")
     public @ResponseBody Map<String,Object> getClubList(){
         //得到返回数据的模板
@@ -59,7 +60,11 @@ public class IndexPageController {
         return returnData.getMap();
     }
 
-
+    /**
+     * 发送某个社团的详细信息
+     * @param clubId 接受社团ID
+     * @return 返回社团详细信息json
+     */
     @RequestMapping(value = "/club/{clubId}")
     public @ResponseBody Map<String,Object> getClubDetail(@PathVariable("clubId")Integer clubId){
         //得到返回数据的模板
@@ -96,11 +101,19 @@ public class IndexPageController {
 
         return returnData.getMap();
     }
-    
+
+    /**
+     * 用于测试时间传输的格式
+     * @param date 前端传递过来的描述
+     * @return  返回时间格式
+     */
     @RequestMapping("/time")
-    public void testDate(@RequestParam Date date){
+    @ResponseBody
+    public Date testDate(@RequestParam Date date){
         out.println("格式化前"+date);
         out.println("格式化后"+new SimpleDateFormat("yyyy-MM-dd").format(date));
+        return date;
+
     }
 
 }
