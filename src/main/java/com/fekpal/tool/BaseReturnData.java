@@ -11,16 +11,16 @@ import java.util.Map;
 public class BaseReturnData {
 
     //创建返回数据的map集合
-    private Map<String,Object> map;
+    private Map<String,Object> map = new HashMap<String, Object>();
+    //设置初始默认返回数据
+    private int code = 0;
+    private String msg = "";
+    private Object data = null;
 
     /**
-     *     构造方法，设置默认返回的数据
+     *     构造方法
      */
     public BaseReturnData(){
-        map = new HashMap<String, Object>();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("data",null);
     }
     /**
      * 设置返回数据的状态码和信息
@@ -28,8 +28,8 @@ public class BaseReturnData {
      * @param msg   描述返回数据的错误信息，正确时候，则为空
      */
     public void setStateCode(int code,String msg){
-        map.put("code",code);
-        map.put("msg",msg);
+        this.code = code;
+        this.msg = msg;
     }
 
     /**
@@ -37,7 +37,8 @@ public class BaseReturnData {
      * @param object  传递过来返回的object对象
      */
     public void setData(Object object){
-        map.put("data",object);
+        data = object;
+        map.put("data",data);
     }
 
     /**
@@ -45,6 +46,9 @@ public class BaseReturnData {
      * @return  返回数据map集合
      */
     public Map getMap(){
+        map.put("code",code);
+        map.put("msg",msg);
+        map.put("data",data);
         return map;
     }
 
