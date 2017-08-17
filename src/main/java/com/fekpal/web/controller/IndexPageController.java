@@ -1,5 +1,6 @@
 package com.fekpal.web.controller;
 
+import com.fekpal.cons.WebPath;
 import com.fekpal.domain.ClubDetail;
 import com.fekpal.domain.ClubListMsg;
 import com.fekpal.tool.BaseReturnData;
@@ -110,6 +111,9 @@ public class IndexPageController {
     @RequestMapping("/time")
     @ResponseBody
     public Date testDate(@RequestParam Date date){
+        out.println(WebPath.consPath);
+        out.println(WebPath.rootParentPath);
+
         out.println("格式化前"+date);
         out.println("格式化后"+new SimpleDateFormat("yyyy-MM-dd").format(date));
         return date;

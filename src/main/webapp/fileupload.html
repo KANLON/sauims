@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="sau/center/info/edit/head" enctype="multipart/form-data" method="post">
+    <table>
+        <caption align="top">ADD DOCTOR</caption>
+        <tr>
+            <td>DOCTOR NAME：</td>
+            <td>
+                <input name="doctorName" class="easyui-textbox" data-options="type:'text',prompt:'Please enter a name'"
+                       style="width:400px;height: 20px;">
+            </td>
+        </tr>
+        <tr>
+            <td>DOCTOR INFO：</td>
+            <td>
+                <input name="doctorInfo" class="easyui-textbox"
+                       data-options="type:'text',multiline:true,prompt:'Please enter a name'"
+                       style="width:400px;height: 280px;">
+            </td>
+        </tr>
+        <tr>
+            <td>DOCTOR PIC：</td>
+            <td>
+                <input type="file" name="myfiles"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="点击上传"></td>
+        </tr>
+    </table>
+</form>
+
+<script src="js/jquery.min.js"></script>
+
+<!--<script type="text/javascript">
+    $(":submit:first").click(function(){
+        var url = "sau/center/info/edit/head";
+        var sendData = null;
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>-->
+
+
+
+
+</body>
+</html>

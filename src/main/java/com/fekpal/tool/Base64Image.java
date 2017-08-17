@@ -3,6 +3,7 @@ package com.fekpal.tool;
 
 
 import com.fekpal.cons.WebPath;
+import org.springframework.util.*;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -21,7 +22,7 @@ public class Base64Image {
      *  @return
      */
     public String decodeBase64(String base64Info) {
-        if (StringUtils.isEmpty(base64Info)) {
+        if (org.springframework.util.StringUtils.isEmpty(base64Info)) {
             return null;
         }
         BASE64Decoder decoder = new BASE64Decoder();

@@ -51,6 +51,7 @@ public class TestCode {
         out.println("fekpalPath"+WebPath.fekpalPath);;
         out.println("classesPath"+WebPath.classesPath);
         out.println("rootPath"+WebPath.rootPath);;
+        out.println("rootParentPath"+WebPath.rootParentPath);
     }
 
     @Test

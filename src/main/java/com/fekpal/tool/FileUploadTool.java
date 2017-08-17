@@ -36,8 +36,10 @@ public class FileUploadTool {
                 System.out.println("文件原名: " + myfile.getOriginalFilename());
                 System.out.println("========================================");
 
-                //使用自定义文件资源库
-                String realPath = WebPath.rootParentPath+"//MySAUImages//"+childrenPath;
+                String realPath = "D://masterspring"+"//MySAUImages//"+childrenPath;
+                //使用自定义文件资源库     正式发布后，在确定图片放哪里后，才用这个
+                //String realPath = WebPath.rootParentPath+"//MySAUImages//"+childrenPath;
+
                 //这里不必处理IO流关闭的问题，因为FileUtils.copyInputStreamToFile()方法内部会自动把用到的IO流关掉，我是看它的源码才知道的
                 try {
                     //重置文件名
@@ -48,7 +50,7 @@ public class FileUploadTool {
                     FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, fileName));
                     //配置图片访问路径
                     String ip = "http://localhost:8080/MySAUImages";
-                    imgPathList.add(ip+"//"+childrenPath+"/"+fileName);
+                    imgPathList.add(ip+"/"+childrenPath+"/"+fileName);
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new RuntimeException(e);

@@ -71,6 +71,7 @@
       <version>1.4.8</version>
     </dependency>
 
+    <!-- 文件上传所需的包-->
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
@@ -121,7 +122,15 @@
       <version>2.7.4</version>
     </dependency>
 
-    <!-- 日志相关 -->
+      <dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>jackson-mapper-asl</artifactId>
+          <version>1.9.8</version>
+          <type>jar</type>
+          <scope>compile</scope>
+      </dependency>
+
+      <!-- 日志相关 -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
@@ -140,6 +149,15 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>persistence-api</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+
   </dependencies>
   <build>
     <finalName>SAU</finalName>

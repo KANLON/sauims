@@ -21,5 +21,11 @@ public class WebPath {
     //获取web项目的根目录  D:\masterspring\SAU.但是在idea中好像不可行，应该发布在服务器上可以了
     public final static String rootPath =  new File(new File(classesPath).getParent()).getParent();
 
+    //获取web项目同级的目录  D:\masterspring\SAU.但是在idea中好像不可行，应该发布在服务器上可以了
+    public final static String rootParentPath =  new File(rootPath).getParent();
+
+    //     //如果用的是Tomcat服务器，则文件会上传到\\%TOMCAT_HOME%\\webapps\\YourWebProject\\upload\\文件夹中
+//      String realPath = request.getSession().getServletContext().getRealPath("/upload");
+
 
 }

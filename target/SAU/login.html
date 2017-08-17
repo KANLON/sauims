@@ -10,35 +10,90 @@
 <body>
 
 <form>
-    账号&nbsp;&nbsp;<input type="text" size="10" name="账号"><br/>
-    密码&nbsp;&nbsp;<input type="text" size="10" name="密码"><br/>
-    验证码 <input type="text" size="10"> <img src="">
-    <input type="submit" name="" value="提交">
+    账号&nbsp;&nbsp;<input type="text" size="10" name="账号" value="张三" id="user"><br/>
+    密码&nbsp;&nbsp;<input type="password" size="10" name="密码" value="123456" id="pswd"><br/>
+    验证码 <input type="text" size="10" value="abcde" id="yzm"> <img src="login/code">
 </form>
 <hr/>
-<input type="button" value="点击获取返回数据" ><br/>
-<input type="button" value="点击获取mapjson数据">
+<input type="button" value="登陆" ><br/>
+<input type="button" value="登出" ><br/>
+发送的数据<br>
+<div class="output"></div>
+接受的数据<br>
+<div class="input"></div>
 
+<script src="js/jquery.min.js"></script>
 
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+
     $(":button:first").click(function(){
-        var url = "/SAU/login/code";
-        var sendData = null;
-        $.post(url,sendData,function(backData,textStaut,ajax){
-            alert(ajax.responseText);
+
+        var url = "login/go";
+
+        var user = $("#user").val();
+        var pswd = $("#pswd").val();
+        var yzm = $("#yzm").val();
+        <!-- 要发送的json数据，对象-->
+        var userLogin = {
+                "userName": user,
+                "password": pswd,
+                "captcha": yzm
+            };
+        <!-- 将对象转为json数据-->
+        var jsonText = JSON.stringify(userLogin);
+
+        <!-- 将数据显示在div组件中-->
+        $(".output").text(jsonText);
+
+        $.ajax({
+            type: "post",
+            url: url,
+            data: jsonText,
+            <!--指定请求头-->
+            headers: {'Content-type': 'application/json;charset=UTF-8'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input").text(JSON.stringify(data));
+            }
         });
     });
 </script>
+
 <script type="text/javascript">
+
     $(":button:last").click(function(){
-        var url = "/SAU/json";
-        var sendData = null;
-        $.post(url,sendData,function(backData,textStaut,ajax){
-            alert(ajax.responseText);
+
+        var url = "logout";
+
+        var user = $("#user").val();
+        var pswd = $("#pswd").val();
+        var yzm = $("#yzm").val();
+        <!-- 要发送的json数据，对象-->
+        var userLogin = {
+            "userName": user,
+            "password": pswd,
+            "captcha": yzm
+        };
+        <!-- 将对象转为json数据-->
+        var jsonText = JSON.stringify(userLogin);
+
+        <!-- 将数据显示在div组件中-->
+        $(".output").text(jsonText);
+
+        $.ajax({
+            type: "post",
+            url: url,
+            data: null,
+            <!--指定请求头-->
+            headers: {'Content-type': 'application/json;charset=UTF-8'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input").text(JSON.stringify(data));
+            }
         });
     });
 </script>
+
 
 </body>
 </html>

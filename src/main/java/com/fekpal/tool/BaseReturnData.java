@@ -1,6 +1,7 @@
 package com.fekpal.tool;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class BaseReturnData {
      * 得到map集合，得到返回的数据
      * @return  返回数据map集合
      */
-    public Map getMap(){
+    public Map<String,Object> getMap(){
         map.put("code",code);
         map.put("msg",msg);
         map.put("data",data);
