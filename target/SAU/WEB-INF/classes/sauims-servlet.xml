@@ -55,4 +55,38 @@
              <property name="maxUploadSize" value="10485760"/>
     </bean>
 
+    <!-- 邮件发送相关的配置 -->
+    <!-- 引入属性文件 -->
+    <context:property-placeholder location="classpath:mail.properties" />
+
+    <!-- 邮件发送器   -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.host}" />
+        <property name="username" value="${mail.username}" />
+        <property name="password" value="${mail.password}" />
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.connectiontimeout">${mail.smtp.connectiontimeout}</prop>
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+                <prop key="mail.smtp.port">${mail.smtp.port}</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="simpleMailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <!-- 发件人email -->
+        <property name="from" value="${mail.username}" />
+    </bean>
+
+    <bean id="mailUtil" class="com.fekpal.tool.MailTool">
+        <property name="mailSender" ref="mailSender"></property>
+        <property name="simpleMailMessage" ref="simpleMailMessage"></property>
+    </bean>
+
+    <bean id="mailHtmlUtil" class="com.fekpal.tool.MailHtmlTool">
+        <property name="mailSender" ref="mailSender"></property>
+        <property name="simpleMailMessage" ref="simpleMailMessage"></property>
+    </bean>
+
 </beans>

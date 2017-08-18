@@ -12,7 +12,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-public class ValidateCodeUtils {
+public class ValidateCodeTool {
 
 	/**
 	 * 生成验证码
@@ -82,6 +82,18 @@ public class ValidateCodeUtils {
 	}
 
 	/**
+	 * 产生验证码
+	 * @return 5个a-z A-Z的字母
+	 */
+	public static String getCaptcha(){
+		String captcha = "";
+		for(int i=1;i<=5;i++){
+			captcha+=getABC();
+		}
+		return captcha;
+	}
+
+	/**
 	 * 运行一次生成一个a-z A-Z的随机数
 	 */
 	private static char getABC(){
@@ -101,4 +113,6 @@ public class ValidateCodeUtils {
 		}
 		return chara;
 	}
+
+
 }

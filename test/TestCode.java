@@ -1,13 +1,12 @@
 import com.fekpal.cons.WebPath;
 import com.fekpal.tool.BaseReturnData;
-import com.fekpal.tool.ValidateCodeUtils;
+import com.fekpal.tool.ValidateCodeTool;
 import com.fekpal.web.controller.IndexPageController;
 import org.junit.Test;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.PublicKey;
 import java.util.Map;
 
 import static java.lang.System.out;
@@ -20,7 +19,7 @@ public class TestCode {
     public void testCode(){
         try {
             OutputStream out  = new FileOutputStream("1.jpg");
-            ValidateCodeUtils.genNewCode(out);
+            ValidateCodeTool.genNewCode(out);
         } catch (IOException e) {
             e.printStackTrace();
         }

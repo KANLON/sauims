@@ -5,10 +5,8 @@ import com.fekpal.domain.UserLogin;
 import com.fekpal.service.LoginService;
 import com.fekpal.tool.BaseReturnData;
 
-import com.fekpal.tool.ValidateCodeUtils;
-import org.springframework.http.HttpRequest;
+import com.fekpal.tool.ValidateCodeTool;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,8 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -51,7 +47,7 @@ public class LoginController {
         BaseReturnData returnData = new BaseReturnData();
 
         //判断用户是否已经登陆
-        if(session.getAttribute("usercode")!=null){
+        if(session.getAttribute("userCode")!=null){
             returnData.setStateCode(1, "你已经登陆了，不能重复登陆");
             //用于前端回显数据
             returnData.setData(userLogin);
@@ -87,8 +83,18 @@ public class LoginController {
 
         }
         //模拟service成取到用户
+
+        //调用工具类判断用户名和密码的格式
+        // TODO: 2017/8/18
+
         //判断用户名和密码
-        User realUser = loginService.getUserByName("张三");
+        User realUser = loginService.getUserByName(userName);
+
+        //如果得到的用户为空的话，表示找不到该用户
+        if(realUser==null){
+            returnData.setStateCode(1,"该用户找不到，请重新输入");
+            return ((Map<String, Object>) returnData.getMap());
+        }
 
         if(realUser.getPassword().equals(userLogin.getPassword())){
             //清除当前session的验证码
@@ -108,7 +114,7 @@ public class LoginController {
             returnData.setData(userMap);
 
             //如果Service校验通过，将用户身份记录到session
-            session.setAttribute("usercode", realUser.getUserId());
+            session.setAttribute("userCode", realUser.getUserId());
         }else{
             returnData.setStateCode(1, "用户名或密码有误，请重新输入！");
             //用于前端回显数据
@@ -141,7 +147,7 @@ public class LoginController {
         try {
             //生成一张随机验证码图片，并写出到浏览器
             OutputStream out = response.getOutputStream();
-            String code = ValidateCodeUtils.genNewCode(out);
+            String code = ValidateCodeTool.genNewCode(out);
             //把sCode共享给用户登录时使用
             session.setAttribute("code", code);
         } catch (IOException e) {

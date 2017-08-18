@@ -32,8 +32,12 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.4" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.8" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.8" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.5" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: org.xbill:org.xbill.dns:2.1.7" />
           <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
         </element>
       </element>
