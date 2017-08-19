@@ -1,13 +1,12 @@
 package com.fekpal.web.controller;
 
 import com.fekpal.cons.WebPath;
-import com.fekpal.domain.ClubDetail;
-import com.fekpal.domain.ClubListMsg;
+import com.fekpal.domain.controllerDomain.ClubDetail;
+import com.fekpal.domain.controllerDomain.ClubListMsg;
 import com.fekpal.tool.BaseReturnData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.fekpal.domain;
+package com.fekpal.domain.controllerDomain;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class ClubDetail {
     private String email;
     private String phone;
     private Date foundTime;
-    private int menbers;
+    private int members;
     public ClubDetail(){}
 
     public int getClubId() {
@@ -83,10 +83,10 @@ public class ClubDetail {
     }
 
     public int getMenbers() {
-        return menbers;
+        return members;
     }
 
-    public void setMenbers(int menbers) {
-        this.menbers = menbers;
+    public void setMenbers(int members) {
+        this.members = members;
     }
 }

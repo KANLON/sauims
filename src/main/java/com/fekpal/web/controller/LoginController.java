@@ -105,12 +105,14 @@ public class LoginController {
 
             out.println("登陆成功"+"。 用户IP为："+ip);
             //登陆成功
+            //从service中得到用户对象
+            // TODO: 2017/8/19
             //把用户信息放到一个map集合中去，然后返回
             Map<String,Object> userMap = new LinkedHashMap<String, Object>();
-            userMap.put("roleName",realUser.getRoleName());
+            userMap.put("roleName","社团管理员");
             userMap.put("userId",realUser.getUserId());
-            userMap.put("userName",realUser.getuserName());
-            userMap.put("userLogo",realUser.getPersonLogo());
+            userMap.put("userName",realUser.getUserName());
+            userMap.put("userLogo","a.jpg");
             returnData.setData(userMap);
 
             //如果Service校验通过，将用户身份记录到session

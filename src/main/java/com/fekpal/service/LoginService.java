@@ -18,7 +18,7 @@ public class LoginService {
         //模拟user的数据
         User user = new User();
         user.setUserId(1);
-        user.setuserName(userName);
+        user.setUserName(userName);
         user.setKey("123");
         user.setPassword("123456");
         user.setPhone("1816821383");

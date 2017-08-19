@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>校社联中心信息查看</title>
+</head>
+<body>
+
+
+<input type="button" value="点击查看校社联中心信息" >
+<br/>
+发送的数据<br>
+<div class="output"></div>
+接受的数据<br>
+<div class="input"></div>
+
+
+<br/>
+<br/><br/><br/>
+<hr/>
+
+<form action="/SAU/sau/center/info/edit/head" enctype="multipart/form-data" method="post">
+    <table>
+        <caption align="top">上传校社联头像</caption>
+        <tr>
+            <td>
+                <input type="file" name="myfiles"/>
+            </td>
+        </tr>
+        <tr>
+            <td ><input type="submit" value="点击上传"></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+
+发送的数据<br>
+<div class="output"></div>
+接受的数据<br>
+<div class="input"></div>
+
+<input type="button" value="测试时间" >
+
+校社联logo图片
+<br/>
+
+<img src="http://localhost:8080/MySAUImages/sau/1503151747430.jpg">
+
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(":button:first").click(function(){
+        var url = "/SAU/sau/center/info";
+        var sendData = null;
+        $.get(url,sendData,function(backData,textStaut,ajax){
+//            alert(ajax.responseText);
+            $(".input").text(JSON.stringify(backData));
+        });
+    });
+</script>
+
+<!--
+
+<script type="text/javascript">
+    $(":button:last").click(function(){
+        var url = "/SAU/index/club/1";
+        var sendData =null;
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+-->
+
+
+<script type="text/javascript">
+    $(":button:last").click(function(){
+        var url = "/SAU/index/time";
+        var sendData ={
+            "date":new Date()
+        };
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            alert(ajax.responseText);
+        });
+    });
+</script>
+
+
+</body>
+</html>

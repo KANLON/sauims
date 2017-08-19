@@ -26,15 +26,18 @@ public class FileUploadTool {
     public static List<String> imageHandle(MultipartFile[] myfiles, HttpServletRequest request,String childrenPath){
         //处理上传图片
         List<String> imgPathList = new ArrayList<String>();
+        //存放放在服务器的文件名
+        List<String> fileNameList = new ArrayList<String>();
         for(MultipartFile myfile : myfiles){
             if(myfile.isEmpty()){
-                System.out.println("文件未上传");
+//                System.out.println("文件未上传");
+                return null;
             }else{
-                System.out.println("文件长度: " + myfile.getSize());
+/*                System.out.println("文件长度: " + myfile.getSize());
                 System.out.println("文件类型: " + myfile.getContentType());
                 System.out.println("文件名称: " + myfile.getName());
                 System.out.println("文件原名: " + myfile.getOriginalFilename());
-                System.out.println("========================================");
+                System.out.println("========================================");*/
 
                 String realPath = "D://masterspring"+"//MySAUImages//"+childrenPath;
                 //使用自定义文件资源库     正式发布后，在确定图片放哪里后，才用这个
@@ -51,12 +54,14 @@ public class FileUploadTool {
                     //配置图片访问路径
                     String ip = "http://localhost:8080/MySAUImages";
                     imgPathList.add(ip+"/"+childrenPath+"/"+fileName);
+                    fileNameList.add(fileName);
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new RuntimeException(e);
                 }
             }
         }
-        return imgPathList;
+//        return imgPathList;
+        return fileNameList;
     }
 }

@@ -1,4 +1,4 @@
-package com.fekpal.domain;
+package com.fekpal.domain.controllerDomain;
 
 /**
  * 用来发送给前端的社团列表信息实体类
@@ -12,7 +12,7 @@ public class ClubListMsg {
     //社团描述
     private  String description;
     //社团成员
-    private int menbers;
+    private int members;
     //喜爱人数
     private int likeNumber;
 
@@ -43,11 +43,11 @@ public class ClubListMsg {
     }
 
     public Integer getMenbers() {
-        return menbers;
+        return members;
     }
 
-    public void setMenbers(Integer menbers) {
-        this.menbers = menbers;
+    public void setMenbers(Integer members) {
+        this.members = members;
     }
 
     public Integer getLikeNumber() {
