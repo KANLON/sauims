@@ -1,22 +1,20 @@
 package com.fekpal.web.controller;
 
-import com.fekpal.tool.BaseReturnData;
-import com.fekpal.tool.ImagesUploadTool;
-import com.sun.org.apache.regexp.internal.REUtil;
+import com.fekpal.cons.ResponseCode;
+import com.fekpal.domain.controllerDomain.SauCenterMsg;
+import com.fekpal.tool.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TooManyListenersException;
+import java.util.*;
 
 import static java.lang.System.out;
 
@@ -26,6 +24,10 @@ import static java.lang.System.out;
  */
 @Controller
 public class SauCenterController {
+
+    //spring的依赖注入发送邮件对象
+    @Autowired
+    private MailHtmlTool mailHtmlTool;
 
     /**
      * 得到校社联中心的信息的方法
@@ -84,7 +86,7 @@ public class SauCenterController {
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping("/sau/center/info/edit/head")
+    @RequestMapping(value = "/sau/center/info/edit/head",method = RequestMethod.PUT)
     public Map<String,Object> uploadLogo(@RequestParam("myfiles") MultipartFile[] myfiles, HttpServletRequest request){
 
         Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"sau");
@@ -115,5 +117,146 @@ public class SauCenterController {
         }
 
         return returnData;
+    }
+
+    /**
+     * 发送邮箱验证码
+     * @param session 用户session会话
+     * @param email 邮箱地址
+     * @return 是否成功
+     */
+    @ResponseBody
+    @RequestMapping(value = "/security/email/code",method = RequestMethod.GET)
+    public Map<String,Object> sendEmailCaptcha(HttpSession session,HttpServletRequest request, @RequestParam String email/*@RequestParam(value = "email") String email*/){
+        BaseReturnData returnData = new BaseReturnData();
+        //多次点击发送验证码
+        // TODO: 2017/8/18
+
+        //根据用户id链接数据库判断邮箱是否跟原来邮箱相同
+        // TODO: 2017/8/18
+        //如果原来邮箱与发过来的邮箱相同，则返回
+        if(email.trim().trim().equals("s19961234@126.com")){
+            returnData.setStateCode(ResponseCode.REQUEST_ERROR,"新邮箱与旧邮箱相同，不需要再次发送验证码。");
+        }
+
+        //将邮件地址去空格
+       email = email.trim();
+
+        //判断用户是否登录
+        if (session.getAttribute("userCode") == null) {
+            returnData.setStateCode(1, "你还没有登陆，请登陆后在发送邮箱验证码。");
+            return returnData.getMap();
+        }
+
+        //检查邮箱是否真实有效是否正确
+        if (!EmailValidTool.valid(email, "www.baidu.com")) {
+            //如果不正确
+            returnData.setStateCode(1, "不是有效邮箱，请重新输入");
+            return returnData.getMap();
+        }
+
+        //从工具类中得到邮箱验证码
+        String captcha = ValidateCodeTool.getCaptcha();
+        //把验证码，邮箱，时间发入到session中去
+        session.setAttribute("emailCaptcha", captcha);
+        session.setAttribute("email", email);
+        session.setAttribute("time", TimeTool.getTime());
+
+        try {
+            mailHtmlTool.sendHtml(email, "校社联管理系统发给您的验证码", "您的邮箱验证码是：<br/>"
+                    + captcha + "<br/><br/>"+"验证码十分钟内有效");
+            out.println("已经发送了验证码：" + captcha);
+        } catch (MessagingException e) {
+            returnData.setStateCode(1, "邮件发送失败，请点击重新发送。如果多次点击发送后，依然不成功，请稍后再试。");
+        } finally {
+            return returnData.getMap();
+        }
+
+    }
+
+    /**
+     * 校社联用来提交修改校社联中心的信息
+     * @param sauCenterMsg 校社联中心信息
+     * @param request 请求
+     * @param session 会话
+     * @return 是否提交成功
+     */
+    @ResponseBody
+    @RequestMapping(value = "/sau/center/info/edit",method = RequestMethod.PUT)
+    public Map<String,Object> subNewCenterMsg(@RequestParam Map<String,Object> sauCenterMsg,HttpServletRequest request,HttpSession session){
+        out.println(sauCenterMsg);
+        //初始化返回数据模板
+        BaseReturnData returnData = new BaseReturnData();
+
+        //初始化session内的邮箱，验证码和用户id
+        String sessionEmail = null;
+        String sessionCaptcha =null;
+        int userId =0 ;
+        String dateStr;
+
+        // 用工具类来判断输入的字段是否符合要求，邮箱之类的
+        // TODO: 2017/8/21
+
+        //如果时间不为空
+        if(!StringUtils.isEmpty(sauCenterMsg.get("foundTime"))) {
+            //处理时间格式
+            dateStr = (String) sauCenterMsg.get("foundTime");
+            Date date = null;
+            try {
+                date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            out.println("时间为：" + date);
+        }
+
+        //从拦截器判断对象是否登陆
+        if(session.getAttribute("userCode")!=null) {
+            //从session域中取得用户id
+            userId = (Integer) session.getAttribute("userCode");
+
+            //根据用户id从service层得到数据库的用户的实体
+            // TODO: 2017/8/20
+
+            if (!StringUtils.isEmpty(sauCenterMsg.get("email")) && !StringUtils.isEmpty(sauCenterMsg.get("captcha")) ) {
+                //如果session域内的邮箱验证码或者邮箱为空
+                if(session.getAttribute("emailCaptcha")!=null && session.getAttribute("email")!=null) {
+                    //从session域中得到验证码和邮箱
+                    sessionCaptcha = (String) session.getAttribute("emailCaptcha");
+                    sessionEmail = (String) session.getAttribute("email");
+                }else{
+                    returnData.setStateCode(ResponseCode.REQUEST_ERROR,"还没有发送邮箱验证码");
+                    return returnData.getMap();
+                }
+                //校验验证码和邮箱是否相等和时间是否过了10分钟
+                if (sessionCaptcha.trim().toLowerCase().equals(sauCenterMsg.get("captcha").toString().trim().toLowerCase())
+                        && sessionEmail.trim().toLowerCase().equals(sauCenterMsg.get("email").toString().trim().toLowerCase())
+                        && TimeTool.cmpTime((String) session.getAttribute("time"))) {
+                    //将数据存入数据库
+                    out.println("用户id:"+userId);
+                    out.println("根据用户id存入数据库（包含邮箱地址）"+sauCenterMsg);
+
+                }else{
+                    returnData.setStateCode(ResponseCode.REQUEST_ERROR,"验证码错误或者验证码已过期，请重新输入");
+                    return returnData.getMap();
+                }
+            }else if(StringUtils.isEmpty(sauCenterMsg.get("email")) && !StringUtils.isEmpty(sauCenterMsg.get("captcha")) ){
+                returnData.setStateCode(ResponseCode.REQUEST_ERROR,"新邮箱为空，请输入新邮箱");
+                return returnData.getMap();
+            }else if(!StringUtils.isEmpty(sauCenterMsg.get("email")) && StringUtils.isEmpty(sauCenterMsg.get("captcha"))){
+                returnData.setStateCode(ResponseCode.REQUEST_ERROR,"验证码为空，请输入验证码");
+                return returnData.getMap();
+            }else {
+
+                //将用户存入数据库
+                out.println("用户id:"+userId);
+                out.println("根据用户id存入数据库（没有邮箱地址）"+sauCenterMsg);
+
+
+            }
+        }else{
+            returnData.setStateCode(1,"用户还没有登陆，请登陆后再提交数据");
+        }
+        return returnData.getMap();
     }
 }

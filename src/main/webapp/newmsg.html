@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>最新消息</title>
+</head>
+<body>
+
+
+<input type="button" value="点击查看最新信息" id="getMsg" >
+<br/>
+发送的数据<br>
+<div class="output1"></div>
+接受的数据<br>
+<div class="input1"></div>
+
+<input type="text" value="123" size="10" id="OneMsgId"><br/>
+<input type="button" value="查看某条消息" id="getOneMsg" >
+<br/>
+发送的数据<br>
+<div class="output2"></div>
+接受的数据<br>
+<div class="input2"></div>
+
+<input type="text" value="123" size="10" id="deleteMsgId1"><br/>
+<input type="text" value="124" size="10" id="deleteMsgId2"><br/>
+<input type="button" value="删除消息" id="deleteMsg" >
+<br/>
+发送的数据<br>
+<div class="output3"></div>
+接受的数据<br>
+<div class="input3"></div>
+
+<br/>
+<hr/>
+<input type="text" value="活动" size="10" id="findContent"><br/>
+<input type="button" value="查找消息" id="searchMsg" ><br/>
+发送的数据<br>
+<div class="output4"></div>
+接受的数据<br>
+<div class="input4"></div>
+
+<script src="js/jquery.min.js"></script>
+
+<!-- 查看全部消息-->
+<script type="text/javascript">
+    $("#getMsg").click(function(){
+        var url = "/SAU/msg";
+        var sendData = null;
+        $(".output1").text(JSON.stringify(sendData));
+        $.ajax({
+            type: "get",
+            url: url,
+            data: sendData,
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input1").text(JSON.stringify(data));
+            }
+        });
+    });
+</script>
+
+<!-- 查看某条消息-->
+<script type="text/javascript">
+    $("#getOneMsg").click(function(){
+        var url = "/SAU/msg/"+$("#OneMsgId").val();
+        var sendData = null;
+        $(".output2").text(JSON.stringify(sendData));
+        $.ajax({
+            type: "get",
+            url: url,
+            data: sendData,
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input2").text(JSON.stringify(data));
+            }
+        });
+    });
+</script>
+
+<!-- 删除消息-->
+<script type="text/javascript">
+    $("#deleteMsg").click(function(){
+        var url = "/SAU/msg";
+        var deleteMsg1 =$("#deleteMsgId1").val();
+        var deleteMsg2 =$("#deleteMsgId2").val();
+        var deleteMsgIds = [{
+            "deleteMsgId":deleteMsg1
+    },{
+            "deleteMsgId":deleteMsg2
+        }];
+
+        var sendData = {
+            "_method":"delete",
+            "deleteMsgIds":deleteMsgIds
+        };
+        $(".output3").text(JSON.stringify(sendData));
+        $.ajax({
+            type: "post",
+            url: url,
+            data: sendData,
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input3").text(JSON.stringify(data));
+            }
+        });
+    });
+</script>
+
+<!-- 查找消息--->
+<script type="text/javascript">
+    $("#searchMsg").click(function(){
+        var url = "/SAU/msg/search";
+        var findContent =$("#findContent").val();
+        var sendData = {
+            "findContent":findContent
+        };
+        $(".output4").text(JSON.stringify(sendData));
+        $.ajax({
+            type: "get",
+            url: url,
+            data: sendData,
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input4").text(JSON.stringify(data));
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

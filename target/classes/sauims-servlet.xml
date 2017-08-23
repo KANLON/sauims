@@ -89,4 +89,21 @@
         <property name="simpleMailMessage" ref="simpleMailMessage"></property>
     </bean>
 
+
+    <!-- 拦截器 -->
+    <mvc:interceptors >
+<!--
+        &lt;!&ndash;拦截所有链接&ndash;&gt;
+        <bean class="com.fekpal.web.interceptor.LoginInterceptor"/>
+-->
+        <!-- 多个拦截器，顺序执行 -->
+        <mvc:interceptor >
+            <!-- 需排除拦截的地址 -->
+            <mvc:mapping path="/**"/>
+            <bean class="com.fekpal.web.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+
 </beans>

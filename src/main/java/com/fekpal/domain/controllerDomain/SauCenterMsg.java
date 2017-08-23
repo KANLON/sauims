@@ -3,29 +3,21 @@ package com.fekpal.domain.controllerDomain;
 import java.util.Date;
 
 /**
- * 这是社团详细信息的实体类
- * Created by hasee on 2017/8/15.
+ * 校社联中心信息的实体（目前这个类没有用，先留着）
+ * Created by hasee on 2017/8/20.
  */
-public class
-ClubDetail {
-    private int clubId;
-    private String clubName;
-    private String clubLogo;
-    private String description;
-    private String adminName;
-    private String email;
-    private String phone;
+public class SauCenterMsg {
+    private String clubName ;
+    private String description ;
+    private String adminName ;
+    private String email ;
+    private String captcha ;
     private Date foundTime;
-    private int members;
-    public ClubDetail(){}
 
-    public int getClubId() {
-        return clubId;
+    public SauCenterMsg(){
+
     }
 
-    public void setClubId(int clubId) {
-        this.clubId = clubId;
-    }
 
     public String getClubName() {
         return clubName;
@@ -33,14 +25,6 @@ ClubDetail {
 
     public void setClubName(String clubName) {
         this.clubName = clubName;
-    }
-
-    public String getClubLogo() {
-        return clubLogo;
-    }
-
-    public void setClubLogo(String clubLogo) {
-        this.clubLogo = clubLogo;
     }
 
     public String getDescription() {
@@ -67,12 +51,12 @@ ClubDetail {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCaptcha() {
+        return captcha;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
     }
 
     public Date getFoundTime() {
@@ -83,11 +67,15 @@ ClubDetail {
         this.foundTime = foundTime;
     }
 
-    public int getMenbers() {
-        return members;
-    }
-
-    public void setMenbers(int members) {
-        this.members = members;
+    @Override
+    public String toString() {
+        return "SauCenterMsg{" +
+                "clubName='" + clubName + '\'' +
+                ", description='" + description + '\'' +
+                ", adminName='" + adminName + '\'' +
+                ", email='" + email + '\'' +
+                ", captcha='" + captcha + '\'' +
+                ", foundTime=" + foundTime +
+                '}';
     }
 }

@@ -61,4 +61,9 @@ public class TestCode {
 
     }
 
+    @Test
+    public void testInteger(){
+        out.println("最大的整型："+Integer.MAX_VALUE);
+    }
+
 }

@@ -84,7 +84,7 @@ public class ForgetPasswordController {
      * @return 标准json数据
      */
     @ResponseBody
-    @RequestMapping(value = "/security/resetpwd")
+    @RequestMapping(value = "/security/resetpwd",method = RequestMethod.PUT)
     public Map<String,Object> resetPassword(@RequestParam(value = "newPassword") String newPassword,@RequestParam(value = "captcha") String captcha, HttpSession session){
         out.println("发送过来的数据为：newPassword="+newPassword+"    captcha="+captcha );
         BaseReturnData returnData = new BaseReturnData();
