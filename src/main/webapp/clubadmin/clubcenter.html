@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>校社联中心信息查看</title>
+    <title>社团中心信息查看</title>
 </head>
 <body>
 
 
-<input type="button" value="点击查看校社联中心信息" id="getMag" >
+<input type="button" value="点击查看社团中心信息" id="getMag" >
 <br/>
 发送的数据<br>
 <div class="output1"></div>
@@ -22,10 +22,10 @@
 <br/>
 <hr/>
 
-<form action="/SAU/sau/center/info/edit/head" enctype="multipart/form-data" method="post">
+<form action="/club/center/info/edit/head" enctype="multipart/form-data" method="post">
 
     <table>
-        <caption align="top">上传校社联头像</caption>
+        <caption align="top">上传社团头像</caption>
         <tr>
             <td>
                 <input type="file" name="file"/>
@@ -38,15 +38,34 @@
     </table>
 </form>
 <br/>
-校社联logo图片
+社团logo图片
+<br/>
+
+<form action="/club/center/info/edit/view" enctype="multipart/form-data" method="post">
+
+    <table>
+        <caption align="top">上传社团展示图片</caption>
+        <tr>
+            <td>
+                <input type="file" name="file"/>
+                <input type="hidden" name="_method" value="PUT">
+            </td>
+        </tr>
+        <tr>
+            <td ><input type="submit" value="点击上传"></td>
+        </tr>
+    </table>
+</form>
+<br/>
+社团展示图片
 <br/>
 
 <img src="http://localhost:8080/MySAUImages/sau/1503151747430.jpg">
 <br><hr/>
-修改校社联信息
-组织名<input type="text" size="25" value="校社联" id="clubName"><br>
-组织描述<input type="text" size="25" value="这是校社联的描述" id="description"><br>
-现任主席<input type="text" size="25" value="张三" id="adminName "><br>
+修改社团信息
+社团名<input type="text" size="25" value="社团" id="clubName"><br>
+社团描述<input type="text" size="25" value="这是某个社团的描述" id="description"><br>
+现任负责人<input type="text" size="25" value="张三" id="adminName"><br>
 新邮箱地址<input type="text" size="25" value="Canlong2015@126.com" id="email"><br>
 验证码<input type="text" size="25" value="abcde" id="captcha">
 <input type="button" value="发送验证码" id="sendCaptcha"><br>
@@ -63,7 +82,7 @@
 
 <script type="text/javascript">
     $("#getMag").click(function(){
-        var url = "/SAU/sau/center/info";
+        var url = "/club/center/info";
         var sendData = null;
         $(".output1").text(JSON.stringify(sendData));
         $.get(url,sendData,function(backData,textStaut,ajax){
@@ -96,7 +115,7 @@
 
 <script type="text/javascript">
     $("#subminMsg").click(function() {
-        var url = "/SAU/sau/center/info/edit";
+        var url = "/club/center/info/edit";
         var clubName = $("#clubName").val();
         var description = $("#description").val();
         var adminName = $("#adminName").val();
@@ -110,7 +129,7 @@
             "adminName": adminName,
             "email": email,
             "captcha": captcha,
-            "foundTime": foundTime,
+            "foundTime": new Date()
         };
         $(".output2").text(sendData);
         var sendDataJson = JSON.stringify(sendData);

@@ -3,6 +3,7 @@ package com.fekpal.tool;
 import com.fekpal.cons.ResponseCode;
 import com.fekpal.tool.BaseReturnData;
 import com.fekpal.tool.FileUploadTool;
+import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,7 @@ public class ImagesUploadTool {
         //判断图片格式和大小是否符合
         for(MultipartFile myfile : myfiles){
             if(!myfile.isEmpty()) {
+
                 if (myfile.getSize() > 1024 * 1024 * 10) {
                     returnData.setStateCode(ResponseCode.REQUEST_ERROR, "图片大于10m请重新上传");
                     return returnData.getMap();

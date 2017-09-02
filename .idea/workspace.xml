@@ -6,33 +6,57 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1911ae30-23e2-4455-ad5a-0fc0560c79b9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/cons/ReadFlagCode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/NewMsgListDomain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauCenterMsg.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/tool/EncodingFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/NewMsgController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauClubMsgController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/newmsg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/sauclubmsg.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/接口文档/restful接口文档20170816.docx" afterPath="" />
+    <list default="true" id="1911ae30-23e2-4455-ad5a-0fc0560c79b9" name="Default" comment="基本完成所有功能的controller了，还有一些没有完善的，在备注里面写有，测试的校社联管理端的和首页的都测试过，应该没有问题的，还有社团管理端测试了年度审核和社团中心，其他还没有测试。目前还差社团管理端的年度注册的提交和瀑布流，wordToHtml这三个比较大的功能还没有怎么去做。">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubPublishedNewMsgDomain.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauPublishedNewMsgDomain.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/tool/MD5Tool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SecurityController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubAnnRegisterController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubAuditRegController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubCenterController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubClubMsgController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubMsgPublicController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/ClubClubMsgController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/memberCenterController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAnnAuditController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAuditRegController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauMsgPublicController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/TestJson.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/clubadmin/clubannaudit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/clubadmin/clubcenter.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/clubadmin/publishedmsg.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/clubadmin/sauaudit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/clubadmin/testjson.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/sauadmin/publishedmsg.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/sauadmin/sauannaudit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/sauadmin/sauaudit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/sauadmin/testjson.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SAU/index.jsp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/com/fekpal/domain/User.class" afterPath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/com/fekpal/domain/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/com/fekpal/web/controller/loginController.class" afterPath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/com/fekpal/web/controller/loginController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/fekpal/domain/User.class" afterPath="$PROJECT_DIR$/target/classes/com/fekpal/domain/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/fekpal/web/controller/loginController.class" afterPath="$PROJECT_DIR$/target/classes/com/fekpal/web/controller/loginController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestCode.class" afterPath="$PROJECT_DIR$/target/test-classes/TestCode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/tool/ImagesUploadTool.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/tool/ImagesUploadTool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/IndexPageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/IndexPageController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sauims-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/sauims-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/forgetpassword.html" afterPath="$PROJECT_DIR$/src/main/webapp/forgetpassword.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/clubregister.html" afterPath="$PROJECT_DIR$/src/main/webapp/clubregister.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/newmsg.html" afterPath="$PROJECT_DIR$/src/main/webapp/newmsg.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/sauadmin/saucenter.html" afterPath="$PROJECT_DIR$/src/main/webapp/sauadmin/saucenter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/sauims-servlet.xml" afterPath="$PROJECT_DIR$/target/SAU/WEB-INF/classes/sauims-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SAU/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/SAU/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sauims-servlet.xml" afterPath="$PROJECT_DIR$/target/classes/sauims-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SAU/login.html" afterPath="$PROJECT_DIR$/target/SAU/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestCode.java" afterPath="$PROJECT_DIR$/test/TestCode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubMenber.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubMember.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauCenterController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauClubMsgController.java" afterPath="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauClubMsgController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,7 +91,26 @@
     <favorites_list name="SAU" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="ClubClubMsgController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/ClubClubMsgController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;method#getAllClubMsg#0;class#ClubClubMsgController#0" expanded="false" />
+                <element signature="method#getOneClubMsg#0;class#ClubClubMsgController#0" expanded="false" />
+                <element signature="method#joinClub#0;class#ClubClubMsgController#0" expanded="false" />
+                <element signature="method#likeClub#0;class#ClubClubMsgController#0" expanded="false" />
+                <element signature="e#5065#5081#0" expanded="true" />
+                <element signature="e#5558#5574#0" expanded="true" />
+                <element signature="method#searchMsg#0;class#ClubClubMsgController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -80,23 +123,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sendDataObj</find>
-      <find>c</find>
-      <find>user</find>
-      <find>usercode</find>
-      <find>menbers</find>
-      <find>e</find>
-      <find>email're'g'i</find>
-      <find>emailregi</find>
-      <find>cl</find>
-      <find>cludName</find>
-      <find>cludNam</find>
-      <find>cludNa</find>
-      <find>cludN</find>
       <find>clud</find>
       <find>sauCenterMsg.get(&quot;captcha&quot;)==null</find>
       <find>msgContent</find>
       <find>getMag</find>
+      <find>“</find>
+      <find>,</find>
+      <find>”</find>
+      <find>sauCenterMsg</find>
+      <find>SauPublishedNewMsgDomain</find>
+      <find>submintTime</find>
+      <find>submintTim</find>
+      <find>submintTi</find>
+      <find>submintT</find>
+      <find>submint</find>
+      <find>submin</find>
+      <find>subminT</find>
+      <find>subminTI</find>
+      <find>subminTIm</find>
+      <find>subminTIme</find>
+      <find>subminTime</find>
+      <find>00</find>
+      <find>001</find>
+      <find>src</find>
+      <find>url</find>
+      <find>/club/ann/one</find>
+      <find>url =</find>
+      <find>men</find>
+      <find>menber</find>
+      <find>clubCenterMsg</find>
+      <find>clubLogoName</find>
     </findStrings>
     <replaceStrings>
       <replace>userLogin</replace>
@@ -106,6 +162,16 @@
       <replace>StringUtils.isEmpty(sauCenterMsg.get(&quot;captcha&quot;))</replace>
       <replace>msgDetailMap</replace>
       <replace>getMsg</replace>
+      <replace>,</replace>
+      <replace>&quot;</replace>
+      <replace>clubCenterMsg</replace>
+      <replace>ClubPublishedNewMsgDomain</replace>
+      <replace />
+      <replace>submitTime</replace>
+      <replace>1</replace>
+      <replace>Member</replace>
+      <replace>memberCenterMsg</replace>
+      <replace>memberLogoName</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -119,57 +185,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mail.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/MailUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/MailHtmlUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/EmailRegister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/CheckMail.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/clubRegisterMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/register.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/EmailValid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/CheckEmail.java" />
-        <option value="$PROJECT_DIR$/test/MailTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubRegisterMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PersonRegisterMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/personregister.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/clubregister.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/MailHtmlTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/TimeTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubDetail.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubListMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ImagesUpload.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ImagesUploadTool.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/fileupload.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/EmailValidTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/FileUploadTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/ImagesUploadTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/EmailMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/sauims-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/forgetpassword.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/saucenter.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauCenterMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauNewMsg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauNewMsgContrller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/cons/ReadFlagCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/NewMsgListDomain.java" />
-        <option value="$PROJECT_DIR$/test/TestCode.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/newmsg.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/EncodingFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/NewMsgController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ClubMsgController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/sauclubmsg.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauClubMsgController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/ImagesUploadTool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/tool/MD5Tool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/saucenter.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/clubregister.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/msgpublic.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/MsgPublic.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/newmsg.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PublishenObjectDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PublishedObjectDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/testjson.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/TestJson.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/SauPublishedNewMsgDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauPublishedNewMsgDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/publishedmsg.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/MsgPublicController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/sauaudit.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAuditRegController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/sauadmin/sauannaudit.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauClubMsgController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/sauAdmin/SauAuditRegController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/TestJson.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SecurityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubClubMsgController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubPublishedNewMsgDomain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/SauAuditRegController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/test/TestCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAnnAuditController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/clubadmin/clubcenter.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubMsgPublicController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/clubadmin/clubannaudit.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubAnnRegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/menber/menberCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubMenber.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/memberCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/ClubCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/MemberCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/ClubClubMsgController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/clubadmin/sauaudit.html" />
       </list>
     </option>
   </component>
@@ -245,9 +311,10 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="2" />
-    <option name="width" value="1918" />
-    <option name="height" value="1022" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1046" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -331,11 +398,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="SAU" />
@@ -416,6 +492,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -471,38 +565,12 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="clubadmin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -524,28 +592,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="interceptor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LoginInterceptor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -580,14 +628,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SauClubMsgController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -666,41 +706,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NewMsgController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tool" />
+              <option name="myItemId" value="member" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -734,12 +740,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tool" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="EncodingFilter" />
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="member" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClubClubMsgController" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAU" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fekpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clubAdmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -840,164 +896,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllerDomain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllerDomain" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClubDetail" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ResponseCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SAU" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fekpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadFlagCode" />
+              <option name="myItemId" value="ClubMember" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1012,7 +917,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.40076628" />
-    <property name="SearchEverywhereHistoryKey" value="clubd&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java&#10;web&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/WEB-INF/web.xml&#10;sau&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/domain/controllerDomain/SauCenterMsg.java&#10;sauims&#9;FILE&#9;file://D:/masterspring/SAU/src/main/resources/sauims-servlet.xml&#10;forge&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/forgetpassword.html&#10;we&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/WEB-INF/web.xml&#10;loginc&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/LoginController.java&#10;log&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/LoginController.java&#10;regi&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/RegisterController.java&#10;ubli&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/clubadmin/clubannaudit.html&#10;sauMsgPublicController&#9;PSI&#9;JAVA://com.fekpal.web.controller.sauAdmin.SauMsgPublicController&#10;testJ&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/clubAdmin/TestJson.java&#10;login&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/login.html&#10;sa&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/sauAdmin/SauAnnAuditController.java&#10;center&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/clubAdmin/ClubCenterController.java&#10;index&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/indexPage.html&#10;2html&#9;PSI&#9;JAVA://com.sun.org.apache.bcel.internal.util.Class2HTML&#10;user&#9;PSI&#9;JAVA://com.fekpal.domain.User&#10;m&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/sauadmin/saucenter.html&#10;saucen&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/sauadmin/saucenter.html&#10;re&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/clubregister.html&#10;newmsg&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/newmsg.html&#10;new&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/NewMsgController.java&#10;sauc&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/sauadmin/saucenter.html&#10;clubre&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/clubregister.html&#10;register&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/clubregister.html&#10;sau&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/SauCenterController.java&#10;clubd&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java&#10;web&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/WEB-INF/web.xml&#10;sauims&#9;FILE&#9;file://D:/masterspring/SAU/src/main/resources/sauims-servlet.xml&#10;forge&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/forgetpassword.html&#10;we&#9;FILE&#9;file://D:/masterspring/SAU/src/main/webapp/WEB-INF/web.xml&#10;loginc&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/LoginController.java&#10;log&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/LoginController.java&#10;regi&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/web/controller/RegisterController.java&#10;ubli&#9;FILE&#9;file://D:/masterspring/SAU/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1024,12 +929,17 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fekpal.web.controller.member" />
+      <recent name="com.fekpal.domain.controllerDomain" />
+      <recent name="com.fekpal.web.controller.sauAdmin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\masterspring\SAU\src\main\webapp" />
-      <recent name="D:\masterspring\SAU\src\main\java\com\fekpal\domain" />
-      <recent name="D:\masterspring\SAU\src\main\java\com\fekpal\cons" />
+      <recent name="D:\masterspring\SAU\target\SAU\WEB-INF\lib" />
+      <recent name="D:\masterspring\SAU\src\main\webapp\clubadmin" />
+      <recent name="D:\masterspring\SAU\src\main\java\com\fekpal\web\controller\clubAdmin" />
+      <recent name="D:\masterspring\SAU\src\main\java\com\fekpal\web\controller" />
       <recent name="D:\masterspring\SAU\src\main\webapp\sauadmin" />
-      <recent name="D:\masterspring\SAU\接口文档" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1697,7 +1607,17 @@
       <workItem from="1503295593522" duration="12714000" />
       <workItem from="1503314065463" duration="9778000" />
       <workItem from="1503373273238" duration="11968000" />
-      <workItem from="1503449011436" duration="24636000" />
+      <workItem from="1503449011436" duration="24765000" />
+      <workItem from="1503647485530" duration="8596000" />
+      <workItem from="1503726535430" duration="713000" />
+      <workItem from="1503729569016" duration="24016000" />
+      <workItem from="1503794136970" duration="11319000" />
+      <workItem from="1503821430029" duration="5284000" />
+      <workItem from="1503836150553" duration="11771000" />
+      <workItem from="1503985222764" duration="7880000" />
+      <workItem from="1504011554802" duration="1145000" />
+      <workItem from="1504079591219" duration="4474000" />
+      <workItem from="1504156441626" duration="22275000" />
     </task>
     <task id="LOCAL-00001" summary="在js中增加了一个jquery.min.js文件">
       <created>1502805840260</created>
@@ -1776,13 +1696,17 @@
       <option name="project" value="LOCAL" />
       <updated>1503152301716</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="实现了校社联管理端的校社联中心，最新公告，社团信息等controller类了">
+      <created>1503503114063</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1503503114063</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MailTest_sendSingleTest - 2017.08.17 at 22h 05m 38s.xml">
-      <configuration name="MailTest.sendSingleTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MailTest_sendSingleTest - 2017.08.17 at 22h 29m 15s.xml">
       <configuration name="MailTest.sendSingleTest" configurationId="JUnit" />
     </history-entry>
@@ -1810,9 +1734,12 @@
     <history-entry file="TestCode_testInteger - 2017.08.23 at 15h 10m 13s.xml">
       <configuration name="TestCode.testInteger" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestCode_testInteger - 2017.09.02 at 17h 07m 30s.xml">
+      <configuration name="TestCode.testInteger" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220100000" />
+    <option name="totallyTimeSpent" value="317702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1824,13 +1751,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="1918" height="1022" extended-state="0" />
+    <frame x="-11" y="-11" width="1942" height="1046" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24734983" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17450766" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24617197" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.116090715" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1840,17 +1768,18 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49941108" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744405" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31636363" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31566548" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32848486" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744405" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32484847" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35636362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28268552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32848486" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32848486" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25164112" sideWeight="0.48961937" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25701943" sideWeight="0.48961937" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2586768" sideWeight="0.5103806" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3180212" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23960613" sideWeight="0.50423217" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1858,7 +1787,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3180212" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1906,11 +1834,14 @@
     <MESSAGE value="能够实现展示首页展示和登陆的功能了，但是没有连数据库。在弄注册，忘记密码。" />
     <MESSAGE value="现在首页的功能已经全部基本，还有一些小bug可以等后面做完了项目或者与service层，dao层合并是在完善。能够登陆，注册，忘记密码，发送邮件验证码等了。" />
     <MESSAGE value="实现了校社联中心的信息查看和头像上传功能的controller类" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现了校社联中心的信息查看和头像上传功能的controller类" />
+    <MESSAGE value="实现了校社联管理端的校社联中心，最新公告，社团信息等controller类了" />
+    <MESSAGE value="几乎实现所有功能了，只差社团管理端的年度审核，和普通用户的的功能。" />
+    <MESSAGE value="基本完成所有功能的controller了，还有一些没有完善的，在备注里面写有，测试的校社联管理端的和首页的都测试过，应该没有问题的，还有社团管理端测试了年度审核和社团中心，其他还没有测试。目前还差社团管理端的年度注册的提交和瀑布流，wordToHtml这三个比较大的功能还没有怎么去做。" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本完成所有功能的controller了，还有一些没有完善的，在备注里面写有，测试的校社联管理端的和首页的都测试过，应该没有问题的，还有社团管理端测试了年度审核和社团中心，其他还没有测试。目前还差社团管理端的年度注册的提交和瀑布流，wordToHtml这三个比较大的功能还没有怎么去做。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1919,416 +1850,409 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubRegisterMsg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/MailHtmlTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="121" column="11" lean-forward="false" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/TimeTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubregister.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/indexPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/接口文档/path.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/AnniversaryAudit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/page404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/IndexPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/Department.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/EmailRegister.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/Major.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/EmailValidTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2058">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/BasePOJO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.2.RELEASE/spring-web-4.2.2.RELEASE-sources.jar!/org/springframework/web/multipart/commons/CommonsFileUploadSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="269" column="97" lean-forward="false" selection-start-line="269" selection-start-column="97" selection-end-line="269" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.2.RELEASE/spring-web-4.2.2.RELEASE-sources.jar!/org/springframework/web/multipart/MultipartFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="73" column="13" lean-forward="false" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/FileUploadTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="39" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/ImagesUploadTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="63" column="26" lean-forward="false" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+        <state relative-caret-position="243">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="68" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubListMsg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PersonRegisterMsg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+        <state relative-caret-position="135">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/MD5Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/personregister.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="297">
+          <caret line="63" column="51" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/fileupload.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/msgpublic.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauclubmsg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="1722">
+          <caret line="73" column="7" lean-forward="true" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubregister.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="116" column="36" lean-forward="true" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="36" />
-          <folding>
-            <element signature="docComment;method#sendEmailCaptcha#0;class#RegisterController#0" expanded="false" />
-            <element signature="e#987#1015#0" expanded="false" />
-            <element signature="docComment;method#clubRegister#0;class#RegisterController#0" expanded="false" />
-            <element signature="docComment;method#personRegister#0;class#RegisterController#0" expanded="false" />
-            <element signature="method#personRegister#0;class#RegisterController#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="52">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/NewMsgController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="40" />
+        <state relative-caret-position="270">
+          <caret line="76" column="50" lean-forward="false" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/newmsg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="method#captchaCode#0;class#LoginController#0" expanded="false" />
-            <element signature="method#getIpAddr#0;class#LoginController#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="27">
+          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/testjson.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="method#sendEmailCaptcha#0;class#ForgetPasswordController#0" expanded="false" />
-            <element signature="docComment;method#resetPassword#0;class#ForgetPasswordController#0" expanded="false" />
-            <element signature="method#resetPassword#0;class#ForgetPasswordController#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="237">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/EmailMsg.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PersonRegisterMsg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/TestJson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding>
-            <element signature="e#611#612#0" expanded="false" />
-            <element signature="e#658#659#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="210">
+          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sauims-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/PublishedObjectDomain.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="98" column="27" lean-forward="true" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
-          <folding>
-            <element signature="e#3085#3099#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauCenterMsg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        <state relative-caret-position="216">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/soft/develop/Java/src.zip!/com/sun/org/apache/bcel/internal/util/Class2HTML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/indexPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/saucenter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
-          <caret line="122" column="56" lean-forward="true" selection-start-line="122" selection-start-column="56" selection-end-line="122" selection-end-column="56" />
+        <state relative-caret-position="27">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauNewMsgContrller.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.2.2.RELEASE/spring-core-4.2.2.RELEASE.jar!/org/springframework/util/StringUtils.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/3.0-alpha-1/servlet-api-3.0-alpha-1.jar!/javax/servlet/http/HttpServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="32" column="26" lean-forward="false" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="392">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/cons/ActionAvailable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/cons/ResponseCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/cons/ReadFlagCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/NewMsgListDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="216">
+          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
           <folding>
-            <element signature="e#772#773#0" expanded="false" />
-            <element signature="e#812#813#0" expanded="false" />
+            <element signature="method#sendEmailCaptcha#0;class#RegisterController#0" expanded="false" />
+            <element signature="method#personRegister#0;class#RegisterController#0" expanded="false" />
+            <element signature="method#handleFile#0;class#RegisterController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauCenterController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauClubMsgController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="180" column="24" lean-forward="true" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
+        <state relative-caret-position="178">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/ForgetPasswordController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
+            <element signature="method#getSauCenterMsg#0;class#SauCenterController#0" expanded="false" />
+            <element signature="method#uploadLogo#0;class#SauCenterController#0" expanded="false" />
             <element signature="method#subNewCenterMsg#0;class#SauCenterController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/forgetpassword.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SecurityController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <caret line="8" column="61" lean-forward="true" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <folding>
+            <element signature="method#sendEmailCaptcha#0;class#SecurityController#0" expanded="false" />
+            <element signature="method#resetPassword#0;class#SecurityController#0" expanded="false" />
+            <element signature="method#sendEmailCaptcha#1;class#SecurityController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubClubMsgController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="113" column="27" lean-forward="false" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubPublishedNewMsgDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/SauPublishedNewMsgDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubAuditRegController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="152" column="7" lean-forward="true" selection-start-line="152" selection-start-column="7" selection-end-line="152" selection-end-column="7" />
+          <folding>
+            <element signature="method#sendAuditMsgResult#0;class#ClubAuditRegController#0" expanded="false" />
+            <element signature="method#searchAuditMsg#0;class#ClubAuditRegController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/接口文档/path.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/sauannaudit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2657">
+          <caret line="163" column="39" lean-forward="true" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/TestCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+        <state relative-caret-position="507">
+          <caret line="64" column="6" lean-forward="true" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAuditRegController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="70" column="25" lean-forward="false" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
           <folding>
-            <element signature="e#1693#1694#0" expanded="true" />
-            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="method#getAllAuditMsg#0;class#SauAuditRegController#0" expanded="false" />
+            <element signature="method#sendAuditMsgResult#0;class#SauAuditRegController#0" expanded="false" />
+            <element signature="method#downFile#0;class#SauAuditRegController#0" expanded="false" />
+            <element signature="method#searchAuditMsg#0;class#SauAuditRegController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/interceptor/LoginInterceptor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubadmin/publishedmsg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/newmsg.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/publishedmsg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="125" column="24" lean-forward="true" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+        <state relative-caret-position="540">
+          <caret line="279" column="9" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="279" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubadmin/clubcenter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1809">
+          <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauAnnAuditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="110" column="27" lean-forward="true" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
           <folding>
-            <element signature="n#script#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1503474148195" expanded="true" signature="1164:1617" ph="{...}" />
+            <element signature="method#sendAuditMsgResult#0;class#SauAnnAuditController#0" expanded="false" />
+            <element signature="method#openOnlineFile#0;class#SauAnnAuditController#0" expanded="false" />
+            <element signature="method#downFile#0;class#SauAnnAuditController#0" expanded="false" />
+            <element signature="method#searchAuditMsg#0;class#SauAnnAuditController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/tool/EncodingFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/controllerDomain/ClubDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/NewMsgController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1323">
-          <caret line="188" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+        <state relative-caret-position="106">
+          <caret line="149" column="44" lean-forward="true" selection-start-line="149" selection-start-column="44" selection-end-line="149" selection-end-column="44" />
           <folding>
-            <element signature="e#813#826#0" expanded="false" />
-            <element signature="method#getAllMsg#0;class#NewMsgController#0" expanded="false" />
-            <element signature="e#1740#1758#0" expanded="true" />
-            <element signature="e#3047#3056#0" expanded="true" />
-            <element signature="e#3665#3678#0" expanded="false" />
-            <element signature="method#getMsgById#0;class#NewMsgController#0" expanded="false" />
-            <element signature="e#5637#5655#0" expanded="true" />
+            <element signature="method#getIpAddr#0;class#LoginController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/SauClubMsgController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/TestJson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="112" column="19" lean-forward="true" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+        <state relative-caret-position="114">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubMsgPublicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="102" column="7" lean-forward="true" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/sauAdmin/SauMsgPublicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="27" column="59" lean-forward="true" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubadmin/clubannaudit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubAnnRegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4026">
+          <caret line="176" column="17" lean-forward="true" selection-start-line="176" selection-start-column="17" selection-end-line="176" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getAllClubMsg#0;class#SauClubMsgController#0" expanded="false" />
-            <element signature="e#1413#1434#0" expanded="true" />
-            <element signature="e#1511#1527#0" expanded="true" />
-            <element signature="e#1756#1772#0" expanded="true" />
-            <element signature="method#getOneClubMsg#0;class#SauClubMsgController#0" expanded="false" />
-            <element signature="method#searchMsg#0;class#SauClubMsgController#0" expanded="false" />
-            <element signature="e#4362#4394#0" expanded="false" />
-            <element signature="e#4475#4496#0" expanded="true" />
-            <element signature="e#4573#4589#0" expanded="true" />
-            <element signature="e#4841#4857#0" expanded="true" />
+            <element signature="method#uploadFile#0;class#ClubAnnRegisterController#0" expanded="false" />
+            <element signature="method#springUploadFile#0;class#ClubAnnRegisterController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauclubmsg.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/domain/ClubMember.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+        <state relative-caret-position="297">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/MemberCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/clubAdmin/ClubCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/MemberCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="169" column="7" lean-forward="true" selection-start-line="169" selection-start-column="7" selection-end-line="169" selection-end-column="7" />
           <folding>
-            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1729#1745#0" expanded="true" />
+            <element signature="e#2619#2640#0" expanded="true" />
+            <element signature="e#2701#2717#0" expanded="true" />
+            <element signature="e#2899#2915#0" expanded="true" />
+            <element signature="method#uploadView#0;class#MemberCenterController#0" expanded="false" />
+            <element signature="method#subNewCenterMsg#0;class#MemberCenterController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/clubadmin/sauaudit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sauadmin/sauaudit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5157">
+          <caret line="191" column="7" lean-forward="false" selection-start-line="191" selection-start-column="7" selection-end-line="191" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fekpal/web/controller/member/ClubClubMsgController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;method#getAllClubMsg#0;class#ClubClubMsgController#0" expanded="false" />
+            <element signature="method#getOneClubMsg#0;class#ClubClubMsgController#0" expanded="false" />
+            <element signature="method#joinClub#0;class#ClubClubMsgController#0" expanded="false" />
+            <element signature="method#likeClub#0;class#ClubClubMsgController#0" expanded="false" />
+            <element signature="e#5065#5081#0" expanded="true" />
+            <element signature="e#5558#5574#0" expanded="true" />
+            <element signature="method#searchMsg#0;class#ClubClubMsgController#0" expanded="false" />
           </folding>
         </state>
       </provider>

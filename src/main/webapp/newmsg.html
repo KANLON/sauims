@@ -97,7 +97,11 @@
 
         var sendData = {
             "_method":"delete",
-            "deleteMsgIds":deleteMsgIds
+            "deleteMsgIds":[{
+                "deleteMsgId":deleteMsg1
+            },{
+                "deleteMsgId":deleteMsg2
+            }]
         };
         $(".output3").text(JSON.stringify(sendData));
         $.ajax({

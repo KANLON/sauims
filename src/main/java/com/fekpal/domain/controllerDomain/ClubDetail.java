@@ -83,11 +83,11 @@ ClubDetail {
         this.foundTime = foundTime;
     }
 
-    public int getMenbers() {
+    public int getMembers() {
         return members;
     }
 
-    public void setMenbers(int members) {
+    public void setMembers(int members) {
         this.members = members;
     }
 }

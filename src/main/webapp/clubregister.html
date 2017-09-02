@@ -9,18 +9,70 @@
 </head>
 <body>
 
-<form>
-    账号&nbsp;&nbsp;<input type="text" size="10" name="账号" value="张三" id="user"><br/>
-    密码&nbsp;&nbsp;<input type="password" size="10" name="密码" value="123456" id="pswd"><br/>
-    邮箱 &nbsp;&nbsp;<input type="text" size="20" value="Canlong2015@126.com" id="email">
-    <br>
-    验证码&nbsp;&nbsp;<input type="text" size="10" name="captcha" value="abcde" id="captcha">
-    <input type="button" value="发送验证码" ><br/>
-    <br/><br/>
+<form name="clubMsg" enctype="multipart/form-data" method="post">
+    <table>
+        <caption align="top">社团注册信息填写</caption>
+        <tr>
+            <td>
+                帐户名&nbsp;&nbsp;<input type="text" size="10" name="userName" value="abcde" id="userName">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                密码&nbsp;&nbsp;<input type="password" size="10" name="password" value="123456" id="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                真实姓名&nbsp;&nbsp;<input type="text" size="10" name="realName" value="张三" id="realName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                邮箱&nbsp;&nbsp;<input type="text" size="25" name="email" value="Canlong2015@126.com" id="email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                邮箱验证码&nbsp;&nbsp;<input type="text" size="10" name="captcha" value="abcde"
+                                        id="captcha">&nbsp;&nbsp;<input type="button" value="发送验证码"
+                                                                        id="sendCaptcha"><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                手机号&nbsp;&nbsp;<input type="text" size="10" name="phone" value="18316821383" id="phone">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                社团名称&nbsp;&nbsp;<input type="text" size="10" name="clubName" value="乒乓球协会" id="clubName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                社团种类&nbsp;&nbsp;<input type="text" size="10" name="clubType" value="体育类" id="clubType">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                社团描述&nbsp;&nbsp;<input type="text" size="35" name="description" value="这是乒乓球协会的描述" id="description">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                申请文件<input type="file" name="file"/>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="注册"></td>
+        </tr>
+    </table>
 </form>
 <hr/>
-
-<input type="button" value="提交注册信息" ><br/>
 发送的数据<br>
 <div class="output"></div>
 接受的数据<br>
@@ -30,15 +82,15 @@
 
 <script type="text/javascript">
 
-    $(":button:first").click(function(){
+    $("#sendCaptcha").click(function () {
 
         var url = "reg/code";
 
         var email = $("#email").val();
         <!-- 要发送的json数据，对象-->
         var emailObject = {
-                "email": email
-            };
+            "email": email
+        };
         <!-- 将对象转为json数据-->
         var emailJson = JSON.stringify(emailObject);
 
@@ -46,12 +98,12 @@
         $(".output").text(email);
 
         $.ajax({
-            type: "post",
+            type: "get",
             url: url,
             data: {
                 "email": email
             },
-          <!--  headers: {'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'},-->
+            headers: {'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'},
             dataType: "json",
             success: function (data, textStatus) {
                 $(".input").text(JSON.stringify(data));
@@ -60,46 +112,24 @@
     });
 </script>
 
+<!-- 发送注册信息--->
 <script type="text/javascript">
-
-    $(":button:last").click(function(){
-
-        var url = "reg/club";
-
-        var user = $("#user").val();
-        var pswd = $("#pswd").val();
-        var captcha = $("#captcha").val();
-        <!-- 要发送的json数据，对象-->
-        var userRegister = {
-            "userName": user,
-            "password": pswd,
-            "realName": "张三",
-            "email": "s19961234@126.com",
-            "captcha": captcha,
-            "phone": "18316821838",
-            "clubName": "乒乓球协会",
-            "clubType": "体育",
-            "description": "这是乒乓球协会的描述",
-            "file": "a.doc"
-        };
-        <!-- 将对象转为json数据-->
-        var userJson = JSON.stringify(userRegister);
-
-        <!-- 将数据显示在div组件中-->
-        $(".output").text(userJson);
-
-        $.ajax({
-            type: "post",
-            url: url,
-            data: userJson,
-            <!--指定请求头-->
-            headers: {'Content-type': 'application/json;charset=UTF-8'},
-            dataType: "json",
-            success: function (data, textStatus) {
-                $(".input").text(JSON.stringify(data));
+    var form = document.forms.namedItem("clubMsg");
+    form.addEventListener('submit', function (ev) {
+        var oOutput = document.querySelector("div"),
+            oData = new FormData(form);
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "/SAU/reg/club", true);
+        oReq.onload = function (oEvent) {
+            if (oReq.status == 200) {
+                oOutput.innerHTML = oData;
+            } else {
+                oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
             }
-        });
-    });
+        };
+        oReq.send(oData);
+        ev.preventDefault();
+    }, false);
 </script>
 
 

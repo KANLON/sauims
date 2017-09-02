@@ -41,14 +41,14 @@ public class IndexPageController {
         club1.setClubView("1.jpg");
         club1.setDescription("这是社团1的描述");
         club1.setLikeNumber(20);
-        club1.setMenbers(100);
+        club1.setMembers(100);
 
         ClubListMsg club2 = new ClubListMsg();
         club2.setClubId(2);
         club2.setClubView("2.jpg");
         club2.setDescription("这是社团2的描述");
         club2.setLikeNumber(20);
-        club2.setMenbers(100);
+        club2.setMembers(100);
 
         //将社团加入到数据的list集合中
         list.add(club1);
@@ -92,7 +92,7 @@ public class IndexPageController {
         club1.setDescription("热爱乒乓球的聚集地");
         club1.setEmail("s19961234@126.com");
         club1.setFoundTime(date);
-        club1.setMenbers(100);
+        club1.setMembers(100);
 
         out.println("格式化前"+date);
         out.println("格式化后"+sdf.format(date));

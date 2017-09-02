@@ -42,11 +42,11 @@ public class ClubListMsg {
         this.description = description;
     }
 
-    public Integer getMenbers() {
+    public Integer getMembers() {
         return members;
     }
 
-    public void setMenbers(Integer members) {
+    public void setMembers(Integer members) {
         this.members = members;
     }
 

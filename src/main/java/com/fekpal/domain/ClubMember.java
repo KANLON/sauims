@@ -2,7 +2,7 @@ package com.fekpal.domain;
 
 import java.sql.Timestamp;
 
-public class ClubMenber extends BasePOJO {
+public class ClubMember extends BasePOJO {
 
     private int id;
 

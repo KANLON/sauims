@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.Map;
 
 import static java.lang.System.out;
@@ -64,6 +65,7 @@ public class TestCode {
     @Test
     public void testInteger(){
         out.println("最大的整型："+Integer.MAX_VALUE);
+        out.println(new Date().getTime());
     }
 
 }

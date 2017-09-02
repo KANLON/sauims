@@ -1,18 +1,30 @@
 package com.fekpal.web.controller;
 
+import com.fekpal.cons.ResponseCode;
 import com.fekpal.domain.controllerDomain.ClubRegisterMsg;
 import com.fekpal.domain.controllerDomain.PersonRegisterMsg;
 import com.fekpal.tool.*;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import sun.security.provider.MD5;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -37,7 +49,7 @@ public class RegisterController {
      * @param email   发送过来的邮箱
      * @return 返回标准json数据
      */
-    @RequestMapping("/reg/code")
+    @RequestMapping(value = "/reg/code",method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> sendEmailCaptcha(HttpSession session, @RequestParam(value = "email") String email) {
         BaseReturnData returnData = new BaseReturnData();
@@ -84,18 +96,37 @@ public class RegisterController {
     /**
      * 社团注册的方法
      *
-     * @param clubRegisterMsg 社团的信息
-     * @param session         session会话
+     * @param file 上传的文件
+     * @param clubMsgMap 社团信息
+     * @param request 请求
+     * @param session  session会话
      * @return 标准json数据
      */
-    @RequestMapping("/reg/club")
+    @RequestMapping(value = "/reg/club",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> clubRegister(@RequestBody ClubRegisterMsg clubRegisterMsg, HttpSession session) {
+    public Map<String, Object> clubRegister(@RequestParam MultipartFile[] file,@RequestParam Map<String,Object> clubMsgMap, HttpServletRequest request,HttpSession session) {
         BaseReturnData returnData = new BaseReturnData();
         //判断用户是否登录
         if (session.getAttribute("userCode") != null) {
             returnData.setStateCode(1, "你已经登录的了，请退出后在注册。");
             return returnData.getMap();
+        }
+
+        //从前端传传过来的社团信息中获取相应内容
+        String userName = (String) clubMsgMap.get("userName");
+        String realName = (String) clubMsgMap.get("realName");
+        String passwordMD5 = MD5Tool.md5((String) clubMsgMap.get("password"));
+        String captcha = (String) clubMsgMap.get("captcha");
+        String phone = (String) clubMsgMap.get("phone");
+        String clubName = (String) clubMsgMap.get("clubName");
+        String clubType = (String) clubMsgMap.get("clubType");
+        String description = (String) clubMsgMap.get("description");
+        String email = (String) clubMsgMap.get("email");
+
+        //如果上传的文件不符合符合条件
+        if((Integer)(handleFile(file).get("code"))!=0) {
+            //如果上传的文件不符合条件，返回相应内容
+            return handleFile(file);
         }
 
         //如果session域中验证码非空
@@ -105,24 +136,25 @@ public class RegisterController {
             String sessionCaptcha = (String) session.getAttribute("emailCaptcha");
             String sessionEmail = (String) session.getAttribute("email");
             out.println("session验证是：" + sessionCaptcha);
-            out.println("register验证码是：" + clubRegisterMsg.getCaptcha());
+            out.println("register验证码是：" + captcha);
             //校验验证码和邮箱是否相等和时间是否过了10分钟
-            if (sessionCaptcha.trim().toLowerCase().equals(clubRegisterMsg.getCaptcha().trim().toLowerCase())
-                    && sessionEmail.trim().toLowerCase().equals(clubRegisterMsg.getEmail().trim().toLowerCase())
+            if (sessionCaptcha.trim().toLowerCase().equals(captcha.trim().toLowerCase())
+                    && sessionEmail.trim().toLowerCase().equals(email.trim().toLowerCase())
                     && TimeTool.cmpTime((String) session.getAttribute("time")) ) {
                 //清除session
                 session.invalidate();
 
                 //调用工具类检验用户名，密码等是否符合规范
-                // TODO: 2017/8/18  
+                // TODO: 2017/8/18
 
                 //检验用户名是否重复
                 // TODO: 2017/8/18
 
                 //调用service层检验将社团信息存入数据库
+                //将文件存入服务器中的与本项目同目录的//MySAUImages/clubRegister文件夹中，返回文件名
+                List<String> fileNameList = FileUploadTool.imageHandle(file, request, "clubRegister");
 
-                out.println("存入数据库社团注册信息为：" + clubRegisterMsg);
-
+                    out.println("存入数据库社团注册信息为：" + clubMsgMap + "。注册的文件名是：" + fileNameList.get(0));
             } else {
                 returnData.setStateCode(1, "验证码不正确，请重新输入！");
             }
@@ -185,4 +217,35 @@ public class RegisterController {
         return returnData.getMap();
     }
 
+    /**
+     * 处理上传文件的方法
+     * @param myfiles 上传的文件
+     * @return 上传信息是否正确
+     */
+    public Map<String,Object> handleFile(MultipartFile[] myfiles){
+        BaseReturnData returnData = new BaseReturnData();
+        //判断文件格式和大小是否符合
+        for(MultipartFile myfile : myfiles){
+            if(!myfile.isEmpty()) {
+                if (myfile.getSize() > 1024 * 1024 * 10) {
+                    returnData.setStateCode(ResponseCode.REQUEST_ERROR, "文件大于10m请重新上传");
+                    return returnData.getMap();
+                }
+                if (!myfile.getContentType().toString().equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                        && !myfile.getContentType().toString().equals("application/msword")
+                        && !myfile.getContentType().toString().equals("application/pdf")) {
+                    returnData.setStateCode(ResponseCode.REQUEST_ERROR, "上传的文件不符合格式，请重新上传");
+                    return returnData.getMap();
+                }
+            }else {
+                returnData.setStateCode(1, "没上传文件，请重新上传");
+                return returnData.getMap();
+            }
+        }
+        //如果上传的文件为空，返回提示语句
+        if (myfiles == null) {
+            returnData.setStateCode(1, "没上传文件，请重新上传");
+        }
+        return returnData.getMap();
+    }
 }

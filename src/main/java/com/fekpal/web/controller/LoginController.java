@@ -5,10 +5,10 @@ import com.fekpal.domain.UserLogin;
 import com.fekpal.service.LoginService;
 import com.fekpal.tool.BaseReturnData;
 
+import com.fekpal.tool.MD5Tool;
 import com.fekpal.tool.ValidateCodeTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -98,7 +98,7 @@ public class LoginController {
             return ((Map<String, Object>) returnData.getMap());
         }
 
-        if(realUser.getPassword().equals(userLogin.getPassword())){
+        if(MD5Tool.md5(realUser.getPassword()).equals(MD5Tool.md5(userLogin.getPassword())) ){
             //清除当前session的验证码
             session.removeAttribute("code");
 

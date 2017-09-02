@@ -1,4 +1,4 @@
-package com.fekpal.web.controller;
+package com.fekpal.web.controller.sauAdmin;
 
 import com.fekpal.cons.ResponseCode;
 import com.fekpal.domain.controllerDomain.SauCenterMsg;
@@ -87,8 +87,7 @@ public class SauCenterController {
      */
     @ResponseBody
     @RequestMapping(value = "/sau/center/info/edit/head",method = RequestMethod.PUT)
-    public Map<String,Object> uploadLogo(@RequestParam("myfiles") MultipartFile[] myfiles, HttpServletRequest request){
-
+    public Map<String,Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles,HttpServletRequest request){
         Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"sau");
 
         //初始化校社联头像文件名
@@ -117,61 +116,6 @@ public class SauCenterController {
         }
 
         return returnData;
-    }
-
-    /**
-     * 发送邮箱验证码
-     * @param session 用户session会话
-     * @param email 邮箱地址
-     * @return 是否成功
-     */
-    @ResponseBody
-    @RequestMapping(value = "/security/email/code",method = RequestMethod.GET)
-    public Map<String,Object> sendEmailCaptcha(HttpSession session,HttpServletRequest request, @RequestParam String email/*@RequestParam(value = "email") String email*/){
-        BaseReturnData returnData = new BaseReturnData();
-        //多次点击发送验证码
-        // TODO: 2017/8/18
-
-        //根据用户id链接数据库判断邮箱是否跟原来邮箱相同
-        // TODO: 2017/8/18
-        //如果原来邮箱与发过来的邮箱相同，则返回
-        if(email.trim().trim().equals("s19961234@126.com")){
-            returnData.setStateCode(ResponseCode.REQUEST_ERROR,"新邮箱与旧邮箱相同，不需要再次发送验证码。");
-        }
-
-        //将邮件地址去空格
-       email = email.trim();
-
-        //判断用户是否登录
-        if (session.getAttribute("userCode") == null) {
-            returnData.setStateCode(1, "你还没有登陆，请登陆后在发送邮箱验证码。");
-            return returnData.getMap();
-        }
-
-        //检查邮箱是否真实有效是否正确
-        if (!EmailValidTool.valid(email, "www.baidu.com")) {
-            //如果不正确
-            returnData.setStateCode(1, "不是有效邮箱，请重新输入");
-            return returnData.getMap();
-        }
-
-        //从工具类中得到邮箱验证码
-        String captcha = ValidateCodeTool.getCaptcha();
-        //把验证码，邮箱，时间发入到session中去
-        session.setAttribute("emailCaptcha", captcha);
-        session.setAttribute("email", email);
-        session.setAttribute("time", TimeTool.getTime());
-
-        try {
-            mailHtmlTool.sendHtml(email, "校社联管理系统发给您的验证码", "您的邮箱验证码是：<br/>"
-                    + captcha + "<br/><br/>"+"验证码十分钟内有效");
-            out.println("已经发送了验证码：" + captcha);
-        } catch (MessagingException e) {
-            returnData.setStateCode(1, "邮件发送失败，请点击重新发送。如果多次点击发送后，依然不成功，请稍后再试。");
-        } finally {
-            return returnData.getMap();
-        }
-
     }
 
     /**

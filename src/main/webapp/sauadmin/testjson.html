@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试json数据</title>
+</head>
+<body>
+
+<script src="../js/jquery.min.js"></script>
+
+<input type="button" name="testJson"  id="testJson" value="测试json数据"><br/>
+<script type="text/javascript">
+    $("#testJson").click(function(){
+        var saveDataAry=[];
+        var data1={"userName":"test","email":"s123@126.com"};
+        var data2={"userName":"ququ","email":"s124@126.com"};
+        saveDataAry.push(data1);
+        saveDataAry.push(data2);
+        $.ajax({
+            type:"PUT",
+            url:"/SAU/sau/testJson",
+            dataType:"json",
+            contentType:"application/json;charset=utf-8",
+            data:JSON.stringify(saveDataAry),
+            success:function(data){
+                alert(data)
+            }
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
