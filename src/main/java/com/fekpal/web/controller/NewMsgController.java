@@ -55,6 +55,7 @@ public class NewMsgController {
 
             //通过dao根据用户id查询得到用户的消息对象
             // TODO: 2017/8/22
+            out.println("从数据库中获取得到所有消息，和用户id是；"+userId);
 
             //如果得到的对象为空，直接返回
             if (false) {
@@ -123,7 +124,14 @@ public class NewMsgController {
             userId = (Integer) session.getAttribute("userCode");
         }
 
+        if (messageId <= 0 ){
+            returnData.setStateCode(ResponseCode.REQUEST_ERROR,"消息id不合法");
+            return returnData.getMap();
+        }
+
         //根据用户id和消息id从从dao中得到用户消息对象
+        // TODO: 2017/9/5
+        out.println("根据用户id和消息id从从dao中得到用户消息对象"+"用户id："+userId+"消息id："+messageId);
 
         //将消息对象的某些属性提前出来放到返回的消息对象中
         msgDetailMap.put("messagedId",messageId);

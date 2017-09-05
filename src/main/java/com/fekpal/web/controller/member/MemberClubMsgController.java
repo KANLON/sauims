@@ -18,7 +18,7 @@ import static java.lang.System.out;
  * Created by hasee on 2017/8/23.
  */
 @Controller
-public class ClubClubMsgController {
+public class MemberClubMsgController {
 
     /**
      * 返回社团信息列表的方法
@@ -115,7 +115,7 @@ public class ClubClubMsgController {
      * @return 返回时候加入成功，等待审核
      */
     @ResponseBody
-    @RequestMapping("/member/club/{clubId}/join")
+    @RequestMapping(value = "/member/club/{clubId}/join",method = RequestMethod.POST)
     public Map<String,Object> joinClub(@PathVariable("clubId") int clubId, HttpSession session){
         BaseReturnData returnData = new BaseReturnData();
 
@@ -143,7 +143,7 @@ public class ClubClubMsgController {
      * @return 返回时候是否喜爱成功
      */
     @ResponseBody
-    @RequestMapping("/member/club/{clubId}/star")
+    @RequestMapping(value = "/member/club/{clubId}/star",method = RequestMethod.GET)
     public Map<String,Object> likeClub(@PathVariable("clubId") int clubId, @RequestParam int avaliable,HttpSession session){
         BaseReturnData returnData = new BaseReturnData();
 

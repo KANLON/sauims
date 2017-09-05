@@ -1,6 +1,7 @@
 package com.fekpal.web.controller.sauAdmin;
 
 import com.fekpal.cons.ResponseCode;
+import com.fekpal.cons.WebPath;
 import com.fekpal.tool.BaseReturnData;
 import com.sun.org.apache.xml.internal.serializer.OutputPropertiesFactory;
 import org.springframework.stereotype.Controller;
@@ -197,9 +198,9 @@ public class SauAuditRegController {
         //将word文件转化为html，然后输出html输出流
         // TODO: 2017/8/28
         //模拟数据
-        String fileNameHtml = "testHTMLOnline.html";
+        String fileNameHtml = "1.html";
         //设置上传目录,即转化为html的目录
-        String uploadPath = "D://masterspring//MySAUImages//clubRegister";
+        String uploadPath = WebPath.rootPath+"//WEB-INF//upload//clubRegister";
         try {
             InputStream in = new FileInputStream(new File(uploadPath,fileNameHtml));
             //得到输出流
@@ -214,9 +215,12 @@ public class SauAuditRegController {
             out.close();
             in.close();
         } catch (FileNotFoundException e) {
+
             e.printStackTrace();
+            throw new RuntimeException("找不到文件");
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("找不到文件");
         }
 
     }
@@ -240,9 +244,9 @@ public class SauAuditRegController {
         out.println("用户id和审核id："+userId+","+auditMsgId);
 
         //模拟数据
-        String fileNameWord = "1503740563029.doc";
+        String fileNameWord = "1.doc";
         //设置上传目录,即存放审核word文档的目录
-        String uploadPath = "D://masterspring//MySAUImages//clubRegister";
+        String uploadPath = WebPath.rootPath+"//WEB-INF//upload//clubRegister";
         try {
             InputStream in = new FileInputStream(new File(uploadPath,fileNameWord));
             //设置下载的响应头

@@ -22,8 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         //获取请求的URL
         String url = request.getRequestURI();
 
-        //url:/login/go || indexpage.html || /login/code 是公开的，其他的url是都进行拦截
-        if(url.indexOf("/login/go")>=0 || url.indexOf("indexPage.html")>=0 || url.indexOf("/login/code")>=0 || url.indexOf("/reg/")>=0){
+        //把不拦截的url放在if条件中， 是公开的，其他的url是都进行拦截
+        if(url.indexOf("/login/go")>=0 || url.indexOf("indexPage.html")>=0 || url.indexOf("/login/code")>=0
+                || url.indexOf("/index/")>=0 || url.indexOf("/security/resetpwd")>=0 || url.indexOf("/reg/code")>=0
+                || url.indexOf("/reg/person")>=0 || url.indexOf("/reg/club")>=0 ){
             return true;
         }
         //获取session

@@ -5,57 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>login</title>
+    <title>首页</title>
 </head>
 <body>
+<script src="js/jquery.min.js"></script>
 
-
-<input type="button" value="点击获取社团列表信息" >
+<input type="button" value="点击获取社团列表信息" id="getAllClubMsg"><br/>
+发送的数据<div id="output1"></div><br/>
+接受的数据<div id="input1"></div><br/>
+<!--- 1 获取社团列表信息 -->
+<script type="text/javascript">
+    $("#getAllClubMsg").click(function(){
+        var url = "/SAU/index/club";
+        var sendData = null;
+        $("#output1").text(sendData);
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            $("#input1").text(ajax.responseText);
+        });
+    });
+</script>
 <br/>
 
-<input type="button" value="点击id=1的社团时" name="last">
-<input type="button" value="测试时间" >
+<input type="text" value="1" id="clubId"><br/>
+<input type="button" value="查看某个社团"  id="getOneClubMsg"><br/>
+发送的数据<div id="output2"></div><br/>
+接受的数据<div id="input2"></div><br/>
+<!-- 2.查看某个社团 -->
+<script type="text/javascript">
+    $("#getOneClubMsg").click(function(){
+        var clubId = $("#clubId").val();
+        var url = "/SAU/index/club/"+clubId;
+        var sendData =null;
+        $("#output2").text(sendData);
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            $("#input2").text(ajax.responseText);
+        });
+    });
+</script>
+
+
+<input type="button" value="测试时间"  id="testTime">
+发送的数据<div id="output3"></div><br/>
+接受的数据<div id="input4"></div><br/>
+<!-- 测试时间--->
+<script type="text/javascript">
+    $("#testTime").click(function(){
+        var url = "/SAU/index/time";
+        var sendData ={
+            "date":new Date()
+        };
+        $("#output3").text(sendData);
+        $.get(url,sendData,function(backData,textStaut,ajax){
+            $("#input3").text(ajax.responseText);
+        });
+    });
+</script>
+
+
+
 <br/>
 社团logo图片
 <br/>
 <img src="http://localhost:8080/MySAUImages/club/1502872902989.jpg">
 <br>社团展示图片<br>
 <img src="http://localhost:8080/MySAUImages/1.jpg">
-<script src="js/jquery.min.js"></script>
-<script type="text/javascript">
-    $(":button:first").click(function(){
-        var url = "/SAU/index/club";
-        var sendData = null;
-        $.get(url,sendData,function(backData,textStaut,ajax){
-            alert(ajax.responseText);
-        });
-    });
-</script>
-<!--
-
-<script type="text/javascript">
-    $(":button:last").click(function(){
-        var url = "/SAU/index/club/1";
-        var sendData =null;
-        $.get(url,sendData,function(backData,textStaut,ajax){
-            alert(ajax.responseText);
-        });
-    });
-</script>
--->
 
 
-<script type="text/javascript">
-    $(":button:last").click(function(){
-        var url = "/SAU/index/time";
-        var sendData ={
-            "date":new Date()
-        };
-        $.get(url,sendData,function(backData,textStaut,ajax){
-            alert(ajax.responseText);
-        });
-    });
-</script>
 
 
 </body>

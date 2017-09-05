@@ -1,6 +1,7 @@
 package com.fekpal.web.controller.sauAdmin;
 
 import com.fekpal.cons.ResponseCode;
+import com.fekpal.cons.WebPath;
 import com.fekpal.tool.BaseReturnData;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -170,7 +171,7 @@ public class SauAnnAuditController {
         //模拟数据
         String fileNameHtml = "testHTMLOnline.html";
         //设置上传目录,即转化为html的目录
-        String uploadPath = "D://masterspring//MySAUImages//clubRegister";
+        String uploadPath = WebPath.rootPath+"//WEB-INF//upload//"+"clubAnnRegister";
         try {
             InputStream in = new FileInputStream(new File(uploadPath, fileNameHtml));
             //得到输出流
@@ -186,8 +187,10 @@ public class SauAnnAuditController {
             in.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw new RuntimeException("文件找不到");
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("文件找不到");
         }
 
     }
@@ -207,14 +210,14 @@ public class SauAnnAuditController {
         if (session.getAttribute("userCode") != null) {
             userId = (Integer) session.getAttribute("userCode");
         }
-        //根据用户id和审核消息id，将从dao中取出审核文件的文件名
+        //根据用户id和审核消息id，将从dao中取出审核文件的文件名和该社团的名字
         // TODO: 2017/8/27
         out.println("用户id和审核id：" + userId + "," + auditMsgId);
 
         //模拟数据
         String fileNameWord = "1.doc";
         //设置上传目录,即存放审核word文档的目录
-        String uploadPath = "D://masterspring//MySAUImages//clubRegister";
+        String uploadPath = WebPath.rootPath+"//WEB-INF//upload//"+"clubAnnRegister";
         try {
             InputStream in = new FileInputStream(new File(uploadPath, fileNameWord));
             //设置下载的响应头
@@ -232,8 +235,10 @@ public class SauAnnAuditController {
             in.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw new RuntimeException("文件找不到");
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("文件找不到");
         }
 
     }
@@ -247,7 +252,7 @@ public class SauAnnAuditController {
      */
     @ResponseBody
     @RequestMapping(value = "/sau/audit/ann/reg/search", method = RequestMethod.GET)
-    public Map<String, Object> searchAuditMsg(@RequestParam String findContent, HttpSession session) {
+    public Map<String, Object> searchAuditMsg(@RequestParam("findContent") String findContent, HttpSession session) {
         BaseReturnData returnData = new BaseReturnData();
 
         //得到用户id

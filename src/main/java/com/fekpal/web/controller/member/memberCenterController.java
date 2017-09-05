@@ -94,14 +94,14 @@ public class MemberCenterController {
     }
 
     /**
-     * 上传社团头像的方法
+     * 上传成员个人头像的方法
      *
      * @param myfiles 文件对象，用from-data表单
      * @param request 请求
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping(value = "/club/center/info/edit/head", method = RequestMethod.PUT)
+    @RequestMapping(value = "/member/center/info/edit/head", method = RequestMethod.PUT)
     public Map<String, Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles, HttpServletRequest request, HttpSession session) {
         Map<String, Object> returnData = ImagesUploadTool.uploadImage(myfiles, request, "club//logo");
 
@@ -123,40 +123,6 @@ public class MemberCenterController {
             out.println("存入数据库logo的文件名：" + memberLogoName);
         }
 
-        return returnData;
-    }
-
-    /**
-     * 上传用户个人头像的方法
-     *
-     * @param myfiles 文件对象，用from-data表单
-     * @param request 请求
-     * @return 图片文件名
-     */
-    @ResponseBody
-    @RequestMapping(value = "/member/center/info/edit/head", method = RequestMethod.PUT)
-    public Map<String, Object> uploadView(@RequestParam("file") MultipartFile[] myfiles, HttpServletRequest request, HttpSession session) {
-        Map<String, Object> returnData = ImagesUploadTool.uploadImage(myfiles, request, "member//Logo");
-        //得到用户id
-        int userId = 0;
-        if (session.getAttribute("userCode") != null) {
-            userId = (Integer) session.getAttribute("userCode");
-        }
-
-        //初始化用户头像文件名
-        String memberLogoName = "";
-        //如果上传头像没有错误
-        if ("0".equals(returnData.get("code").toString())) {
-            Map<String, String> memberLogoNameMap = (Map<String, String>) returnData.get("data");
-            memberLogoName = memberLogoNameMap.get("clubLogo");
-
-
-            //将logo文件名存入数据库
-            // TODO: 2017/8/19
-            out.println("存入数据库个人头像logo的文件名：" + memberLogoName);
-        }
-
-        //如果用户有错误，则直接返回错误信息
         return returnData;
     }
 

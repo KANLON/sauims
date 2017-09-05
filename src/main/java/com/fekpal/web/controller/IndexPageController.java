@@ -35,6 +35,7 @@ public class IndexPageController {
         // 创建封装社团列表信息的list集合
         List<ClubListMsg> list = new ArrayList<ClubListMsg>();
 
+        //从service中得到对象，获取对象属性，放入对应中
         //模拟数据
         ClubListMsg club1 = new ClubListMsg();
         club1.setClubId(1);
@@ -85,7 +86,7 @@ public class IndexPageController {
 
         //模拟数据
         ClubDetail club1 = new ClubDetail();
-        club1.setClubId(1);
+        club1.setClubId(clubId);
         club1.setAdminName("张三");
         club1.setClubLogo("1.jpg");
         club1.setClubName("乒乓球协会");
@@ -94,8 +95,6 @@ public class IndexPageController {
         club1.setFoundTime(date);
         club1.setMembers(100);
 
-        out.println("格式化前"+date);
-        out.println("格式化后"+sdf.format(date));
         //将某个社团详细信息加入到数据中
         returnData.setData(club1);
 
@@ -103,7 +102,7 @@ public class IndexPageController {
     }
 
     /**
-     * 用于测试时间传输的格式
+     * 用于测试时间传输的格式和目录
      * @param date 前端传递过来的描述
      * @return  返回时间格式
      */

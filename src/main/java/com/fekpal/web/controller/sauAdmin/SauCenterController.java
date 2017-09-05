@@ -30,12 +30,51 @@ public class SauCenterController {
     private MailHtmlTool mailHtmlTool;
 
     /**
+     * 上传校社联头像的方法
+     * @param myfiles 文件对象，用from-data表单
+     * @param request 请求
+     * @return 图片文件名
+     */
+    @ResponseBody
+    @RequestMapping(value = "/sau/center/info/edit/head",method = RequestMethod.POST)
+    public Map<String,Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles,HttpServletRequest request){
+        Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"sau");
+
+        //初始化校社联头像文件名
+        String clubLogoName="";
+        if("0".equals(returnData.get("code").toString())) {
+            Map<String,String> clubLogoNameMap =(Map<String, String>) returnData.get("data");
+            clubLogoName = clubLogoNameMap.get("clubLogo");
+
+            //根据用户id将logo文件名存入数据库
+            //得到用户id
+            HttpSession session = request.getSession();
+
+            //模拟用户已经登录
+            session.setAttribute("userCode", 1);
+
+            if (session.getAttribute("userCode") != null) {
+                int userId = (Integer) session.getAttribute("userCode");
+                out.println("用户ID为：" + userId);
+            } else {
+                out.println("用户还没有登录");
+                throw new RuntimeException("用户还没有登录");
+            }
+            //将logo文件名存入数据库
+            // TODO: 2017/8/19
+            out.println("存入数据库logo的文件名：" + clubLogoName);
+        }
+
+        return returnData;
+    }
+
+    /**
      * 得到校社联中心的信息的方法
      * @param session 用户session
      * @return 校社联的一些基本信息
      */
-    @RequestMapping("/sau/center/info")
     @ResponseBody
+    @RequestMapping(value = "/sau/center/info",method = RequestMethod.GET)
     public Map<String,Object> getSauCenterMsg(HttpSession session){
         BaseReturnData returnData = new BaseReturnData();
         //要在拦截器中判断用户是否登录了然后判断是否有这个权限
@@ -77,45 +116,6 @@ public class SauCenterController {
         returnData.setData(sauCenterMsg);
 
         return returnData.getMap();
-    }
-
-    /**
-     * 上传校社联头像的方法
-     * @param myfiles 文件对象，用from-data表单
-     * @param request 请求
-     * @return 图片文件名
-     */
-    @ResponseBody
-    @RequestMapping(value = "/sau/center/info/edit/head",method = RequestMethod.PUT)
-    public Map<String,Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles,HttpServletRequest request){
-        Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"sau");
-
-        //初始化校社联头像文件名
-        String clubLogoName="";
-        if("0".equals(returnData.get("code").toString())) {
-            Map<String,String> clubLogoNameMap =(Map<String, String>) returnData.get("data");
-            clubLogoName = clubLogoNameMap.get("clubLogo");
-
-            //根据用户id将logo文件名存入数据库
-            //得到用户id
-            HttpSession session = request.getSession();
-
-            //模拟用户已经登录
-            session.setAttribute("userCode", 1);
-
-            if (session.getAttribute("userCode") != null) {
-                int userId = (Integer) session.getAttribute("userCode");
-                out.println("用户ID为：" + userId);
-            } else {
-                out.println("用户还没有登录");
-                throw new RuntimeException("用户还没有登录");
-            }
-            //将logo文件名存入数据库
-            // TODO: 2017/8/19
-            out.println("存入数据库logo的文件名：" + clubLogoName);
-        }
-
-        return returnData;
     }
 
     /**
