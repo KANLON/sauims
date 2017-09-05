@@ -1,21 +1,24 @@
 package com.fekpal.domain;
 
 
+import java.util.List;
+
 public class Department extends BasePOJO {
 
-    private int id;
+    private int departmentId;
 
     private String departmentName;
 
     private int departmentAvailable;
 
+    private List<Major> majorList;
 
-    public int getId() {
-        return id;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getDepartmentName() {
@@ -32,6 +35,14 @@ public class Department extends BasePOJO {
 
     public void setDepartmentAvailable(int departmentAvailable) {
         this.departmentAvailable = departmentAvailable;
+    }
+
+    public List<Major> getMajorList() {
+        return majorList;
+    }
+
+    public void setMajorList(List<Major> majorList) {
+        this.majorList = majorList;
     }
 
 }

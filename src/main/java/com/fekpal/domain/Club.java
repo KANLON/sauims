@@ -6,7 +6,7 @@ public class Club extends BasePOJO {
 
     private int clubId;
 
-    private User user;
+    private int userId;
 
     private String clubName;
 
@@ -34,12 +34,12 @@ public class Club extends BasePOJO {
         this.clubId = clubId;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getClubName() {

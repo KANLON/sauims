@@ -6,17 +6,15 @@ public class ClubMember extends BasePOJO {
 
     private int id;
 
-    private Club club;
+    private Person person;
 
-    private User user;
+    private Club club;
 
     private int memberDuty;
 
     private int userState;
 
     private Timestamp joinTime;
-
-    private String description;
 
     private Timestamp leaveTime;
 
@@ -40,12 +38,12 @@ public class ClubMember extends BasePOJO {
         this.club = club;
     }
 
-    public User getUser() {
-        return user;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public int getMemberDuty() {
@@ -70,14 +68,6 @@ public class ClubMember extends BasePOJO {
 
     public void setJoinTime(Timestamp joinTime) {
         this.joinTime = joinTime;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Timestamp getLeaveTime() {

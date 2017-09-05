@@ -1,12 +1,15 @@
 package com.fekpal.web.controller;
 
+import com.fekpal.cons.SystemRole;
 import com.fekpal.domain.User;
 import com.fekpal.domain.UserLogin;
 import com.fekpal.service.LoginService;
+import com.fekpal.service.UserService;
 import com.fekpal.tool.BaseReturnData;
 
 import com.fekpal.tool.MD5Tool;
 import com.fekpal.tool.ValidateCodeTool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +31,8 @@ import static java.lang.System.out;
 @Controller
 public class LoginController {
 
-    //注入登陆的service层代码
-    @Resource
-    private  LoginService loginService;
+    @Autowired
+    private UserService userService;
 
     /**
      *  用户登录提交方法
@@ -90,7 +92,7 @@ public class LoginController {
         // TODO: 2017/8/18
 
         //判断用户名和密码
-        User realUser = loginService.getUserByName(userName);
+        User realUser = userService.getUserByUserName(userName);
 
         //如果得到的用户为空的话，表示找不到该用户
         if(realUser==null){
@@ -111,10 +113,11 @@ public class LoginController {
             // TODO: 2017/8/19
             //把用户信息放到一个map集合中去，然后返回
             Map<String,Object> userMap = new LinkedHashMap<String, Object>();
-            userMap.put("roleName","社团管理员");
+            String[] roleList={"普通成员","社团成员","校社联成员"};
+            userMap.put("role",roleList[realUser.getAuthority()]);
             userMap.put("userId",realUser.getUserId());
             userMap.put("userName",realUser.getUserName());
-            userMap.put("userLogo","a.jpg");
+            userMap.put("userLogo",userService.getLogoByRoleId(realUser.getAuthority()));
             returnData.setData(userMap);
 
             //如果Service校验通过，将用户身份记录到session

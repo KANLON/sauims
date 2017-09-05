@@ -6,8 +6,7 @@ public class Person extends BasePOJO {
 
     private int personId;
 
-    private User user;
-
+    private int userId;
 
     private String realName;
 
@@ -37,12 +36,12 @@ public class Person extends BasePOJO {
         this.personId = personId;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getRealName() {

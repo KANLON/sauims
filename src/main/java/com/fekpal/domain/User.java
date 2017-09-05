@@ -14,7 +14,7 @@ public class User extends BasePOJO {
 
     private String email;
 
-    private String key;
+    private String userKey;
 
     private String loginIp;
 
@@ -68,12 +68,12 @@ public class User extends BasePOJO {
         this.email = email;
     }
 
-    public String getKey() {
-        return key;
+    public String getUserKey() {
+        return userKey;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 
     public String getLoginIp() {
@@ -122,23 +122,5 @@ public class User extends BasePOJO {
 
     public void setUserState(int userState) {
         this.userState = userState;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", key='" + key + '\'' +
-                ", loginIp='" + loginIp + '\'' +
-                ", loginTime=" + loginTime +
-                ", registerIp='" + registerIp + '\'' +
-                ", registerTime=" + registerTime +
-                ", authority=" + authority +
-                ", userState=" + userState +
-                '}';
     }
 }

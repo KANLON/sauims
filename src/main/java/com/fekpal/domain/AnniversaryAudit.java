@@ -2,8 +2,7 @@ package com.fekpal.domain;
 
 import java.sql.Timestamp;
 
-public class AnniversaryAudit extends BasePOJO{
-
+public class AnniversaryAudit extends BasePOJO {
 
     private int id;
 
@@ -13,11 +12,13 @@ public class AnniversaryAudit extends BasePOJO{
 
     private int auditState;
 
+    private Timestamp auditTime;
+
     private String auditResult;
 
     private Timestamp submitTime;
 
-    private String description;
+    private String submitDescription;
 
     public int getId() {
         return id;
@@ -25,6 +26,14 @@ public class AnniversaryAudit extends BasePOJO{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public String getFileName() {
@@ -43,6 +52,14 @@ public class AnniversaryAudit extends BasePOJO{
         this.auditState = auditState;
     }
 
+    public Timestamp getAuditTime() {
+        return auditTime;
+    }
+
+    public void setAuditTime(Timestamp auditTime) {
+        this.auditTime = auditTime;
+    }
+
     public String getAuditResult() {
         return auditResult;
     }
@@ -59,11 +76,11 @@ public class AnniversaryAudit extends BasePOJO{
         this.submitTime = submitTime;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubmitDescription() {
+        return submitDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubmitDescription(String submitDescription) {
+        this.submitDescription = submitDescription;
     }
 }

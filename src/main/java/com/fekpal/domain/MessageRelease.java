@@ -1,14 +1,14 @@
 package com.fekpal.domain;
 
-public class MessageRelease {
+public class MessageRelease extends BasePOJO{
 
     private int id;
 
     private Message message;
 
-    private User user;
+    private int receiveId;
 
-    private int avaliable;
+    private int available;
 
     private int readFlag;
 
@@ -20,6 +20,14 @@ public class MessageRelease {
         this.id = id;
     }
 
+    public int getReceiveId() {
+        return receiveId;
+    }
+
+    public void setReceiveId(int receiveId) {
+        this.receiveId = receiveId;
+    }
+
     public Message getMessage() {
         return message;
     }
@@ -28,20 +36,12 @@ public class MessageRelease {
         this.message = message;
     }
 
-    public User getUser() {
-        return user;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getAvaliable() {
-        return avaliable;
-    }
-
-    public void setAvaliable(int avaliable) {
-        this.avaliable = avaliable;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     public int getReadFlag() {

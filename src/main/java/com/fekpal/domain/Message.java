@@ -6,19 +6,37 @@ public class Message extends BasePOJO {
 
     private int messageId;
 
+    private int userId;
+
     private String messageTitle;
 
     private String messageContent;
 
     private Timestamp releaseTime;
 
-    private User user;
+    private String releaseName;
 
     private int messageType;
 
     private String messageAnnex;
 
     private int messageState;
+
+    public String getReleaseName() {
+        return releaseName;
+    }
+
+    public void setReleaseName(String releaseName) {
+        this.releaseName = releaseName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getMessageId() {
         return messageId;
@@ -50,14 +68,6 @@ public class Message extends BasePOJO {
 
     public void setReleaseTime(Timestamp releaseTime) {
         this.releaseTime = releaseTime;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public int getMessageType() {

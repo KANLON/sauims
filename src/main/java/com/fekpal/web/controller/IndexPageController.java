@@ -1,9 +1,13 @@
 package com.fekpal.web.controller;
 
 import com.fekpal.cons.WebPath;
+import com.fekpal.domain.Club;
 import com.fekpal.domain.controllerDomain.ClubDetail;
 import com.fekpal.domain.controllerDomain.ClubListMsg;
+import com.fekpal.service.ClubService;
+import com.fekpal.service.UserService;
 import com.fekpal.tool.BaseReturnData;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +27,13 @@ import static java.lang.System.out;
 @Controller
 @RequestMapping("/index")
 public class IndexPageController {
+
+    @Autowired
+    private ClubService clubService;
+
+    @Autowired
+    private UserService userService;
+
     /**
      * 得到社团列表信息
      * @return 社团列表信息（json数据）
@@ -36,25 +47,20 @@ public class IndexPageController {
         List<ClubListMsg> list = new ArrayList<ClubListMsg>();
 
         //从service中得到对象，获取对象属性，放入对应中
-        //模拟数据
-        ClubListMsg club1 = new ClubListMsg();
-        club1.setClubId(1);
-        club1.setClubView("1.jpg");
-        club1.setDescription("这是社团1的描述");
-        club1.setLikeNumber(20);
-        club1.setMembers(100);
+        List<Club> clubList=clubService.loadAllClub(0,50);
 
-        ClubListMsg club2 = new ClubListMsg();
-        club2.setClubId(2);
-        club2.setClubView("2.jpg");
-        club2.setDescription("这是社团2的描述");
-        club2.setLikeNumber(20);
-        club2.setMembers(100);
+        for(Club club:clubList) {
+            //模拟数据
+            ClubListMsg club1 = new ClubListMsg();
+            club1.setClubId(club.getClubId());
+            club1.setClubView(club.getClubView());
+            club1.setDescription(club.getDescription());
+            club1.setLikeNumber(club.getLikeNumber());
+            club1.setMembers(club.getMembers());
 
-        //将社团加入到数据的list集合中
-        list.add(club1);
-        list.add(club2);
-
+            //将社团加入到数据的list集合中
+            list.add(club1);
+        }
         //将list加入到数据中
         returnData.setData(list);
 
@@ -74,26 +80,19 @@ public class IndexPageController {
         // 创建封装社团列表信息的list集合
         List<ClubDetail> list = new ArrayList<ClubDetail>();
 
-        //模拟数据
-        Date date = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            date = sdf.parse("2017-10-10");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        Club club=clubService.getClubByClubId(clubId);
 
         //模拟数据
         ClubDetail club1 = new ClubDetail();
-        club1.setClubId(clubId);
-        club1.setAdminName("张三");
-        club1.setClubLogo("1.jpg");
-        club1.setClubName("乒乓球协会");
-        club1.setDescription("热爱乒乓球的聚集地");
-        club1.setEmail("s19961234@126.com");
-        club1.setFoundTime(date);
-        club1.setMembers(100);
+        club1.setClubId(club.getClubId());
+        club1.setAdminName(club.getAdminName());
+        club1.setClubLogo(club.getClubLogo());
+        club1.setClubName(club.getClubName());
+        club1.setDescription(club.getDescription());
+
+        club1.setEmail(userService.getUserByUserId(club.getUserId()).getEmail());
+        club1.setFoundTime(new Date(club.getFoundTime().getTime()));
+        club1.setMembers(club.getMembers());
 
         //将某个社团详细信息加入到数据中
         returnData.setData(club1);

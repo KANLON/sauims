@@ -19,7 +19,7 @@ public class LoginService {
         User user = new User();
         user.setUserId(1);
         user.setUserName(userName);
-        user.setKey("123");
+        user.setUserKey("123");
         user.setPassword("123456");
         user.setPhone("1816821383");
         return user;
