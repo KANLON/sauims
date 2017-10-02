@@ -180,49 +180,48 @@ public class ClubAnnRegisterController {
     @RequestMapping(value = "/club/ann/one", method = RequestMethod.POST)
     public Map<String, Object> submitRegisterMsg(@RequestParam MultipartFile[] file, @RequestParam Map<String, Object> clubMsgMap, HttpServletRequest request, HttpSession session) {
         BaseReturnData returnData = new BaseReturnData();
+    //如果接受到审核结果为空
+    if (clubMsgMap == null) {
+        returnData.setStateCode(ResponseCode.REQUEST_ERROR, "还没有发送审核结果，请重新操作");
+        return returnData.getMap();
+    }
+    //得到用户id
+    int userId = 0;
+    if (session.getAttribute("userCode") != null) {
+        userId = (Integer) session.getAttribute("userCode");
+    }
 
-        //如果接受到审核结果为空
-        if (clubMsgMap == null) {
-            returnData.setStateCode(ResponseCode.REQUEST_ERROR, "还没有发送审核结果，请重新操作");
-            return returnData.getMap();
-        }
-        //得到用户id
-        int userId = 0;
-        if (session.getAttribute("userCode") != null) {
-            userId = (Integer) session.getAttribute("userCode");
-        }
+    //在service层验证描述，提交的文件的安全性等
+    // TODO: 2017/9/2
 
-        //在service层验证描述，提交的文件的安全性等
-        // TODO: 2017/9/2
+    //如果上传的文件不符合符合大小，文件类型等
+    if ((Integer) (handleFile(file).get("code")) != 0) {
+        //如果上传的文件不符合条件，返回相应内容
+        return handleFile(file);
+    }
 
-        //如果上传的文件不符合符合大小，文件类型等
-        if ((Integer) (handleFile(file).get("code")) != 0) {
-            //如果上传的文件不符合条件，返回相应内容
-            return handleFile(file);
-        }
+    //初始化文件名，描述，提交时间
+    String fileName = "";
+    String description = "";
+    Date submitTime = new Date();
 
-        //初始化文件名，描述，提交时间
-        String fileName = "";
-        String description = "";
-        Date submitTime = new Date();
+    //将文件存入服务器中的与本项目同目录的//MySAUImages/clubAnnRegister文件夹中，返回文件名
+    List<String> fileNameList = FileUploadTool.fileHandle(file, request, "clubAnnRegister");
+    if (fileNameList != null) {
+        fileName = fileNameList.get(0);
+    } else {
+        returnData.setStateCode(ResponseCode.REQUEST_ERROR, "还没有发送文件过来，请重新发送");
+        return returnData.getMap();
+    }
 
-        //将文件存入服务器中的与本项目同目录的//MySAUImages/clubAnnRegister文件夹中，返回文件名
-        List<String> fileNameList = FileUploadTool.fileHandle(file, request, "clubAnnRegister");
-        if( fileNameList!= null) {
-            fileName = fileNameList.get(0);
-        }else {
-            returnData.setStateCode(ResponseCode.REQUEST_ERROR,"还没有发送文件过来，请重新发送");
-            return returnData.getMap();
-        }
+    //从发来的map集合中得到年度注册描述
+    if (clubMsgMap.get("description") != null) {
+        description = clubMsgMap.get("description").toString();
+    }
 
-        //从发来的map集合中得到年度注册描述
-        if (clubMsgMap.get("description") != null) {
-            description = clubMsgMap.get("description").toString();
-        }
-
-        //根据用户id，将本社团的年度注册信息，描述，文件名，和提交时间存入数据库
-        // TODO: 2017/8/27
-        out.println("用户id：" + userId + ".;描述，和文件名,时间等" + fileName + "," + description + "," + submitTime);
+    //根据用户id，将本社团的年度注册信息，描述，文件名，和提交时间存入数据库
+    // TODO: 2017/8/27
+    out.println("用户id：" + userId + ".;描述，和文件名,时间等" + fileName + "," + description + "s," + submitTime);
 
         return returnData.getMap();
     }

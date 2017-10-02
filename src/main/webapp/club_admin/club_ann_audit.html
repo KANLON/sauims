@@ -1,21 +1,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>社团注册审核</title>
+    <title>社团的年度注册</title>
 </head>
 <body>
 
 <script src="../js/jquery.min.js"></script>
-<!-- 0查看全部审核-->
-<input type="button" value="查看全部审核" id="getAllAuditMsg"><br/>
+<!-- 0查看全部注册信息-->
+<input type="button" value="查看全部注册" id="getAllAuditMsg"><br/>
 发送的数据<br>
 <div class="output0"></div>
 接受的数据<br>
-<div class="input0"></div><br/>
+<div class="input0"></div>
+<br/>
 <!-- 0查看全部审核-->
 <script type="text/javascript">
     $("#getAllAuditMsg").click(function () {
-        var url = "/SAU/club/audit/join";
+        var url = "/SAU/club/ann";
         var sendData = null;
         $(".output0").text(JSON.stringify(sendData));
         $.ajax({
@@ -33,17 +34,18 @@
 
 <!-- 1查看某个审核-->
 要查看的审核id<input type="text" value="123" id="auditMsgId"><br/>
-要查找的审核角色<input type="text" value="0" id="role"><br/>
 <input type="button" value="查看某个审核" id="getOneAuditMsg"><br/>
 发送的数据<br>
 <div class="output1"></div>
 接受的数据<br>
-<div class="input1"></div><br/>
+<div class="input1"></div>
+<br/>
 <!-- 1查看某个审核-->
 <script type="text/javascript">
     $("#getOneAuditMsg").click(function () {
         var auditMsgId = $("#auditMsgId").val();
-        var url = "/SAU/club/audit/join/"+auditMsgId;
+        var role = $("#role").val();
+        var url = "/SAU/club/ann/" + auditMsgId;
         var sendData = null;
         $(".output1").text(JSON.stringify(sendData));
         $.ajax({
@@ -59,43 +61,8 @@
     });
 </script>
 
-<!--2 提交审核结果 -->
-驳回理由<input type="text" value="这里是审核的驳回理由" id="auditResult"><br/>
-是否通过<input type="text" value="0" id="auditState"><br/>
-审核id<input type="text" value="123" id="auditMsgId2">
-<input type="button" value="提交审核结果" id="sendMsgToAll"><br/>
-发送的数据<br>
-<div class="output2"></div>
-接受的数据<br>
-<div class="input2"></div><br/>
-<!--2 提交审核结果-->
-<script type="text/javascript">
-    $("#sendMsgToAll").click(function () {
-        var auditMsgId = $("#auditMsgId2").val();
-        var auditResult = $("#auditResult").val();
-        var auditState = $("#auditState").val();
-        var url = "/SAU/club/audit/join/"+auditMsgId;
-        var sendData = {
-            "_method":"put",
-            "auditResult":auditResult,
-            "auditState":0
-        };
-        $(".output2").text(JSON.stringify(sendData));
-        $.ajax({
-            type: "post",
-            url: url,
-            data: sendData,
-            headers: {'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-            dataType: "json",
-            success: function (data, textStatus) {
-                $(".input2").text(JSON.stringify(data));
-            }
-        });
-    });
-</script>
-
 <!-- 7查找审核消息-->
-<input type="text" value="张" size="10" id="findContent"><br/>
+<input type="text" value="2017" size="10" id="findContent"><br/>
 <input type="button" value="查找审核消息" id="searchMsg"><br/>
 发送的数据<br>
 <div class="output7"></div>
@@ -104,7 +71,7 @@
 <!-- 7查找消息-->
 <script type="text/javascript">
     $("#searchMsg").click(function () {
-        var url = "/SAU/club/audit/join/search";
+        var url = "/SAU/club/ann/search";
         var findContent = $("#findContent").val();
         var sendData = {
             "findContent": findContent
@@ -123,5 +90,40 @@
     });
 </script>
 
+<br/>
+
+<!--8 提交年度注册信息 - -->
+<form enctype="multipart/form-data" method="post" name="annRegisterMsg">
+    描述：<input type="text" value="这是本社团提交年度注册信息的描述" name="description" id="description"><br/>
+    提交的文件 <input type="file" name="file" id="file"/>
+    <input type="submit" value="选择年度注册文件"/>
+</form>
+发送的数据<br>
+<div class="output8"></div>
+接受的数据<br>
+<div class="input8"></div>
+<div></div>
+<script type="text/javascript">
+    var form = document.forms.namedItem("annRegisterMsg");
+    form.addEventListener('submit', function (ev) {
+        oData = new FormData(form);
+        var oReq = new XMLHttpRequest();
+        var url = "/SAU/club/ann/one";
+        oReq.open("POST", url, true);
+        oReq.onload = function (oEvent) {
+            if (oReq.status == 200) {
+                $(".input8").text("接受成功");
+            } else {
+                $(".input8").text(oReq.status);
+            }
+        };
+        oReq.send(oData);
+        $(".output8").text(JSON.stringify(oData));
+        ev.preventDefault();
+
+    }, false);
+</script>
+
 </body>
+
 </html>

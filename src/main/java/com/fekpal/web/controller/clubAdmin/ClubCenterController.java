@@ -93,7 +93,7 @@ public class ClubCenterController {
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping(value = "/club/center/info/edit/head",method = RequestMethod.PUT)
+    @RequestMapping(value = "/club/center/info/edit/head",method = RequestMethod.POST)
     public Map<String,Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles,HttpServletRequest request){
         Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"club//logo");
 
@@ -132,7 +132,7 @@ public class ClubCenterController {
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping(value = "/club/center/info/edit/view",method = RequestMethod.PUT)
+    @RequestMapping(value = "/club/center/info/edit/view",method = RequestMethod.POST)
     public Map<String,Object> uploadView(@RequestParam("file") MultipartFile[] myfiles,HttpServletRequest request){
         Map<String,Object> returnData = ImagesUploadTool.uploadImage(myfiles,request,"club//view");
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心信息查看</title>
+</head>
+<body>
+
+<!--1. 查看个人信息-->
+<input type="button" value="点击个人中心信息" id="getMsg" >
+<br/>
+发送的数据<br>
+<div class="output1"></div>
+接受的数据<br>
+<div class="input1"></div>
+<script src="../js/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#getMsg").click(function(){
+        var url = "/SAU/member/center/info";
+        var sendData = null;
+        $(".output1").text(JSON.stringify(sendData));
+        $.get(url,sendData,function(backData,textStaut,ajax){
+//            alert(ajax.responseText);
+            $(".input1").text(JSON.stringify(backData));
+        });
+    });
+</script>
+
+<br/>
+<hr/>
+
+<!-- 2.上传个人头像--->
+<form action="/SAU/member/center/info/edit/head" enctype="multipart/form-data" method="post">
+
+    <table>
+        <caption align="top">上传个人头像</caption>
+        <tr>
+            <td>
+                <input type="file" name="file"/>
+                <input type="hidden" name="_method" value="PUT">
+            </td>
+        </tr>
+        <tr>
+            <td ><input type="submit" value="点击上传"></td>
+        </tr>
+    </table>
+</form>
+<br/>
+上传个人头像图片
+<br/>
+<img src="http://localhost:8080/MySAUImages/sau/1503151747430.jpg">
+<br><hr/>
+
+
+<!-- 3.修改个人信息--->
+修改个人信息
+真实姓名<input type="text" size="25" value="张三" id="realName"><br>
+学号<input type="text" size="25" value="151612220" id="studentId"><br>
+性别<input type="text" size="25" value="男" id="gender"><br>
+生日<input type="text" size="25" value="1996-10-10" id="birthday"><br>
+手机号<input type="text" size="25" value="18316821383" id="phone">
+社团职务<input type="text" size="25" value="1" id="clubDuty"><br>
+系别<input type="text" size="25" value="金融数学与统计学院" id="departmentName"><br>
+专业<input type="text" size="25" value="信息与计算科学" id="major"><br>
+宿舍地址<input type="text" size="25" value="8栋604" id="address"><br>
+
+<input type="button" value="提交修改信息" id="subminMsg"><br>
+
+发送的数据<br>
+<div class="output3"></div>
+接受的数据<br>
+<div class="input3"></div>
+
+<script type="text/javascript">
+    $("#subminMsg").click(function() {
+        var url = "/SAU/member/center/info/edit";
+        var realName = $("#realName").val();
+        var studentId = $("#studentId").val();
+        var gender = $("#gender").val();
+        var birthday = new Date();
+        var phone = $("#phone").val();
+        var clubDuty = $("#clubDuty").val();
+        var departmentName = $("#departmentName").val();
+        var major = $("#major").val();
+        var address = $("#address").val();
+        var sendData = {
+            "_method":"put",
+            "realName":realName,
+            "studentId": studentId,
+            "gender": gender,
+            "birthday": birthday,
+            "phone": phone,
+            "clubDuty": clubDuty,
+            "departmentName": departmentName,
+            "major": major,
+            "address": address
+        };
+        $(".output3").text(sendData);
+        var sendDataJson = JSON.stringify(sendData);
+        $.ajax({
+            type: "post",
+            url: url,
+            data: sendData,
+            headers: {'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+            dataType: "json",
+            success: function (data, textStatus) {
+                $(".input3").text(JSON.stringify(data));
+            }
+        });
+    })
+</script>
+
+
+</body>
+</html>

@@ -28,6 +28,17 @@ public class User extends BasePOJO {
 
     private int userState;
 
+    private String key;
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+
+        return key;
+    }
+
     public int getUserId() {
         return userId;
     }

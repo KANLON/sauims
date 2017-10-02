@@ -40,7 +40,7 @@ public class MemberCenterController {
      * @return 普通成员或者社团成员的一些基本信息
      */
     @ResponseBody
-    @RequestMapping("/menber/center/info")
+    @RequestMapping(value = "/member/center/info",method = RequestMethod.GET)
     public Map<String, Object> getMemberCenterMsg(HttpSession session) {
         BaseReturnData returnData = new BaseReturnData();
         //要在拦截器中判断用户是否登录了然后判断是否有这个权限
@@ -101,7 +101,7 @@ public class MemberCenterController {
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping(value = "/member/center/info/edit/head", method = RequestMethod.PUT)
+    @RequestMapping(value = "/member/center/info/edit/head", method = RequestMethod.POST)
     public Map<String, Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles, HttpServletRequest request, HttpSession session) {
         Map<String, Object> returnData = ImagesUploadTool.uploadImage(myfiles, request, "club//logo");
 

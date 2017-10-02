@@ -4,8 +4,8 @@ import com.fekpal.cons.WebPath;
 import com.fekpal.domain.Club;
 import com.fekpal.domain.controllerDomain.ClubDetail;
 import com.fekpal.domain.controllerDomain.ClubListMsg;
-import com.fekpal.service.ClubService;
-import com.fekpal.service.UserService;
+//import com.fekpal.service.ClubService;
+//import com.fekpal.service.UserService;
 import com.fekpal.tool.BaseReturnData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +28,11 @@ import static java.lang.System.out;
 @RequestMapping("/index")
 public class IndexPageController {
 
-    @Autowired
-    private ClubService clubService;
+    //@Autowired
+    //private ClubService clubService;
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     /**
      * 得到社团列表信息
@@ -47,7 +47,17 @@ public class IndexPageController {
         List<ClubListMsg> list = new ArrayList<ClubListMsg>();
 
         //从service中得到对象，获取对象属性，放入对应中
-        List<Club> clubList=clubService.loadAllClub(0,50);
+        //List<Club> clubList=clubService.loadAllClub(0,50);
+        Club clubs1 = new Club();
+        clubs1.setAdminName("张三");
+        clubs1.setClubId(123);
+        Club clubs2 = new Club();
+        clubs2.setAdminName("李四");
+        clubs2.setClubId(124);
+
+        List<Club> clubList= new ArrayList<Club>();
+        clubList.add(clubs1);
+        clubList.add(clubs2);
 
         for(Club club:clubList) {
             //模拟数据
@@ -80,7 +90,10 @@ public class IndexPageController {
         // 创建封装社团列表信息的list集合
         List<ClubDetail> list = new ArrayList<ClubDetail>();
 
-        Club club=clubService.getClubByClubId(clubId);
+//        Club club=clubService.getClubByClubId(clubId);
+            Club club = new Club();
+            club.setClubId(123);
+            club.setAdminName("张三");
 
         //模拟数据
         ClubDetail club1 = new ClubDetail();
@@ -90,7 +103,9 @@ public class IndexPageController {
         club1.setClubName(club.getClubName());
         club1.setDescription(club.getDescription());
 
-        club1.setEmail(userService.getUserByUserId(club.getUserId()).getEmail());
+//        club1.setEmail(userService.getUserByUserId(club.getUserId()).getEmail());
+        club1.setEmail("s19961234@126.com");
+
         club1.setFoundTime(new Date(club.getFoundTime().getTime()));
         club1.setMembers(club.getMembers());
 

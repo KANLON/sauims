@@ -22,7 +22,7 @@
 <br/>
 <hr/>
 
-<form action="/club/center/info/edit/head" enctype="multipart/form-data" method="post">
+<form action="/SAU/club/center/info/edit/head" enctype="multipart/form-data" method="post">
 
     <table>
         <caption align="top">上传社团头像</caption>
@@ -41,7 +41,7 @@
 社团logo图片
 <br/>
 
-<form action="/club/center/info/edit/view" enctype="multipart/form-data" method="post">
+<form action="/SAU/club/center/info/edit/view" enctype="multipart/form-data" method="post">
 
     <table>
         <caption align="top">上传社团展示图片</caption>
@@ -82,7 +82,7 @@
 
 <script type="text/javascript">
     $("#getMag").click(function(){
-        var url = "/club/center/info";
+        var url = "/SAU/club/center/info";
         var sendData = null;
         $(".output1").text(JSON.stringify(sendData));
         $.get(url,sendData,function(backData,textStaut,ajax){
@@ -115,7 +115,7 @@
 
 <script type="text/javascript">
     $("#subminMsg").click(function() {
-        var url = "/club/center/info/edit";
+        var url = "/SAU/club/center/info/edit";
         var clubName = $("#clubName").val();
         var description = $("#description").val();
         var adminName = $("#adminName").val();

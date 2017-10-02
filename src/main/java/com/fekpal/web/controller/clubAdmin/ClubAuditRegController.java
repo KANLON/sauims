@@ -69,7 +69,7 @@ public class ClubAuditRegController {
      */
     @ResponseBody
     @RequestMapping(value = "/club/audit/join/{auditMsgId}", method = RequestMethod.GET)
-    public Map<String, Object> getAuditMsgDetail(@PathVariable("auditMsgId") int auditMsgId, @PathVariable(value = "role") int role, HttpSession session) {
+    public Map<String, Object> getAuditMsgDetail(@PathVariable("auditMsgId") int auditMsgId, HttpSession session) {
         BaseReturnData returnData = new BaseReturnData();
         //得到用户id
         int userId = 0;
@@ -79,7 +79,7 @@ public class ClubAuditRegController {
         if (auditMsgId > 0) {
             //根据审核id和用户id,和role值从dao中得到审核消息内容
             // TODO: 2017/8/27
-            out.println("审核id是：" + auditMsgId + "。用户id是：" + userId + "要审核的消息的是什么角色的：" + role);
+            out.println("审核id是：" + auditMsgId + "。用户id是：" + userId );
 
             //审核社员注册信息
             //模拟数据
