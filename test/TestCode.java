@@ -1,7 +1,7 @@
 import com.fekpal.cons.WebPath;
 import com.fekpal.tool.BaseReturnData;
 import com.fekpal.tool.ValidateCodeTool;
-import com.fekpal.web.controller.IndexPageController;
+import com.fekpal.web.controller.IndexController;
 import org.junit.Test;
 
 import java.io.FileOutputStream;
@@ -56,8 +56,8 @@ public class TestCode {
 
     @Test
     public  void testIndex(){
-        IndexPageController indexPageController = new IndexPageController();
-        Map<String,Object> map = indexPageController.getClubList();
+        IndexController indexController = new IndexController();
+        Map<String,Object> map = indexController.getClubList();
         out.println(map);
 
     }

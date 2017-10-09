@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import static java.lang.System.out;
  */
 @Controller
 @RequestMapping("/index")
-public class IndexPageController {
+public class IndexController {
 
     //@Autowired
     //private ClubService clubService;
@@ -49,11 +50,19 @@ public class IndexPageController {
         //从service中得到对象，获取对象属性，放入对应中
         //List<Club> clubList=clubService.loadAllClub(0,50);
         Club clubs1 = new Club();
-        clubs1.setAdminName("张三");
         clubs1.setClubId(123);
+        clubs1.setClubName("摄影协会");
+        clubs1.setClubView("123.png");
+        clubs1.setDescription("定格光影，留住光阴");
+        clubs1.setMembers(100);
+        clubs1.setLikeNumber(20);
         Club clubs2 = new Club();
-        clubs2.setAdminName("李四");
         clubs2.setClubId(124);
+        clubs2.setClubName("棋牌社");
+        clubs2.setClubView("124.png");
+        clubs2.setDescription("人生是棋局，谁人为棋子");
+        clubs2.setMembers(100);
+        clubs2.setLikeNumber(20);
 
         List<Club> clubList= new ArrayList<Club>();
         clubList.add(clubs1);
@@ -63,6 +72,7 @@ public class IndexPageController {
             //模拟数据
             ClubListMsg club1 = new ClubListMsg();
             club1.setClubId(club.getClubId());
+            club1.setClubName(club.getClubName());
             club1.setClubView(club.getClubView());
             club1.setDescription(club.getDescription());
             club1.setLikeNumber(club.getLikeNumber());
@@ -94,6 +104,18 @@ public class IndexPageController {
             Club club = new Club();
             club.setClubId(123);
             club.setAdminName("张三");
+            club.setClubLogo("123.jpg");
+            club.setClubName("社团");
+            club.setClubType("afda");
+            club.setClubView("sa.jepg");
+            club.setDescription("社团描述");
+            club.setFoundTime(new Timestamp(232424322));
+            club.setClubId(12);
+            club.setLikeNumber(100);
+            club.setMembers(100);
+            club.setUserId(21);
+
+
 
         //模拟数据
         ClubDetail club1 = new ClubDetail();

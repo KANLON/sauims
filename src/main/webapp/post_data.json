@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "clubId": 123,
+      "clubView": "摄影协会.png",
+      "clubName": "摄影协会",
+      "description": "定格光影，留住光阴",
+      "menbers": 65,
+      "likeNumber": 32
+    },
+    {
+      "clubId": 124,
+      "clubView": "棋牌社.png",
+      "clubName": "棋牌社",
+      "description": "人生是棋局，谁人为棋子",
+      "menbers": 65,
+      "likeNumber": 32
+    }
+  ]
+}

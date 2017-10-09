@@ -1,0 +1,12 @@
+footer {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  background-color: #37a2fe;
+  color: white;
+}
+.footer {
+  display: inline-block;
+  padding-top: 20px;
+  letter-spacing: 2px;
+}

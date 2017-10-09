@@ -42,7 +42,7 @@ public class LoginController {
     @RequestMapping("/login/go")
     @ResponseBody
     public Map<String,Object> login(@RequestBody UserLogin userLogin, HttpSession session, HttpServletRequest request) throws Exception{
-       //模拟用户一直处于登录状态
+//       //模拟用户一直处于登录状态
         session.setAttribute("userCode", 123);
 
         //创建返回数据模板

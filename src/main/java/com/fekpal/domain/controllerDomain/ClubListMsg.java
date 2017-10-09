@@ -7,6 +7,8 @@ package com.fekpal.domain.controllerDomain;
 public class ClubListMsg {
     //社团ID
     private int clubId;
+    //社团名字
+    private String clubName;
     //社团展示的图片名称
     private String clubView;
     //社团描述
@@ -56,5 +58,26 @@ public class ClubListMsg {
 
     public void setLikeNumber(Integer likeNumber) {
         this.likeNumber = likeNumber;
+    }
+
+    public void setClubId(int clubId) {
+        this.clubId = clubId;
+    }
+
+    public void setClubName(String clubName) {
+        this.clubName = clubName;
+    }
+
+    public void setMembers(int members) {
+        this.members = members;
+    }
+
+    public void setLikeNumber(int likeNumber) {
+        this.likeNumber = likeNumber;
+    }
+
+    public String getClubName() {
+
+        return clubName;
     }
 }

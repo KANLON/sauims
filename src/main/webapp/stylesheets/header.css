@@ -1,0 +1,65 @@
+header {
+  background-color: #37a2fe;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+}
+
+header > nav {
+  height: 50px;
+  color: white;
+  clear: both;
+}
+
+.logo {
+  padding: 10px;
+  padding-left: 18px;
+  padding-right: 0;
+}
+
+.headerInfo {
+  position: relative;
+  padding: 13px 0 14px 19px;
+  font-size: 16px;
+}
+
+.topButtons {
+  padding-right: 20px;
+}
+
+.logIn {
+  float: left;
+  background-color: #327aa7;
+  width: 80px;
+  height: 30px;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+  margin-top: 7px;
+  font-size: 16px;
+}
+
+.signUp {
+  float: left;
+  background-color: #327aa7;
+  width: 80px;
+  height: 30px;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+  margin-top: 7px;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.logIn:hover, .signUp:hover {
+  background-color: #30617f;
+}

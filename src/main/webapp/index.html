@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>校社联 · 信息管理系统</title>
+  <link rel="stylesheet" href="./stylesheets/index.css">
+  <link rel="stylesheet" href="./stylesheets/header.css">
+  <link rel="stylesheet" href="./stylesheets/nivo-slider.css">
+  <link rel="stylesheet" href="./stylesheets/post.css">
+  <link rel="stylesheet" href="./stylesheets/footer.css">
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="cl wpn">
+      <a href="#" class="logo z"><img src="./images/SAU-logo.png" alt="logo"></a>
+      <a href="#"><div class="headerInfo z cl">校社联 · 信息管理系统</div></a>
+      <div class="topButtons y cl">
+        <a href="/SAU/login.html"><div class="logIn">登录</div></a>
+        <a href="/SAU/person_register.html"><div class="signUp">注册</div></a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- banner begin -->
+  <section>
+    <section class="slider-wrapper mtw">
+      <div id="slider" class="nivoSlider">
+        <a href="" class="nivo-imageLink">
+          <img src="./images/slide1.png" alt="First slide">
+        </a>
+        <a href="" class="nivo-imageLink">
+          <img src="./images/slide2.png" alt="Second slide">
+        </a>
+        <a href="" class="nivo-imageLink">
+          <img src="./images/slide3.png" alt="Third slide">
+        </a>
+      </div>
+    </section>
+    <!-- banner end -->
+
+    <!-- presentation begin -->
+    <section class="presentation">
+      <section class="clublist wpn">
+        <img src="./images/xiangyun2.png" alt="祥云" class="xiangyun">
+        <span class="clubHead ta">社团</span>
+        <img src="./images/xiangyun2.png" alt="祥云" class="xiangyun flipx">
+      </section>
+
+      <ul class="post post-works mtw cl wpn">
+      </ul>
+    </section>
+    <!-- presentation end -->
+  </section>
+  <footer>
+    <span class="footer">2017 @ 校社联管理系统</span>
+  </footer>
+
+  <!-- <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="./javascripts/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+  <script src="./javascripts/mock.js"></script>
+
+  <script src="./javascripts/jquery.nivo.slider.js" charset="utf-8"></script>
+  <script src="./javascripts/post.js" charset="utf-8"></script>
+  <script src="./javascripts/add_cards.js" charset="utf-8"></script>
+  <script>
+  $('#slider').nivoSlider({
+    effect: 'boxRandom', // 效果
+    animSpeed: 500, // 动画速度
+    pauseTime: 3000, // 暂停时间
+    slices: 10, // 分为10列
+  });
+  </script>
+</body>
+
+</html>
