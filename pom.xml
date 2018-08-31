@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.fekpal</groupId>
-    <artifactId>SAU_IMS</artifactId>
+    <artifactId>sauims</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>SAU_IMS Maven Webapp</name>
