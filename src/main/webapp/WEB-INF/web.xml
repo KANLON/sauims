@@ -12,7 +12,7 @@
 
     <!--springMVC核心拦截器-->
     <servlet>
-        <servlet-name>SAU_IMS</servlet-name>
+        <servlet-name>sauims</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -21,7 +21,7 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SAU_IMS</servlet-name>
+        <servlet-name>sauims</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -70,7 +70,7 @@
     </filter>
     <filter-mapping>
         <filter-name>HiddenHttpMethodFilter</filter-name>
-        <servlet-name>SAU_IMS</servlet-name>
+        <servlet-name>sauims</servlet-name>
     </filter-mapping>
 
     <!-- 注册spring核心编码过滤器-->
@@ -84,7 +84,7 @@
     </filter>
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
-        <servlet-name>SAU_IMS</servlet-name>
+        <servlet-name>sauims</servlet-name>
     </filter-mapping>
 
     <!--  处理get请求乱码问题的，自定义过滤器进行编码格式的设置 -->
