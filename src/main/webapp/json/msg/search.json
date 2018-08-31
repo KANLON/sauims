@@ -1,0 +1,54 @@
+{
+  "code": 0,
+  "msg": "加载成功",
+  "data": [
+    {
+      "messageId": 1,
+      "orgId": 0,
+      "messageTitle": "测试的第一条消息标题",
+      "messageContent": "测试id第一条消息内容 ",
+      "releaseTime": 1407608000000,
+      "releaseName": "张三",
+      "messageType": 1,
+      "messageAnnex": null,
+      "messageState": 1,
+      "id": 1,
+      "receiveId": 48,
+      "available": 1,
+      "readFlag": 0,
+      "receives": null
+    },
+    {
+      "messageId": 2,
+      "orgId": 0,
+      "messageTitle": "测试的第二条消息标题",
+      "messageContent": "测试id第二条消息内容 ",
+      "releaseTime": 1407608000000,
+      "releaseName": "李四",
+      "messageType": 1,
+      "messageAnnex": null,
+      "messageState": 1,
+      "id": 3,
+      "receiveId": 48,
+      "available": 1,
+      "readFlag": 0,
+      "receives": null
+    },
+    {
+      "messageId": 3,
+      "orgId": 0,
+      "messageTitle": "测试的第三条消息标题",
+      "messageContent": "测试id第三条消息内容 ",
+      "releaseTime": 1407608000000,
+      "releaseName": "王五",
+      "messageType": 1,
+      "messageAnnex": null,
+      "messageState": 1,
+      "id": 3,
+      "receiveId": 48,
+      "available": 1,
+      "readFlag": 0,
+      "receives": null
+    }
+  ]
+}

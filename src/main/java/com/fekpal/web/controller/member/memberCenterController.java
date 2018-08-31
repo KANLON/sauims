@@ -1,167 +1,167 @@
 package com.fekpal.web.controller.member;
 
-import com.fekpal.cons.ResponseCode;
-import com.fekpal.tool.BaseReturnData;
-import com.fekpal.tool.ImagesUploadTool;
-import com.fekpal.tool.MailHtmlTool;
-import com.fekpal.tool.TimeTool;
+import com.fekpal.api.MemberOrgService;
+import com.fekpal.api.PersonService;
+import com.fekpal.api.UserService;
+import com.fekpal.common.constant.Operation;
+import com.fekpal.common.constant.ResponseCode;
+import com.fekpal.common.json.JsonResult;
+import com.fekpal.dao.model.MemberOrg;
+import com.fekpal.dao.model.Person;
+import com.fekpal.service.model.domain.PersonMsg;
+import com.fekpal.web.model.MemberOrgDetail;
+import com.fekpal.web.model.PageList;
+import com.fekpal.web.model.PersonDetail;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-import static java.lang.System.out;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 普通用户和社团成员端中心的控制类
- * Created by hasee on 2017/8/19.
+ * @author zhangcanlong
+ * @date 2018/8/21
  */
 @Controller
 public class MemberCenterController {
 
-    //spring的依赖注入发送邮件对象
+    private Logger logger = Logger.getLogger(MemberCenterController.class);
+
     @Autowired
-    private MailHtmlTool mailHtmlTool;
+    private PersonService personService;
+
+    @Autowired
+    private MemberOrgService memberOrgService;
+
+    @Autowired
+    UserService userService;
 
     /**
      * 得到普通成员和社团成员中心的信息的方法
      *
-     * @param session 用户session
      * @return 普通成员或者社团成员的一些基本信息
      */
     @ResponseBody
-    @RequestMapping(value = "/member/center/info",method = RequestMethod.GET)
-    public Map<String, Object> getMemberCenterMsg(HttpSession session) {
-        BaseReturnData returnData = new BaseReturnData();
-        //要在拦截器中判断用户是否登录了然后判断是否有这个权限
-        // TODO: 2017/8/19
-
-        //得到用户ID
-        int userId;
-        if (session.getAttribute("userCode") != null) {
-            userId = (Integer) session.getAttribute("userCode");
-        }
-
-        //创建链表map集合存放普通成员中心信息
-        Map<String, Object> memberCenterMsg = new LinkedHashMap<String, Object>();
-
-        //模拟service层通过用户ID得到数据
-        // TODO: 2017/8/19
-        //模拟数据
-        memberCenterMsg.put("userName", "s19961234@126.com");
-        memberCenterMsg.put("realName", "张三");
-        //从数据库中取出文件名
-        memberCenterMsg.put("personLogo", "a.jpg");
-        memberCenterMsg.put("studentID", "151612220");
-        memberCenterMsg.put("gender", "男");
-        memberCenterMsg.put("birthday", new Date());
-        memberCenterMsg.put("phone", "18316821333");
-        memberCenterMsg.put("phone", "18316821822");
-        memberCenterMsg.put("joinTime", new Date());
-        memberCenterMsg.put("leaveTime", new Date());
-        memberCenterMsg.put("departmentName", "金融学院与统计学院");
-        memberCenterMsg.put("majorName", "信息与计算科学");
-        memberCenterMsg.put("address", "8#111");
-        //创建社团成员所属社团的list集合
-        List<Map<String, Object>> clubsList = new ArrayList<Map<String, Object>>();
-        Map<String, Object> clubsMap1 = new LinkedHashMap<String, Object>();
-        clubsMap1.put("clubName", "乒乓球协会");
-        clubsMap1.put("clubDuty", 0);
-        clubsMap1.put("userState", 1);
-        Map<String, Object> clubsMap2 = new LinkedHashMap<String, Object>();
-        clubsMap2.put("clubName", "羽毛球协会");
-        clubsMap2.put("clubDuty", 1);
-        clubsMap2.put("userState", 1);
-        clubsList.add(clubsMap1);
-        clubsList.add(clubsMap2);
-
-        memberCenterMsg.put("clubs", clubsList);
-
-        //把用户数据添加到返回数据模板中
-        returnData.setData(memberCenterMsg);
-
-        return returnData.getMap();
+    @RequestMapping(value = "/member/center/info", method = RequestMethod.GET)
+    public JsonResult<PersonDetail> getMemberCenterMsg() {
+        JsonResult<PersonDetail> result = new JsonResult<>();
+        PersonDetail detail = personService.selectPersonDetailByPrimaryId();
+        result.setStateCode(ResponseCode.RESPONSE_SUCCESS, "加载成功");
+        result.setData(detail);
+        return result;
     }
 
     /**
      * 上传成员个人头像的方法
      *
-     * @param myfiles 文件对象，用from-data表单
-     * @param request 请求
+     * @param msg 普通用户信息封装
      * @return 图片文件名
      */
     @ResponseBody
-    @RequestMapping(value = "/member/center/info/edit/head", method = RequestMethod.POST)
-    public Map<String, Object> uploadLogo(@RequestParam("file") MultipartFile[] myfiles, HttpServletRequest request, HttpSession session) {
-        Map<String, Object> returnData = ImagesUploadTool.uploadImage(myfiles, request, "club//logo");
-
-        //初始化社团头像文件名
-        String memberLogoName = "";
-        if ("0".equals(returnData.get("code").toString())) {
-            Map<String, String> memberLogoNameMap = (Map<String, String>) returnData.get("data");
-            memberLogoName = memberLogoNameMap.get("clubLogo");
-
-            if (session.getAttribute("userCode") != null) {
-                int userId = (Integer) session.getAttribute("userCode");
-                out.println("用户ID为：" + userId);
-            } else {
-                out.println("用户还没有登录");
-                throw new RuntimeException("用户还没有登录");
-            }
-            //将logo文件名存入数据库
-            // TODO: 2017/8/19
-            out.println("存入数据库logo的文件名：" + memberLogoName);
+    @RequestMapping(value = "/member/center/info/head", method = RequestMethod.POST)
+    public JsonResult<String> uploadLogo(@ModelAttribute PersonMsg msg) {
+        String logoName = personService.updateLogo(msg);
+        JsonResult<String> result = new JsonResult<>();
+        if (logoName == null) {
+            result.setStateCode(ResponseCode.RESPONSE_SUCCESS, "修改头像失败");
+        } else {
+            result.setStateCode(ResponseCode.RESPONSE_SUCCESS, "修改头像成功");
+            result.setData(logoName);
         }
-
-        return returnData;
+        return result;
     }
 
     /**
-     * 普通成员或者社团成员用来提交修改个人中心的信息
+     * 普通成员用来提交修改个人中心的信息
      *
-     * @param memberCenterMsg 个人中心信息
-     * @param request         请求
-     * @param session         会话
+     * @param msg 普通用户信息封装
      * @return 是否提交成功
      */
     @ResponseBody
-    @RequestMapping(value = "/member/center/info/edit", method = RequestMethod.PUT)
-    public Map<String, Object> subNewCenterMsg(@RequestParam Map<String, Object> memberCenterMsg, HttpServletRequest request, HttpSession session) {
-        out.println(memberCenterMsg);
-        //初始化返回数据模板
-        BaseReturnData returnData = new BaseReturnData();
+    @RequestMapping(value = "/member/center/info", method = RequestMethod.PUT)
+    public JsonResult<PersonDetail> subNewCenterMsg(@RequestBody PersonMsg msg) {
+        int state = personService.updatePersonInfo(msg);
 
-        //初始化session内的邮箱，验证码和用户id
-        String sessionEmail = null;
-        String sessionCaptcha = null;
-        String dateStr = "";
-        //得到用户id
-        int userId = 0;
-        if (session.getAttribute("userCode") != null) {
-            userId = (Integer) session.getAttribute("userCode");
+        JsonResult<PersonDetail> result = new JsonResult<>();
+        if (state == Operation.SUCCESSFULLY) {
+            Person person = personService.selectByPrimaryId();
+            PersonDetail detail = new PersonDetail();
+            detail.setAddress(person.getAddress());
+            detail.setBirthday(person.getBirthday());
+            detail.setDepartment(person.getDepartment());
+            detail.setDescription(person.getDescription());
+            detail.setEnrollmentYear(person.getEnrollmentYear());
+            detail.setGender(person.getGender());
+            detail.setLogo(person.getLogo());
+            detail.setMajor(person.getMajor());
+            detail.setNickname(person.getNickname());
+            detail.setRealName(person.getRealName());
+            detail.setStudentId(person.getStudentId());
+
+            result.setStateCode(ResponseCode.RESPONSE_SUCCESS, "修改个人信息成功");
+            result.setData(detail);
+
+        } else if (state == Operation.FAILED) {
+            result.setStateCode(ResponseCode.RESPONSE_ERROR, "修改个人信息失败");
+        } else if (state == Operation.INPUT_INCORRECT) {
+            result.setStateCode(ResponseCode.RESPONSE_ERROR, "昵称已被使用");
         }
+        return result;
+    }
 
-        // 用工具类来判断输入的字段是否符合要求，邮箱之类的
-        // TODO: 2017/8/21
+    /**
+     * 获取加入组织的社团列表状态信息
+     *
+     * @param page 获取条数
+     * @return 成员组织信息封装
+     */
+    @ResponseBody
+    @RequestMapping(value = "/member/center/info/org", method = RequestMethod.GET)
+    public JsonResult<List<MemberOrgDetail>> getOrgPersonJoin(PageList page) {
+        JsonResult<List<MemberOrgDetail>> result = new JsonResult<>();
+        List<MemberOrg> list = memberOrgService.loadAllOrg(page.getOffset(), page.getLimit());
+        Integer orgNum = memberOrgService.countAllOrg();
+        List<MemberOrgDetail> details = new ArrayList<>();
+        if (list != null) {
+            for (MemberOrg memberOrg : list) {
+                MemberOrgDetail detail = new MemberOrgDetail();
+                detail.setOrgId(memberOrg.getOrgId());
+                detail.setOrgName(memberOrg.getOrgName());
+                detail.setOrgDepartment(memberOrg.getOrgDepartment());
+                detail.setJoinTime(memberOrg.getJoinTime());
+                detail.setLeaveTime(memberOrg.getLeaveTime());
+                detail.setLogo(memberOrg.getOrgLogo());
+                detail.setMemberDuty(memberOrg.getMemberDuty());
+                detail.setMemberState(memberOrg.getMemberState());
+                details.add(detail);
+            }
+        }
+        result.setStateCode(ResponseCode.RESPONSE_SUCCESS, orgNum.toString());
+        result.setData(details);
+        return result;
+    }
 
-        //处理时间格式问题
-        // TODO: 2017/9/2
-
-        //将用户存入数据库
-        out.println("用户id:" + userId);
-        out.println("根据用户id存入数据库" + memberCenterMsg);
-
-        return returnData.getMap();
+    /**
+     * 输出个人头像
+     */
+    @RequestMapping(value = "/member/logo", method = RequestMethod.GET)
+    public void captcha(HttpServletResponse response) {
+        try {
+            response.setContentType("image/png");
+            OutputStream outputStream = response.getOutputStream();
+            int state = personService.getPersonLogo(outputStream);
+            if (state == Operation.FAILED) {
+                throw new IOException("输出头像错误");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

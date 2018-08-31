@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "auditMsgId": 1,
+      "registerTitle": "2017Idea精英汇年度审核",
+      "registerName": "李四",
+      "registerTime": 1520762704000,
+      "auditState": 1
+    },
+    {
+      "auditMsgId": 3,
+      "registerTitle": "2016Idea精英汇年度审核",
+      "registerName": "李四",
+      "registerTime": 1489226704000,
+      "auditState": 2
+    },
+    {
+      "auditMsgId": 5,
+      "registerTitle": "2015Idea精英汇年度审核",
+      "registerName": "李四",
+      "registerTime": 1357690704000,
+      "auditState": 2
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.SauAuditMapper">
+    <cache/>
+
+    <!--  联合两张表，静态可重用的 SQL 代码段-->
+    <sql id="unionTables">
+        FROM (
+
+            SELECT
+                MEMBER.ID             AS AUDITMSGID,
+                PERSON_INFO.REAL_NAME AS AUDITTITLE,
+                PERSON_INFO.REAL_NAME AS REGISTERNAME,
+                JOIN_TIME             AS REGISTERTIME,
+                MEMBER_STATE          AS AUDITSTATE,
+                0                     AS ROLE
+            FROM MEMBER, PERSON_INFO
+            WHERE MEMBER.PERSON_ID = PERSON_INFO.PERSON_ID AND ORG_ID = 11
+            UNION ALL
+            SELECT
+                ID     AS AUDITMSGID,
+                AUDIT_TITLE   AS AUDITTITLE,
+                APPLY_NAME AS REGISTERNAME,
+                REGISTER_TIME AS REGISTERTIME,
+                AUDIT_STATE  AS AUDITSTATE,
+                1          AS ROLE
+            FROM CLUB_AUDIT
+        ) A
+    </sql>
+
+    <select id="selectFirstByExample" resultType="SauAuditRegister">
+        SELECT
+        AUDITMSGID,
+        AUDITTITLE,
+        REGISTERNAME,
+        REGISTERTIME,
+        AUDITSTATE,
+        ROLE
+        <include refid="unionTables"></include>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultType="SauAuditRegister">
+        SELECT
+        AUDITMSGID,
+        AUDITTITLE,
+        REGISTERNAME,
+        REGISTERTIME,
+        AUDITSTATE,
+        ROLE
+        <include refid="unionTables"></include>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        SELECT
+        count(*)
+        <include refid="unionTables"></include>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

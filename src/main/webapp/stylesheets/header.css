@@ -1,16 +1,23 @@
-header {
+body > header {
   background-color: #37a2fe;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
-  position: fixed;
-  z-index: 10;
+  /* height: 65px; */
+  box-shadow: 1px 5px 12px rgba(0, 0, 0, 0.5);
+  /* position: fixed; */
+  z-index: 8;
+  /* min-width: 1280px; */
   width: 100%;
   top: 0;
+
+  /* 管理系统重置 */
+  height: 50px;
 }
 
 header > nav {
   height: 50px;
   color: white;
   clear: both;
+
+  margin: 0 120px 0 170px;
 }
 
 .logo {
@@ -26,7 +33,10 @@ header > nav {
 }
 
 .topButtons {
+  /* position: absolute; */
   padding-right: 20px;
+  right: 1px;
+  top: 3px;
 }
 
 .logIn {
@@ -62,4 +72,76 @@ header > nav {
 
 .logIn:hover, .signUp:hover {
   background-color: #30617f;
+}
+
+/* 内部系统
+---------------------------------------------------------------------------- */
+
+.home {
+  display: inline-block;
+
+  height: 100%;
+}
+
+/* .home::after {
+  content: "|";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+} */
+
+.icon {
+  display: inline-block;
+  width: 40px;
+  padding: 5px 0;
+}
+
+.logo-text {
+  display: inline-block;
+  position: relative;
+  top: -18px;
+  left: 15px;
+
+  font-family: SimHei;
+  font-size: 18px;
+  color: #fff;
+}
+
+.info {
+  float: right;
+  display: block;
+
+  height: 100%;
+}
+
+.username {
+  position: relative;
+  top: 15px;
+  right: 10px;
+
+  color: #333;
+}
+
+.avatar {
+  float: right;
+
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.avatar-img {
+  height: 100%;
+  width: 100%;
+  border: 0.1px black solid;
+
+  background-color: #abc;   
+  border-radius: 20px;
+}
+
+.avatar-img:hover {
+  box-shadow: inset 1px 2px 3px 0px
+  rgba(0, 0, 0, 0.3);
 }

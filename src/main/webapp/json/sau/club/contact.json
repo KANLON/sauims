@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": [
+    {
+      "clubId": 47,
+      "clubName": "广金校社联"
+    },
+    {
+      "clubId": 48,
+      "clubName": "广金Idea精英汇"
+    },
+    {
+      "clubId": 53,
+      "clubName": "乒乓球协会"
+    }
+  ]
+}

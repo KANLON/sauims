@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.LikeOrgMapper">
+    <cache/>
+    <!-- 内连接喜欢社团表和社团信息表-->
+    <sql id="union">
+         like_org inner join org_info on like_org.org_id = org_info.org_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from
+        <include refid="union"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <!-- 喜欢社团表的单表插入，执行这个的时候要与社团信息表的点赞同时操作 -->
+    <insert id="insert" parameterType="LikeOrg" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into like_org(
+        id, person_id,
+        org_id,available)
+        values(
+        #{id}, #{personId},
+        #{orgId},#{available}
+        )
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="likeOrg">
+        update like_org set
+        person_id = #{personId},
+        org_id = #{orgId},
+        available = #{available}
+        where id = #{id}
+    </update>
+
+    <!-- 通过id更新点赞状态-->
+    <update id="updateByPrimaryKeySelective" parameterType="LikeOrg">
+        update like_org
+        <set>
+            <if test="personId != null">
+                person_id = #{personId},
+            </if>
+            <if test="orgId != null">
+                org_id = #{orgId},
+            </if>
+            <if test="available != null">
+                available = #{available},
+            </if>
+      </set>
+        where id = #{id}
+    </update>
+
+    <!-- 通过example更新数据库某个id的整个记录 -->
+    <update id="updateByExample">
+        update like_org set
+        person_id = #{obj.personId},
+        org_id = #{obj.OrgId},
+        available = #{obj.available}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <!-- 通过example选择性更新某个id的某个字段 -->
+    <update id="updateByExampleSelective">
+        update like_org
+        <set>
+            <if test="obj.personId != null">
+                person_id = #{obj.personId},
+            </if>
+            <if test="obj.orgId != null">
+                org_id = #{obj.orgId},
+            </if>
+            <if test="obj.available != null">
+                available = #{obj.available},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="likeOrg">
+        <id property="id" column="id"/>
+        <result property="personId" column="person_id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="available" column="available"/>
+    </resultMap>
+
+</mapper>

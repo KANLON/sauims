@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>消息发布</title>
+  <link rel="stylesheet" href="./stylesheets/clubNewsSend.css" type="text/css" />
+  <link rel="stylesheet" href="./stylesheets/mid-exam.css">
+  <link rel="shortcut icon" href="./images/SAU-logo.png" type="image/x-icon">
+
+</head>
+
+
+
+
+
+
+<body>
+
+  <!--这个是头部-->
+  <iframe src="component/clubHead.html" class="clubHead" scrolling="no"></iframe>
+
+  <div id="main">
+    <!--这个是右边部分-->
+    <div class="RightShadow"></div>
+    <div id="RightHead">
+      <div id="rightHeadPic">
+        <img src="./images/touxiang.png">
+      </div>
+      <div id="rightHeadTitle">校社联</div>
+      <div id="rightHeadTime">2018年1月14日</div>
+
+    </div>
+
+
+    <!--这个是右边正文部分-->
+
+    <div id="rightSide">
+      <div class="boss">题目：</div>
+      <div id="bossName"></div>
+      <div class="neirongTitle">消息内容：</div>
+      <div id="zhuceneirong"> </div>
+
+
+    </div>
+
+    <!--这个是右边编辑部分-->
+    <div id="rightEditTitle">
+
+      <div id="sendPicture2">
+        <img src="./images/send.svg " id="sendpic" class="FUPIC">
+      </div>
+      <a id="sendPic2" href="javascript:volid(0);">发送</a>
+      <div id="sendPic3">关闭</div>
+    </div>
+
+    <div id="rightSideEdit">
+      <input type="text" name="shoujianren" id="shoujianren" placeholder=" 收件人..." />
+      <input type="text" name="biaoti'" id="biaoti" placeholder=" 标题" />
+      <div id="peoplePic">
+        <img src="./images/contact.svg " class="FUPIC">
+      </div>
+      <a id="people" href="javascript:volid(0);">联系人</a>
+      <textarea rows="70" cols="20" id="neirong" placeholder="内容..."></textarea>
+
+      <div class="showContact">
+
+        <div class="send" id="sendAll">发送所有人</div>
+        <div class="send" id="clubSend">社团内发送</div>
+        <div class="send" id="selfSend">自定义发送</div>
+        <ul class="selectContact">
+
+        </ul>
+
+
+      </div>
+      <input class="saveContact" type="text" name="saveContact">
+
+    </div>
+
+
+
+
+    <!--这个是中间部分-->
+
+    <div class="middleSide">
+
+
+    </div>
+
+    <!--这个是中间部分上方  含有搜索栏 搜索按钮 删除按钮 刷新按钮 英文那简单易懂-->
+    <div class="shadow"></div>
+    <div class="search">
+      <input type="text" class="searchBar"></input>
+      <div class="searchButton">
+        <a href="#">
+          <img src="./images/search.svg " id="search" class="FUPIC">
+        </a>
+      </div>
+
+      <div class="refresh">
+        <img src="./images/refresh.svg " class="FUPIC" id="refresh">
+      </div>
+      <div class="news">历史发布</div>
+
+      <div class="del">
+        <a href="##">
+          <img src="./images/delete.svg " class="FUPIC" id="delete">
+        </a>
+      </div>
+
+      <!--编辑按扭-->
+      <div id="add">
+        <a href="##" id="addEdit">
+          <img src="./images/add.png">
+        </a>
+      </div>
+
+    </div>
+
+
+    <!--这个是左边部分-->
+    <div id="leftSide">
+      <!-- <img src="./images/left.png" id="leftPic"> -->
+      <img src="./images/left.png">
+
+
+
+      <!--这个是左边的大标题-->
+      <div id="Left">
+
+        <a href="club_inner_system1.html" id="ha" class="ha">最新公告</a>
+        <a href="clubInformation1.html" id="ha1" class="ha">社团信息</a>
+        <a href="clubNewsSend1.html" id="ha2" class="ha">消息发布</a>
+        <a href="clubResignCheck1.html" id="ha3" class="ha">注册审核</a>
+        <a href="clubAnnRes.html" id="ha4" class="ha">年度注册</a>
+      </div>
+    </div>
+
+
+
+  </div>
+  </div>
+
+  <!--这个是底角-->
+  <!-- <iframe src="component/clubFoot.html" class="clubFoot" scrolling="no"></iframe> -->
+
+
+
+
+  <script type="text/javascript" src="./javascripts/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./javascripts/clubNewsSend1.js"></script>
+
+
+
+</body>
+
+</html>

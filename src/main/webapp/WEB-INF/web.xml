@@ -1,58 +1,96 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-  <!--注册springmvc核心控制器-->
-  <servlet>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <!-- 设置配置spring配置文件的路径-->
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:sauims-*.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <!-- / 会匹配到/login这样的路径型url，不会匹配到模式为*.jsp这样的后缀型url。/*匹配到所有url，包括jsp-->
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+    <display-name>Archetype Created Web Application</display-name>
 
-  <!--避免css/js/html/jpg/gif/png/jpeg等静态文件被阻截-->
+    <!--springMVC核心拦截器-->
+    <servlet>
+        <servlet-name>SAU_IMS</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:sauims-*.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.js</url-pattern>
-        <url-pattern>*.css</url-pattern>
-        <url-pattern>*.html</url-pattern>
-        <url-pattern>*.jpg</url-pattern>
-        <url-pattern>*.gif</url-pattern>
-        <url-pattern>*.png</url-pattern>
-        <url-pattern>*.jpeg</url-pattern>
+        <servlet-name>SAU_IMS</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- 解决跨域问题的过滤器，正式发布的时候要删除该过滤器-->
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>com.fekpal.web.filter.CorsFilter</filter-class>
+        <init-param>
+            <param-name>allowOrigin</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowMethods</param-name>
+            <param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowHeaders</param-name>
+            <param-value>Content-Type</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-  <!-- 注册spring核心编码过滤器-->
-  <filter>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <!--监听session-->
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <!-- springMVC接受put和delete的方法-->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>SAU_IMS</servlet-name>
+    </filter-mapping>
+
+    <!-- 注册spring核心编码过滤器-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <servlet-name>SAU_IMS</servlet-name>
+    </filter-mapping>
 
     <!--  处理get请求乱码问题的，自定义过滤器进行编码格式的设置 -->
     <filter>
         <filter-name>EncodingFilter</filter-name>
-        <filter-class>com.fekpal.tool.EncodingFilter</filter-class>
+        <filter-class>com.fekpal.web.filter.EncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -67,34 +105,34 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- springmvc接受put和delete的方法-->
-    <filter>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <!-- 用于获取项目根目录的监听器配置-->
     <context-param>
         <param-name>webAppRootKey</param-name>
-        <param-value>SAU.webapp</param-value>
+        <param-value>root</param-value>
     </context-param>
-
     <listener>
         <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
     </listener>
 
-    <!-- 通过错误码来配置error-page ,配置了当系统发生404错误时，跳转到错误处理页面NotFound.jsp。 -->
+    <!--监听spring框架内存泄漏-->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <!--spring监听请求-->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <!-- 通过错误码来配置error-page ,配置了当系统发生404错误时，跳转到错误处理页面。 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/page404.html</location>
+        <location>/</location>
     </error-page>
-
+    
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    
 </web-app>

@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "msg": "加载成功",
+  "data": [
+    {
+      "orgName": "广金校社联",
+      "orgId": 11,
+      "description": "我好累啊",
+      "view": null,
+      "logo": "1.jpg",
+      "members": 1,
+      "likeClick": 1,
+      "isClick": 0
+    },
+    {
+      "orgName": "广金Idea精英汇",
+      "orgId": 12,
+      "description": "我好累啊！！！",
+      "view": null,
+      "logo": "2.jpg",
+      "members": 1,
+      "likeClick": 1,
+      "isClick": 0
+    }
+  ]
+}

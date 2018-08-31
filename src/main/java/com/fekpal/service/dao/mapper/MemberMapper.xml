@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.MemberMapper">
+    <cache/>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from member
+        where id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from member
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from member
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from member
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <select id="countOrgManNum" parameterType="int" resultType="int">
+         SELECT COUNT(member.person_id) FROM member,person_info
+          WHERE member.person_id=person_info.person_id
+          AND member.org_id=#{orgId}
+          AND person_info.gender=0
+          AND member.available = 1
+          AND member.member_state=1
+          AND person_info.person_state=1
+    </select>
+
+    <select id="countOrgWomanNum" parameterType="int" resultType="int">
+         SELECT COUNT(member.person_id) FROM member,person_info
+          WHERE member.person_id=person_info.person_id
+          AND member.org_id=#{orgId}
+          AND person_info.gender=1
+          AND member.available = 1
+          AND member.member_state=1
+          AND person_info.person_state=1
+    </select>
+
+    <select id="countOrgGradeNum" resultType="int">
+         SELECT COUNT(member.person_id) FROM member,person_info
+          WHERE member.person_id=person_info.person_id
+          AND member.org_id=#{orgId}
+          AND person_info.student_id LIKE #{grade}
+          AND member.available = 1
+          AND member.member_state=1
+          AND person_info.person_state=1
+    </select>
+
+    <insert id="insert" parameterType="Member" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into member(
+        org_id, person_id,
+        member_duty, member_state,
+        join_time, leave_time,
+        org_department, available)
+        values(
+        #{orgId}, #{personId},
+        #{memberDuty}, #{memberState},
+        #{joinTime}, #{leaveTime},
+        #{orgDepartment}, #{available})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into member(
+        org_id, person_id,
+        member_duty, member_state,
+        join_time, leave_time,
+        org_department, available)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orgId}, #{item.personId},
+            #{item.memberDuty}, #{item.memberState},
+            #{item.joinTime}, #{item.leaveTime},
+            #{item.orgDepartment}, #{item.available})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="Member">
+        update member set
+        member_duty = #{memberDuty},
+        member_state = #{memberState},
+        leave_time = #{leaveTime},
+        org_department = #{orgDepartment},
+        available = #{available}
+        where id = #{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="Member">
+        update member
+        <set>
+            <if test="memberDuty != null">
+                member_duty = #{memberDuty},
+            </if>
+            <if test="memberState != null">
+                member_state = #{memberState},
+            </if>
+            <if test="leaveTime != null">
+                leave_time = #{leaveTime},
+            </if>
+            <if test="orgDepartment != null">
+                org_department = #{orgDepartment},
+            </if>
+            <if test="available != null">
+                available = #{available},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update member set
+        member_duty = #{memberDuty},
+        member_state = #{memberState},
+        leave_time = #{leaveTime},
+        org_department = #{orgDepartment},
+        available = #{available}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update member
+        <set>
+            <if test="memberDuty != null">
+                member_duty = #{memberDuty},
+            </if>
+            <if test="memberState != null">
+                member_state = #{memberState},
+            </if>
+            <if test="leaveTime != null">
+                leave_time = #{leaveTime},
+            </if>
+            <if test="orgDepartment != null">
+                org_department = #{orgDepartment},
+            </if>
+            <if test="available != null">
+                available = #{available},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update member set
+        available = 0
+        where id = #{id} and available != 0
+    </update>
+
+    <update id="deleteByExample">
+        update member set
+        available = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="Member">
+        <id property="id" column="id"/>
+        <result property="personId" column="person_id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="joinTime" column="join_time"/>
+        <result property="leaveTime" column="leave_time"/>
+        <result property="memberDuty" column="member_duty"/>
+        <result property="memberState" column="member_state"/>
+        <result property="orgDepartment" column="org_department"/>
+        <result property="available" column="available"/>
+    </resultMap>
+</mapper>

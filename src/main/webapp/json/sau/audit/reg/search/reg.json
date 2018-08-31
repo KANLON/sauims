@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "auditMsgId": 9,
+      "auditTitle": "篮球协会 注册申请审核",
+      "registerName": "篮球协会负责人姓名",
+      "registerTime": 1457690704000,
+      "auditState": 2,
+      "role": 1
+    },
+    {
+      "auditMsgId": 10,
+      "auditTitle": "台球协会 注册申请审核",
+      "registerName": "台球球协会负责人姓名",
+      "registerTime": 1457690704000,
+      "auditState": 2,
+      "role": 1
+    },
+    {
+      "auditMsgId": 8,
+      "auditTitle": "个人用户1",
+      "registerName": null,
+      "registerTime": 1191988800000,
+      "auditState": 1,
+      "role": 0
+    },
+    {
+      "auditMsgId": 9,
+      "auditTitle": "个人用户2",
+      "registerName": null,
+      "registerTime": 1191988800000,
+      "auditState": 1,
+      "role": 0
+    }
+  ]
+}

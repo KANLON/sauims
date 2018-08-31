@@ -1,0 +1,559 @@
+html, body {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin: 0% auto;
+}
+
+.clubHead {
+  position: absolute;
+  background-color: #0080FF;
+  width: 100%;
+  height: 65px;
+  z-index: 999;
+  overflow: hidden;
+  min-width: 1350px;
+  box-shadow: 2px 2px 10px #333333;
+  border: 0px;
+}
+
+.headBox {
+  position: absolute;
+  background-color: #0080FF;
+  width: 100%;
+  height: 65px;
+  z-index: 999;
+  overflow: hidden;
+  min-width: 1350px;
+  box-shadow: 1px 1px 10px #333333;
+}
+
+.titlePic {
+  position: relative;
+  top: 12px;
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  position: relative;
+  margin: 0px auto;
+  font-family: "微软雅黑";
+  font-size: 20px;
+  width: 350px;
+  height: 65px;
+  color: white;
+}
+
+.main {
+  width: 1280px;
+  height: 800px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.clubLeft {
+  position: absolute;
+  float: none;
+  width: 200px;
+  height: 655px;
+  background-color: #97CBFF;
+  top: 20px;
+  box-shadow: 1px 1px 7px #333333;
+  overflow: hidden;
+  z-index: 3;
+  border: 0px;
+}
+
+.shadow {
+  position: absolute;
+  background-color: white;
+  top: 67px;
+  left: 200px;
+  width: 330px;
+  height: 93px;
+  box-shadow: 1px 1px 10px #333333;
+  z-index: 1;
+}
+
+.leftSide {
+  position: absolute;
+  float: none;
+  width: 200px;
+  height: 655px;
+  background-color: #97CBFF;
+  top: 20px;
+  box-shadow: 1px 1px 10px #333333;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.leftPic {
+  position: relative;
+  left: -100px;
+  top: -30px;
+  width: 1000px;
+  height: 800px;
+  opacity: 0.5;
+  -webkit-filter: blur(3px); /* Chrome, Opera */
+  -moz-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.ha {
+  width: 200px;
+  height: 40px;
+  line-height: 38px;
+  background-color: none;
+  font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
+  font-size: 20px;
+  color: black;
+  position: absolute;
+  text-decoration: none;  /*超链接无下划线*/
+
+  /* padding: 10px 100px;*/
+  text-align: center;
+  -webkit-transition: all linear 0.30s;
+  -moz-transition: all linear 0.30s;
+  transition: all linear 0.30s;
+}
+
+#ha {
+  left: 0px;
+  top: 130px;
+  background-color: #59b0fb;
+}
+
+#ha1 {
+  left: 0px;
+  top: 180px;
+}
+
+#ha2 {
+  left: 0px;
+  top: 230px;
+}
+
+.Left a:hover {
+  background-color: #acd6ff;
+}
+
+.RightHead {
+  position: absolute;
+  background-color: white;
+  top: 66px;
+  left: 200px;
+  width: 1080px;
+  height: 95px;
+  z-index: 2;
+}
+
+.rightHeadPic {
+  position: absolute;
+  top: 15px;
+  left: 100px;
+  height: 90px;
+  width: 60px;
+}
+
+.rightHeadTitle {
+  position: absolute;
+  width: 300px;
+  height: 25px;
+  left: 180px;
+  top: 30px;
+  font-family: "微软雅黑";
+  font-size: 22px;
+}
+
+#headEdit {
+  position: absolute;
+  top: 60px;
+  left: 140px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+#titleEdit {
+  position: absolute;
+  top: 50px;
+  left: 450px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.rightSide {
+  position: absolute;
+  z-index: 0.5;
+  top: 160px;
+  left: 200px;
+  width: 1080px;
+  height: 515px;
+  background-color: #ECECFF;
+}
+
+#Boypic1 {
+  position: absolute;
+  top: 15px;
+  left: 704px;
+  height: 200px;
+  width: 200px;
+}
+
+#Boypic2 {
+  position: absolute;
+  top: 245px;
+  left: 664px;
+  height: 200px;
+  width: 300px;
+}
+
+.club {
+  position: absolute;
+  top: 25px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-family: "微软雅黑";
+  font-size: 18px;
+}
+
+#clubName {
+  position: absolute;
+  top: 28px;
+  left: 270px;
+  height: 40px;
+  width: 200px;
+  font-family: "微软雅黑";
+  font-size: 15px;
+}
+
+.time {
+  position: absolute;
+  top: 50px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-family: "微软雅黑";
+  font-size: 18px;
+}
+
+#setTime {
+  position: absolute;
+  top: 53px;
+  left: 270px;
+  height: 40px;
+  font-family: "微软雅黑";
+  width: 200px;
+  font-size: 15px;
+}
+
+.boss {
+  position: absolute;
+  top: 75px;
+  left: 181px;
+  font-family: "微软雅黑";
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+}
+
+#bossName {
+  position: absolute;
+  top: 78px;
+  left: 270px;
+  font-family: "微软雅黑";
+  height: 40px;
+  width: 200px;
+  font-size: 15px;
+}
+
+.mail {
+  position: absolute;
+  top: 100px;
+  font-family: "微软雅黑";
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+}
+
+#mailbox {
+  position: absolute;
+  top: 103px;
+  left: 270px;
+  height: 40px;
+  width: 200px;
+  font-family: "微软雅黑";
+  font-size: 15px;
+}
+
+.IntroduceTitle {
+  position: absolute;
+  top: 125px;
+  left: 182px;
+  font-family: "微软雅黑";
+  height: 40px;
+  width: 200px;
+  font-size: 18px;
+}
+
+#Introduce {
+  position: absolute;
+  top: 150px;
+  left: 183px;
+  height: 40px;
+  width: 400px;
+  font-family: "微软雅黑";
+  font-size: 12px;
+}
+
+.RightShadow {
+  position: absolute;
+  z-index: 0.5;
+  top: 66px;
+  left: 200px;
+  width: 1080px;
+  height: 620px;
+  box-shadow: 1px 1px 10px #333333;
+}
+
+#headChange {
+  position: absolute;
+  left: 25%;
+  top: 20%;
+  width: 300px;
+  height: 300px;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px #333333;
+  background-color: white;
+  z-index: 1001;
+  display: none;
+}
+
+.zhezhao {
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  height: 200px;
+  width: 200px;
+}
+
+#shuoming {
+  position: absolute;
+  left: 50px;
+  top: 65px;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  z-index: 999;
+  color: white;
+  cursor: pointer;
+}
+
+.wrapper {
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  background: url('../images/zhezhao.png');
+  background-size: 200px 200px;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  cursor: pointer
+}
+
+.wrapper input {
+  opacity: 0;
+  height: 200px;
+  width: 200px;
+}
+
+#up {
+  left: 50px;
+  top: 240px;
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #37a2fe;
+  border-radius: 5px;
+  font-size: 10px;
+  color: black;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "微软雅黑";
+}
+
+#x {
+  left: 280px;
+  top: 3px;
+  position: absolute;
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+  font-family: "微软雅黑";
+}
+
+#rightEdit {
+  position: absolute;
+  z-index: 1;
+  top: 160px;
+  left: 200px;
+  width: 600px;
+  height: 515px;
+  background-color: #ECECFF;
+  display: none;
+}
+
+.club1 {
+  position: absolute;
+  top: 29px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+  font-family: "微软雅黑";
+}
+
+#clubName1 {
+  position: absolute;
+  top: 24px;
+  left: 270px;
+  font-family: "微软雅黑";
+}
+
+.time1 {
+  position: absolute;
+  top: 58px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+  font-family: "微软雅黑";
+}
+
+#setTime1 {
+  position: absolute;
+  top: 53px;
+  left: 270px;
+  font-family: "微软雅黑";
+}
+
+.boss1 {
+  position: absolute;
+  top: 88px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+  font-family: "微软雅黑";
+}
+
+#bossName1 {
+  position: absolute;
+  top: 81px;
+  left: 270px;
+  font-family: "微软雅黑";
+}
+
+.mail1 {
+  position: absolute;
+  top: 115px;
+  left: 181px;
+  height: 40px;
+  width: 90px;
+  font-size: 18px;
+  font-family: "微软雅黑";
+}
+
+#mailbox1 {
+  position: absolute;
+  top: 109px;
+  left: 270px;
+  font-family: "微软雅黑";
+}
+
+.IntroduceTitle1 {
+  position: absolute;
+  top: 142px;
+  left: 182px;
+  height: 40px;
+  width: 200px;
+  font-family: "微软雅黑";
+  font-size: 18px;
+}
+
+.PUT {
+  height: 20px;
+  width: 244px;
+  background-color: #D4D4D4;
+  border-bottom: 1px;
+  text-indent: 8px;
+  line-height: 10px;
+  font-family: "微软雅黑";
+  BORDER-TOP-STYLE: none;
+  BORDER-RIGHT-STYLE: none;
+  BORDER-LEFT-STYLE: none;
+  BORDER-BOTTOM-STYLE: solid
+}
+
+.tx {
+  position: absolute;
+  top: 170px;
+  left: 183px;
+  font-size: 12px;
+  width: 450px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: #D4D4D4;
+  border-bottom: 2px;
+  border-bottom-color: grey;
+  border-radius: 7px;
+  border-bottom-color: grey;
+  text-indent: 10px;
+}
+
+#save {
+  left: 258px;
+  top: 300px;
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #37a2fe;
+  border-radius: 5px;
+  font-size: 10px;
+  color: black;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "微软雅黑";
+}
+
+.footTitle {
+  position: relative;
+  margin: 20px auto;
+  font-family: "微软雅黑";
+  font-size: 15px;
+  width: 350px;
+  height: 65px;
+  color: white;
+}
+
+.clubFoot {
+  position: absolute;
+  background-color: #0080FF;
+  width: 100%;
+  height: 65px;
+  top: 675px;
+  z-index: 4;
+  overflow: hidden;
+  min-width: 1350px;
+  border: 0;
+}

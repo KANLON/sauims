@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.MemberOrgMapper">
+    <cache/>
+
+    <sql id="union">
+        org_info right join member on org_info.org_id = member.org_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from
+        <include refid="union"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="OrgMember" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into member(
+        org_id, person_id,
+        member_duty, member_state,
+        join_time, leave_time,
+        org_department, available)
+        values(
+        #{orgId}, #{personId},
+        #{memberDuty}, #{memberState},
+        #{joinTime}, #{leaveTime},
+        #{orgDepartment}, #{available})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into member(
+        org_id, person_id,
+        member_duty, member_state,
+        join_time, leave_time,
+        org_department, available)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orgId}, #{item.personId},
+            #{item.memberDuty}, #{item.memberState},
+            #{item.joinTime}, #{item.leaveTime},
+            #{item.orgDepartment}, #{item.available})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="OrgMember">
+        update member set
+        member_duty = #{memberDuty},
+        member_state = #{memberState},
+        join_time = #{joinTime},
+        leave_time = #{leaveTime},
+        org_department = #{orgDepartment},
+        available = #{available}
+        where id = #{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="OrgMember">
+        update member
+        <set>
+            <if test="memberDuty != null">
+                member_duty = #{memberDuty},
+            </if>
+            <if test="memberState != null">
+                member_state = #{memberState},
+            </if>
+            <if test="joinTime != null">
+                join_time = #{joinTime},
+            </if>
+            <if test="leaveTime != null">
+                leave_time = #{leaveTime},
+            </if>
+            <if test="orgDepartment != null">
+                org_department = #{orgDepartment},
+            </if>
+            <if test="available != null">
+                available = #{available},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update member set
+        member_duty = #{obj.memberDuty},
+        member_state = #{obj.memberState},
+        join_time = #{obj.joinTime},
+        leave_time = #{obj.leaveTime},
+        org_department = #{obj.orgDepartment},
+        available = #{obj.available}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update member
+        <set>
+            <if test="obj.memberDuty != null">
+                member_duty = #{obj.memberDuty},
+            </if>
+            <if test="obj.memberState != null">
+                member_state = #{obj.memberState},
+            </if>
+            <if test="obj.joinTime != null">
+                join_time = #{obj.joinTime},
+            </if>
+            <if test="obj.leaveTime != null">
+                leave_time = #{obj.leaveTime},
+            </if>
+            <if test="obj.orgDepartment != null">
+                org_department = #{obj.orgDepartment},
+            </if>
+            <if test="obj.available != null">
+                available = #{obj.available},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update member set
+        available = 0
+        where id = #{id} and available != 0
+    </update>
+
+    <update id="deleteByExample">
+        update member set
+        available = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="MemberOrg" extends="com.fekpal.dao.mapper.OrgMapper.result">
+        <id property="id" column="id"/>
+        <result property="personId" column="person_id"/>
+        <result property="memberDuty" column="member_duty"/>
+        <result property="memberState" column="member_state"/>
+        <result property="orgDepartment" column="org_department"/>
+        <result property="joinTime" column="join_time"/>
+        <result property="leaveTime" column="leave_time"/>
+        <result property="available" column="available"/>
+    </resultMap>
+</mapper>

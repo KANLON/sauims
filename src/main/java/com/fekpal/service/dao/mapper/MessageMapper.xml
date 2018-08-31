@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.MessageMapper">
+    <cache/>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from message
+        where message_id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select *  from message
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select *  from message
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from message
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
+        insert into message(
+        message_title, message_content,
+        release_time, org_id,
+        message_type, message_annex,
+        message_state, release_name)
+        values (
+        #{messageTitle}, #{messageContent},
+        #{releaseTime}, #{orgId},
+        #{messageType}, #{messageAnnex},
+        #{messageState}, #{releaseName})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
+        insert into message(
+        message_title, message_content,
+        release_time, org_id,
+        message_type, message_annex,
+        message_state, release_name)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.messageTitle}, #{item.messageContent},
+            #{item.releaseTime}, #{item.orgId},
+            #{item.messageType}, #{item.messageAnnex},
+            #{item.messageState}, #{item.releaseName})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="Message">
+        update message set
+        message_state = #{messageState}
+        where message_id =#{messageId}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="Message">
+        update message
+        <set>
+            <if test="messageState != null">
+                message_state = #{messageState},
+            </if>
+        </set>
+        where message_id = #{messageId}
+    </update>
+
+    <update id="updateByExample">
+        update message set
+        message_state = #{obj.messageState}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update message
+        <set>
+            <if test="obj.messageState != null">
+                message_state = #{obj.messageState},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update message set
+        message_state = 0
+        where message_id = #{id} and message_state != 0
+    </update>
+
+    <update id="deleteByExample">
+        update message set
+        message_state = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="Message">
+        <id property="messageId" column="message_id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="messageTitle" column="message_title"/>
+        <result property="messageContent" column="message_content"/>
+        <result property="releaseTime" column="release_time"/>
+        <result property="releaseName" column="release_name"/>
+        <result property="messageType" column="message_type"/>
+        <result property="messageAnnex" column="message_annex"/>
+        <result property="messageState" column="message_state"/>
+    </resultMap>
+</mapper>

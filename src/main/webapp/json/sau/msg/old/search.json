@@ -1,0 +1,48 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "messageId": 18,
+      "messageTitle": "足球活动，社团内部消息",
+      "sendTime": 1522981829000,
+      "messageType": 0
+    },
+    {
+      "messageId": 17,
+      "messageTitle": "足球活动，全体消息",
+      "sendTime": 1522981715000,
+      "messageType": 0
+    },
+    {
+      "messageId": 16,
+      "messageTitle": "乒乓球活动",
+      "sendTime": 1522937078000,
+      "messageType": 0
+    },
+    {
+      "messageId": 12,
+      "messageTitle": "乒乓球活动",
+      "sendTime": 1522935378000,
+      "messageType": 0
+    },
+    {
+      "messageId": 11,
+      "messageTitle": "羽毛球活动",
+      "sendTime": 1522935291000,
+      "messageType": 0
+    },
+    {
+      "messageId": 10,
+      "messageTitle": "乒乓球活动",
+      "sendTime": 1522935137000,
+      "messageType": 0
+    },
+    {
+      "messageId": 6,
+      "messageTitle": "乒乓球活动",
+      "sendTime": 1522932847000,
+      "messageType": 0
+    }
+  ]
+}

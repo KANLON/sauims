@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.AnniversaryAuditMapper">
+    <cache/>
+
+        <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+            select * from anniversary_audit
+            where id = #{id}
+        </select>
+
+        <select id="selectFirstByExample" resultMap="result">
+            select * from anniversary_audit
+            <where>
+                ${ex.sqlSegment}
+            </where>
+            limit 1
+        </select>
+
+        <select id="selectByExample" resultMap="result">
+            select * from anniversary_audit
+            <where>
+                ${ex.sqlSegment}
+            </where>
+            limit #{offset},#{limit}
+        </select>
+
+        <select id="countByExample" resultType="int">
+            select count(*) from anniversary_audit
+            <where>
+                ${ex.sqlSegment}
+            </where>
+        </select>
+
+        <insert id="insert" parameterType="Message" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
+            insert into anniversary_audit(
+            org_id, audit_title,
+            file_name, audit_state,
+            audit_result, submit_time,
+            submit_description, audit_time)
+            values (
+            #{orgId}, #{auditTitle},
+            #{fileName}, #{auditState},
+            #{auditResult}, #{submitTime},
+            #{submitDescription}, #{auditTime})
+        </insert>
+
+        <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="messageId" keyColumn="message_id">
+            insert into anniversary_audit(
+            org_id, audit_title,
+            file_name, audit_state,
+            audit_result, submit_time,
+            submit_description, audit_time)
+            values
+            <foreach collection="list" item="item" separator=",">
+                (#{item.orgId}, #{item.auditTitle},
+                #{item.fileName}, #{item.auditState},
+                #{item.auditResult}, #{item.submitTime},
+                #{item.submitDescription}, #{item.auditTime})
+            </foreach>
+        </insert>
+
+        <update id="updateByPrimaryKey" parameterType="AnniversaryAudit">
+            update anniversary_audit set
+            audit_title = #{auditTitle},
+            file_name = #{fileName},
+            audit_state = #{auditState},
+            audit_result = #{auditResult},
+            submit_time = #{submitTime},
+            submit_description = #{submitDescription},
+            audit_time = #{auditTime}
+            where id =#{id}
+        </update>
+
+        <update id="updateByPrimaryKeySelective" parameterType="AnniversaryAudit">
+            update anniversary_audit
+            <set>
+                <if test="auditTitle != null">
+                    audit_title = #{auditTitle},
+                </if>
+                <if test="fileName != null">
+                    file_name = #{fileName},
+                </if>
+                <if test="auditState != null">
+                    audit_state = #{auditState},
+                </if>
+                <if test="auditResult != null">
+                    audit_result = #{auditResult},
+                </if>
+                <if test="submitTime != null">
+                    submit_time = #{submitTime},
+                </if>
+                <if test="submitDescription != null">
+                    submit_description = #{submitDescription},
+                </if>
+                <if test="auditTime != null">
+                    audit_time = #{auditTime},
+                </if>
+            </set>
+            where id = #{id}
+        </update>
+
+        <update id="updateByExample">
+            update anniversary_audit set
+            audit_title = #{obj.auditTitle},
+            file_name = #{obj.fileName},
+            audit_state = #{obj.auditState},
+            audit_result = #{obj.auditResult},
+            submit_time = #{obj.submitTime},
+            submit_description = #{obj.submitDescription},
+            audit_time = #{obj.auditTime}
+            <where>
+                ${ex.sqlSegment}
+            </where>
+        </update>
+
+        <update id="updateByExampleSelective">
+            update anniversary_audit
+            <set>
+                <if test="obj.auditTitle != null">
+                    audit_title = #{obj.auditTitle},
+                </if>
+                <if test="obj.fileName != null">
+                    file_name = #{obj.fileName},
+                </if>
+                <if test="obj.auditState != null">
+                    audit_state = #{obj.auditState},
+                </if>
+                <if test="obj.auditResult != null">
+                    audit_result = #{obj.auditResult},
+                </if>
+                <if test="obj.submitTime != null">
+                    submit_time = #{obj.submitTime},
+                </if>
+                <if test="obj.submitDescription != null">
+                    submit_description = #{obj.submitDescription},
+                </if>
+                <if test="obj.auditTime != null">
+                    audit_time = #{obj.auditTime},
+                </if>
+            </set>
+            <where>
+                ${ex.sqlSegment}
+            </where>
+        </update>
+
+        <update id="deleteByPrimaryKey" parameterType="int">
+            update anniversary_audit set
+            audit_state = 3
+            where id = #{id} and audit_state != 3
+        </update>
+
+        <update id="deleteByExample">
+            update anniversary_audit set
+            message_state = 3
+            <where>
+                ${ex.sqlSegment}
+            </where>
+        </update>
+
+    <resultMap id="result" type="AnniversaryAudit">
+        <id property="id" column="id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="auditTitle" column="audit_title"/>
+        <result property="fileName" column="file_name"/>
+        <result property="auditState" column="audit_state"/>
+        <result property="auditResult" column="audit_result"/>
+        <result property="auditTime" column="audit_time"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="submitDescription" column="submit_description"/>
+    </resultMap>
+</mapper>

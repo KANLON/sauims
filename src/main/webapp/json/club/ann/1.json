@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": {
+    "auditMsgId": 5,
+    "clubName": "动漫社",
+    "adminName": "李四",
+    "submitTime": 1320762704000,
+    "gender": "男",
+    "birthday": "1997年09月28日",
+    "mail": "1323eeee9@qq.com",
+    "phone": "1999967810",
+    "num": "14154632262",
+    "collage": "金融与投资学院",
+    "major": "投资学",
+    "dom": "21栋208",
+    "description": "22131313131描述",
+    "auditState": 1,
+    "auditResult": "",
+    "auditTime": 1323070615000
+  }
+}

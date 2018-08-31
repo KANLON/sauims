@@ -1,0 +1,14 @@
+{
+ 
+  "code": 0,
+  "msg": "",
+  "data": {
+    "messageId": 19,
+    "messageTitle": "自定义发布消息，发布给指定社团",
+    "messageContent": "在星期天有一个指定社团的活动",
+    "sendTime": 1522981980000,
+    "messageType": 0,
+    "publishedObject": null
+  }
+}
+  

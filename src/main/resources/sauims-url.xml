@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--前端资源路径映射-->
+    <!--
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/javascripts/**" location="/javascripts/"/>
+    <mvc:resources mapping="/stylesheets/**" location="/stylesheets/"/>
+    <mvc:resources mapping="/component/**" location="/component/"/>
+    <mvc:resources mapping="/member_admin/**" location="/member_admin/"/>
+    <mvc:resources mapping="/club_admin/**" location="/club_admin/"/>
+    <mvc:resources mapping="/sau_admin/**" location="/sau_admin/"/>
+    -->
+
+    <!--上传资源路径映射-->
+    <!--图片类-->
+    <mvc:resources mapping="/resource/logo/*" location="/WEB-INF/resources/logo/"/>
+    <mvc:resources mapping="/resource/view/sau/*" location="/WEB-INF/resources/sau_view/"/>
+    <mvc:resources mapping="/resource/view/club/*" location="/WEB-INF/resources/club_view/"/>
+
+    <!--其他-->
+    <!--拦截器 -->
+        <mvc:interceptors>
+
+    <mvc:interceptor>
+            <!-- 用户认证拦截 -->
+            <mvc:mapping path="/**" />
+            <bean class="com.fekpal.web.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!-- 授权拦截 -->
+            <mvc:mapping path="/**" />
+            <bean class="com.fekpal.web.interceptor.PermissionInterceptor"></bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+    <!-- 静态资源访问 -->
+    <mvc:default-servlet-handler/>
+
+</beans>

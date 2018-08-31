@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": {
+    "auditId": 10,
+    "userName": "person1@126.com",
+    "registerTime": 1191988800000,
+    "personLogo": "1.jpg",
+    "realName": "个人用户1",
+    "studentId": "151612290",
+    "gender": "男",
+    "birthday": 1191988800000,
+    "phone": "1234567892",
+    "email": "person1@126.com",
+    "departmentName": "会计学院",
+    "majorName": "会计学",
+    "address": "个人用户1的地址",
+    "auditSate": 1,
+    "auditResult": null
+  }
+}

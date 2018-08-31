@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.ClubAuditMapper">
+    <cache/>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from club_audit
+        where id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        <where>
+            select * from club_audit
+            <where>
+                ${ex.sqlSegment}
+            </where>
+            limit 1
+        </where>
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from club_audit
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from club_audit
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="ClubAudit" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into club_audit(
+        org_id, register_time,
+        audit_time, audit_result,
+        file, audit_description,
+        audit_title, apply_name,
+        audit_state)
+        values (
+        #{orgId}, #{registerTime},
+        #{auditTime}, #{auditResult},
+        #{file}, #{auditDescription},
+        #{auditTitle}, #{applyName},
+        #{auditState})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into club_audit(
+        org_id, register_time,
+        audit_time, audit_result,
+        file, audit_description,
+        audit_title, apply_name,
+        audit_state)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orgId}, #{item.registerTime},
+            #{item.auditTime}, #{item.auditResult},
+            #{item.file}, #{item.auditDescription},
+            #{item.auditTitle}, #{item.applyName},
+            #{auditState})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="ClubAudit">
+        update club_audit set
+        audit_time = #{auditTime},
+        audit_result = #{auditResult},
+        audit_description = #{auditDescription},
+        audit_state = #{auditState}
+        where id = #{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="ClubAudit">
+        update club_audit
+        <set>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="auditResult != null">
+                audit_result = #{auditResult},
+            </if>
+            <if test="auditDescription != null">
+                audit_description = #{auditDescription},
+            </if>
+            <if test="auditState != null">
+                audit_state = #{auditState},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample" parameterType="map">
+        update club_audit set
+        audit_time = #{obj.auditTime},
+        audit_result = #{obj.auditResult},
+        audit_description = #{obj.auditDescription},
+        audit_state = #{obj.auditState}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective" parameterType="map">
+        update club_audit
+        <set>
+            <if test="obj.auditTime != null">
+                audit_time = #{obj.auditTime},
+            </if>
+            <if test="obj.auditResult != null">
+                audit_result = #{obj.auditResult},
+            </if>
+            <if test="obj.auditDescription != null">
+                audit_description = #{obj.auditDescription},
+            </if>
+            <if test="obj.auditState != null">
+                audit_state = #{obj.auditState},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update club_audit set
+        audit_state = 0
+        where id = #{id} and audit_state != 0
+    </update>
+
+    <update id="deleteByExample">
+        update club_audit set
+        audit_state = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="ClubAudit">
+        <id property="id" column="id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="auditTitle" column="audit_title"/>
+        <result property="registerTime" column="register_time"/>
+        <result property="auditTime" column="audit_time"/>
+        <result property="auditResult" column="audit_result"/>
+        <result property="auditDescription" column="audit_description"/>
+        <result property="file" column="file"/>
+        <result property="applyName" column="apply_name"/>
+        <result property="auditState" column="audit_state"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.OrgMapper">
+    <cache/>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from org_info
+        where org_id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from org_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from org_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from org_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Org" useGeneratedKeys="true" keyProperty="orgId" keyColumn="org_id">
+        insert into org_info (
+        user_id, org_name,
+        found_time, description,
+        admin_name, org_type,
+        org_logo, org_view,
+        contact_email, contact_number,
+        like_click, members,
+        org_state,org_auth)
+        values (
+        #{userId}, #{orgName},
+        #{foundTime}, #{description},
+        #{adminName}, #{orgType},
+        #{orgLogo}, #{orgView},
+        #{contactEmail}, #{contactNumber},
+        #{likeClick}, #{members},
+        #{orgState}, #{orgAuth})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="orgId" keyColumn="org_id">
+        insert into org_info (
+        user_id, org_name,
+        found_time, description,
+        admin_name, org_type,
+        org_logo, org_view,
+        contact_email, contact_number,
+        like_click, members,
+        org_state, org_auth)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.userId}, #{item.orgName},
+            #{item.foundTime}, #{item.description},
+            #{item.adminName}, #{item.orgType},
+            #{item.orgLogo}, #{item.orgView},
+            #{item.contactEmail}, #{item.contactNumber},
+            #{item.likeClick}, #{item.members},
+            #{item.orgState}, #{orgAuth})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="Org">
+        update org_info set
+        org_name = #{orgName},
+        found_time = #{foundTime},
+        description = #{description},
+        admin_name = #{adminName},
+        org_logo = #{orgLogo},
+        org_view = #{orgView},
+        contact_email = #{contactEmail},
+        contact_number = #{contactNumber},
+        like_click = #{likeClick},
+        members = #{members},
+        org_state = #{orgState}
+        where org_id = #{orgId}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="Org">
+        update org_info
+        <set>
+            <if test="orgName != null">
+                org_name = #{orgName},
+            </if>
+            <if test="foundTime != null">
+                found_time = #{foundTime},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="orgType != null">
+                org_type = #{orgType},
+            </if>
+            <if test="adminName != null">
+                admin_name = #{adminName},
+            </if>
+            <if test="orgLogo != null">
+                org_logo = #{orgLogo},
+            </if>
+            <if test="orgView != null">
+                org_view = #{orgView},
+            </if>
+            <if test="contactEmail != null">
+                contact_email = #{contactEmail},
+            </if>
+            <if test="contactNumber != null">
+                contact_number = #{contactNumber},
+            </if>
+            <if test="likeClick != null">
+                like_click = #{likeClick},
+            </if>
+            <if test="members != null">
+                members = #{members},
+            </if>
+            <if test="orgState != null">
+                org_state = #{orgState},
+            </if>
+        </set>
+        where org_id = #{orgId}
+    </update>
+
+    <update id="updateByExample">
+        update org_info set
+        org_name = #{obj.orgName},
+        found_time = #{obj.foundTime},
+        description = #{obj.description},
+        admin_name = #{obj.adminName},
+        org_logo = #{obj.orgLogo},
+        org_view = #{obj.orgView},
+        contact_email = #{obj.contactEmail},
+        contact_number = #{obj.contactNumber},
+        like_click = #{obj.likeClick},
+        members = #{obj.members},
+        org_state = #{obj.orgState}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update org_info
+        <set>
+            <if test="obj.rgName != null">
+                org_name = #{obj.orgName},
+            </if>
+            <if test="obj.foundTime != null">
+                found_time = #{obj.foundTime},
+            </if>
+            <if test="obj.description != null">
+                description = #{obj.description},
+            </if>
+            <if test="obj.adminName != null">
+                admin_name = #{obj.adminName},
+            </if>
+            <if test="obj.orgLogo != null">
+                org_logo = #{obj.orgLogo},
+            </if>
+            <if test="obj.orgView != null">
+                org_view = #{obj.orgView},
+            </if>
+            <if test="obj.contactEmail != null">
+                contact_email = #{obj.contactEmail},
+            </if>
+            <if test="obj.contactNumber != null">
+                contact_number = #{obj.contactNumber},
+            </if>
+            <if test="obj.likeClick != null">
+                like_click = #{obj.likeClick},
+            </if>
+            <if test="obj.members != null">
+                members = #{obj.members},
+            </if>
+            <if test="obj.orgState != null">
+                org_state = #{obj.orgState},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update org_info set
+        org_state = 0
+        where org_id = #{id} and org_state != 0
+    </update>
+
+    <update id="deleteByExample">
+        update org_info set
+        org_state = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+
+    <select id="selectByPrimaryIdForPerson" parameterType="int" resultMap="exResult">
+        select * from org_info
+        where org_id = #{id}
+    </select>
+
+
+
+
+    <resultMap id="result" type="Org">
+        <id property="orgId" column="org_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orgName" column="org_name"/>
+        <result property="foundTime" column="found_time"/>
+        <result property="adminName" column="admin_name"/>
+        <result property="orgType" column="org_type"/>
+        <result property="orgLogo" column="org_logo"/>
+        <result property="orgView" column="org_view"/>
+        <result property="contactEmail" column="contact_email"/>
+        <result property="contactNumber" column="contact_number"/>
+        <result property="likeClick" column="like_click"/>
+        <result property="members" column="members"/>
+        <result property="orgState" column="org_state"/>
+        <result property="orgAuth" column="org_auth"/>
+    </resultMap>
+
+    <resultMap id="exResult" type="PersonOrgView" extends="result">
+    </resultMap>
+</mapper>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="../stylesheets/login.css">
+  </head>
+  <body>
+    <div id="login">
+      <div id="back"></div>
+      <!--背后灰色背景-->
+      <div id="LoginBoard">
+        <!--登陆主板-->
+        <div class="top">登陆</div>
+        <!--板上部蓝色部分-->
+        <!--账号密码框  对应的事件是显示阴影和判断是否为空-->
+        <input type="text" id="logNum">
+        <div class="num"> 账号 |</div>
+
+
+        <input type="password" id="psw">
+        <div class="psw1"> 密码 |</div>
+
+        <!--验证码输入框-->
+        <input type="text" id="yanzhengma" placeholder="验证码">
+
+        <!--记住密码-->
+        <input type="checkbox" id="RemPsw">
+        <div class="RemPsw1">记住密码</div>
+
+        <div id="Loga"><a id="ha">登陆</a></div>
+
+        <!--叉叉按钮-->
+        <a id="x">×</a>
+
+        <div id="nameNotNull">请输入用户名</div>
+        <div id="pswNotNull">请输入密码</div>
+        <div id="yzmwrong">验证码错误</div>
+
+        <!--判断用的的图片-->
+        <img src="../images/T.png" id="T">
+        <img src="../images/F.png" id="F">
+        <img src="../images/T.png" id="T1">
+        <img src="../images/F.png" id="F1">
+
+        <div id="yzm"><a href="#"><img src="../images/yzm.jpg"></a></div>
+        <div id="forgetPsw"><a href="#">忘记密码？</a></div>
+
+      </div>
+    </div>
+    <script src="../javascripts/login.js" charset="utf-8"></script>
+  </body>
+</html>

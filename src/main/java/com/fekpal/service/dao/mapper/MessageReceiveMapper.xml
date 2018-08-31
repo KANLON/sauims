@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.MessageReceiveMapper">
+    <cache/>
+
+    <insert id="insertCommittedNote" parameterType="MessageReceive">
+        insert into message_receive(
+        message_id, receive_id, read_flag, available,
+        message_title, release_name, release_time)
+        select message_id, #{receiveId}, #{readFlag}, #{available},
+        message_title, release_name, release_time
+        from message right join message_receive on message.message_id = message_receive.message_id
+        where mr.message_id is null and m.message_type = 0
+    </insert>
+
+    <sql id="union">
+       message right join message_receive on message.message_id = message_receive.message_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from
+        <include refid="union"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="MessageReceive" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into message_receive(
+        message_id, receive_id,
+        read_flag, available)
+        values (
+        #{messageId}, #{receiveId},
+        #{readFlag}, #{available})
+    </insert>
+
+    <insert id="insertLoopOnlyWithReceiveId" parameterType="MessageReceive">
+        insert into message_receive(
+        message_id, receive_id,
+        read_flag, available)
+        values
+        <foreach collection="receives" item="item" separator=",">
+            (#{messageId}, #{item},
+            #{readFlag}, #{available})
+        </foreach>
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="id" keyColumn="iid">
+        insert into message_receive(
+        message_id, receive_id,
+        read_flag, available)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.messageId}, #{item.receiveId},
+            #{item.readFlag}, #{item.available})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="MessageReceive">
+        update message_receive set
+        read_flag = #{readFlag},
+        available = #{available}
+        where id = #{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="MessageReceive">
+        update message_receive
+        <set>
+            <if test="readFlag != null">
+                read_flag = #{readFlag},
+            </if>
+            <if test="available != null">
+                available = #{available},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update message_receive set
+        read_flag = #{obj.readFlag},
+        available = #{obj.available}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update message_receive
+        <set>
+            <if test="obj.readFlag != null">
+                read_flag = #{obj.readFlag},
+            </if>
+            <if test="obj.available != null">
+                available = #{obj.available},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update message_receive set
+        available = 0
+        where id = #{id} and available != 0
+    </update>
+
+    <update id="deleteByExample">
+        update message_receive set
+        available = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="MessageReceive">
+        <id property="id" column="id"/>
+        <result property="messageId" column="message_id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="messageTitle" column="message_title"/>
+        <result property="messageContent" column="message_content"/>
+        <result property="releaseTime" column="release_time"/>
+        <result property="releaseName" column="release_name"/>
+        <result property="messageType" column="message_type"/>
+        <result property="messageAnnex" column="message_annex"/>
+        <result property="messageState" column="message_state"/>
+
+        <result property="receiveId" column="receive_id"/>
+        <result property="readFlag" column="read_flag"/>
+        <result property="available" column="available"/>
+    </resultMap>
+</mapper>

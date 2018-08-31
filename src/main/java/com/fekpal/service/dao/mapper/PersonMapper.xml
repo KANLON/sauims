@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.PersonMapper">
+    <cache/>
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="result">
+        select * from person_info
+        where person_id = #{id}
+    </select>
+
+    <select id="selectFirstByExample" resultMap="result">
+        select * from person_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit 1
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        select * from person_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="countByExample" resultType="int">
+        select count(*) from person_info
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Person" useGeneratedKeys="true" keyProperty="personId" keyColumn="person_id">
+        insert into person_info (
+        user_id, real_name,
+        nickname, gender,
+        birthday, description,
+        address, department,
+        major, student_id,
+        person_logo, person_state,
+        enrollment_year)
+        values(
+        #{userId}, #{realName},
+        #{nickname}, #{gender},
+        #{birthday}, #{description},
+        #{address}, #{department},
+        #{major}, #{studentId},
+        #{logo}, #{personState},
+        #{enrollmentYear})
+    </insert>
+
+    <insert id="insertLoop" parameterType="list" useGeneratedKeys="true" keyProperty="personId" keyColumn="person_id">
+        insert into person_info (
+        user_id, real_name,
+        nickname, gender,
+        birthday, description,
+        address, department,
+        major, student_id,
+        person_logo, person_state,
+        enrollment_year)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.item.userId}, #{item.realName},
+            #{item.nickname}, #{item.gender},
+            #{item.birthday}, #{item.description},
+            #{item.address}, #{item.department},
+            #{item.major}, #{item.studentId},
+            #{item.logo}, #{item.personState},
+            #{item.enrollmentYear})
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="Person">
+        update person_info set
+        real_name = #{realName},
+        nickname = #{nickname},
+        gender = #{gender},
+        birthday = #{birthday},
+        description = #{description},
+        address = #{address},
+        department = #{department},
+        major = #{major},
+        student_id = #{studentId},
+        person_logo = #{logo},
+        person_state = #{personState},
+        enrollment_year = #{enrollmentYear}
+        where person_id = #{personId}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="Person">
+        update person_info
+        <set>
+            <if test="realName != null">
+                real_name = #{realName},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="department != null">
+                department = #{department},
+            </if>
+            <if test="major != null">
+                major = #{major},
+            </if>
+            <if test="studentId != null">
+                student_id = #{studentId},
+            </if>
+            <if test="logo != null">
+                person_logo = #{logo},
+            </if>
+            <if test="personState != null">
+                person_state = #{personState},
+            </if>
+            <if test="enrollmentYear != null">
+                enrollment_year = #{enrollmentYear},
+            </if>
+        </set>
+        where person_id = #{personId}
+    </update>
+
+    <update id="updateByExample">
+        update person_info set
+        real_name = #{obj.realName},
+        nickname = #{obj.nickname},
+        gender = #{obj.gender},
+        birthday = #{obj.birthday},
+        description = #{obj.description},
+        address = #{obj.address},
+        department = #{obj.department},
+        major = #{obj.major},
+        student_id = #{obj.studentId},
+        person_logo = #{obj.logo},
+        person_state = #{obj.personState},
+        enrollment_year = #{enrollmentYear}
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateByExampleSelective">
+        update person_info
+        <set>
+            <if test="obj.realName != null">
+                real_name = #{obj.realName},
+            </if>
+            <if test="obj.nickname != null">
+                nickname = #{obj.nickname},
+            </if>
+            <if test="obj.gender != null">
+                gender = #{obj.gender},
+            </if>
+            <if test="obj.birthday != null">
+                birthday = #{obj.birthday},
+            </if>
+            <if test="obj.description != null">
+                description = #{obj.description},
+            </if>
+            <if test="obj.address != null">
+                address = #{obj.address},
+            </if>
+            <if test="obj.department != null">
+                department = #{obj.department},
+            </if>
+            <if test="obj.major != null">
+                major = #{obj.major},
+            </if>
+            <if test="obj.studentId != null">
+                student_id = #{obj.studentId},
+            </if>
+            <if test="obj.logo != null">
+                person_logo = #{obj.logo},
+            </if>
+            <if test="obj.personState != null">
+                person_state = #{obj.personState},
+            </if>
+            <if test="obj.enrollmentYear != null">
+                enrollment_year = #{enrollmentYear},
+            </if>
+        </set>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <update id="deleteByPrimaryKey" parameterType="int">
+        update person_info set
+        person_state = 0
+        where person_id = #{id} and person_state != 0
+    </update>
+
+    <update id="deleteByExample">
+        update person_info set
+        person_state = 0
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </update>
+
+    <resultMap id="result" type="Person">
+        <id property="personId" column="person_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="realName" column="real_name"/>
+        <result property="logo" column="person_logo"/>
+        <result property="gender" column="gender"/>
+        <result property="enrollmentYear" column="enrollment_year"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="address" column="address"/>
+        <result property="description" column="description"/>
+        <result property="department" column="department"/>
+        <result property="major" column="major"/>
+        <result property="studentId" column="student_id"/>
+        <result property="personState" column="person_state"/>
+    </resultMap>
+</mapper>

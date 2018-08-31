@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "msg": "加载成功",
+  "data": {
+    "orgId": 12,
+    "orgName": "Idea精英汇协会",
+    "foundTime": 1423195751000,
+    "description": "广金Idea精英汇协会的描述",
+    "adminName": "张三",
+    "orgType": "综合实践类",
+    "likeClick": 1,
+    "members": 1,
+    "view": "default_overview.png",
+    "logo": "default_logo.jpg",
+    "email": "Canlong2015@126.com",
+    "phone": "12345678901",
+    "headIntroduce": "广金Idea精英汇协会的描述",
+    "manNum": 2,
+    "womanNum": 0,
+    "firstGradeNum": 0,
+    "secondGradeNum": 0,
+    "threeGradeNum": 2,
+    "fourGradeNum": 0,
+    "graduatedNum": 0,
+    "joinState": 0
+  }
+}

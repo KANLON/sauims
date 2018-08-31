@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置类别名-->
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 驼峰命名命名的属性自动映射为用下划线区分字母的表字段 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.fekpal.dao.model.User" alias="User"/>
+        <typeAlias type="com.fekpal.dao.model.Org" alias="Org"/>
+        <typeAlias type="com.fekpal.dao.model.Person" alias="Person"/>
+        <typeAlias type="com.fekpal.dao.model.AnniversaryAudit" alias="AnniversaryAudit"/>
+        <typeAlias type="com.fekpal.dao.model.Message" alias="Message"/>
+        <typeAlias type="com.fekpal.dao.model.MessageReceive" alias="MessageReceive"/>
+        <typeAlias type="com.fekpal.dao.model.OrgMember" alias="OrgMember"/>
+        <typeAlias type="com.fekpal.dao.model.MemberOrg" alias="MemberOrg"/>
+        <typeAlias type="com.fekpal.dao.model.ClubAudit" alias="ClubAudit"/>
+        <typeAlias type="com.fekpal.dao.model.AuditsView" alias="AuditsView"/>
+        <typeAlias type="com.fekpal.dao.model.PersonOrgView" alias="PersonOrgView"/>
+        <typeAlias type="com.fekpal.dao.model.Member" alias="Member"/>
+        <typeAlias type="com.fekpal.dao.model.LikeOrg" alias="likeOrg"/>
+        <typeAlias type="com.fekpal.dao.model.SauAuditRegister" alias="SauAuditRegister"/>
+    </typeAliases>
+
+    <!--映射文件-->
+    <mappers>
+        <mapper resource="com/fekpal/service/dao/mapper/UserMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/OrgMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/PersonMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/ClubAuditMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/MessageMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/MessageReceiveMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/OrgMemberMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/LikeOrgMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/AuditsViewMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/MemberOrgMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/OrgMemberMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/MemberMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/AnniversaryAuditMapper.xml"/>
+        <mapper resource="com/fekpal/service/dao/mapper/SauAuditMapper.xml"/>
+    </mappers>
+
+
+</configuration>

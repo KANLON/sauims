@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fekpal.dao.mapper.AuditsViewMapper">
+    <cache/>
+
+    <sql id="union">
+        (select id, audit_title as title, apply_name as name, register_time as time, 0, audit_result as result from club_audit)union
+        (select id, real_name as title, real_name as name, join_time as time, 1, available as result
+         from member left join person_info on member.person_id = person_info.person_id)
+    </sql>
+
+    <select id="selectFirstByExample" resultMap="result">
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectByExample" resultMap="result">
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <select id="countByExample" resultType="int">
+        <include refid="union"/>
+        <where>
+            ${ex.sqlSegment}
+        </where>
+    </select>
+
+    <resultMap id="result" type="AuditsView">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="name" column="name"/>
+        <result property="time" column="time"/>
+        <result property="type" column="type"/>
+        <result property="result" column="result"/>
+    </resultMap>
+
+</mapper>

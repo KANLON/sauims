@@ -1,0 +1,46 @@
+{
+  "code": 0,
+  "msg": "加载成功",
+  "data": [
+    {
+      "orgName": "校社联",
+      "orgId": 11,
+      "description": "我是更新后的社团描述",
+      "view": "default_overview.png",
+      "logo": "default_logo.jpg",
+      "members": 1,
+      "likeClick": 1,
+      "isClick": 0
+    },
+    {
+      "orgName": "广金Idea精英汇协会",
+      "orgId": 12,
+      "description": "广金Idea精英汇协会的描述",
+      "view": "default_overview.png",
+      "logo": "default_logo.jpg",
+      "members": 1,
+      "likeClick": 1,
+      "isClick": 0
+    },
+    {
+      "orgName": "乒乓球协会",
+      "orgId": 17,
+      "description": "这是乒乓球协会的描述",
+      "view": "default_overview.png",
+      "logo": "default_logo.jpg",
+      "members": 0,
+      "likeClick": 0,
+      "isClick": 0
+    },
+    {
+      "orgName": "羽毛球协会",
+      "orgId": 24,
+      "description": "热爱羽毛球的人的聚合体",
+      "view": "default_overview.png",
+      "logo": "default_logo.jpg",
+      "members": 1,
+      "likeClick": 1,
+      "isClick": 0
+    }
+  ]
+}

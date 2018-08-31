@@ -1,0 +1,604 @@
+html,body{
+   position:relative; width: 100%;height:600px;margin:0% auto;
+}
+
+.clubHead{
+       position: absolute;
+        background-color: #0080FF;
+        width: 100%;
+        height: 65px;
+        z-index: 999;
+        overflow:hidden;
+        min-width:1350px;
+        box-shadow: 2px 2px 10px #333333; 
+        border: 0px;
+    
+    }
+    .headBox{
+        position: absolute;
+        background-color: #0080FF;
+        width: 100%;
+        height: 65px;
+        z-index: 999;
+        overflow:hidden;
+        min-width:1350px;
+        box-shadow: 2px 2px 10px #333333; 
+
+    }
+   .titlePic{
+        
+        position: relative;
+        top: 12px;
+        width: 40px;
+        height: 40px;
+        
+    }
+    .title{
+        position:relative;
+        margin:0px auto;
+        font-family: "微软雅黑";
+        font-size: 20px;
+        width: 350px;
+        height: 65px;
+        color: white;
+    }
+    #main{
+        width:1280px;height:800px;position: relative;margin: 0 auto;
+    }
+       .clubLeft{
+       position:absolute;
+        float: none;
+        width: 200px;
+        height: 655px;
+        background-color: #97CBFF;
+        top: 20px;
+       box-shadow: 1px 1px 10px #333333; 
+        overflow: hidden;
+          z-index: 3;
+          border: 0px;
+
+    }
+     #leftSide{
+        position:absolute;
+        float: none;
+        width: 200px;
+        height: 655px;
+        background-color: #97CBFF;
+        top: 20px;
+        box-shadow: 2px 2px 7px #333333; 
+        overflow: hidden;
+          z-index: 3;
+    }
+    .leftPic{
+        position: relative;
+        left: -100px;
+        top: -30px;
+        width: 500px;
+        height: 500px;
+        opacity: 0.28;
+        overflow: hidden;
+        -webkit-filter: blur(3px); /* Chrome, Opera */
+       -moz-filter: blur(3px);
+        -ms-filter: blur(3px);    
+            filter: blur(3px);   
+       
+
+    }
+ .ha{
+       width: 200px;
+       height: 40px;
+       line-height: 38px;
+       background-color:none ;
+       font-family:微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif; 
+       font-size:20px;
+       color: black;
+       position: absolute;
+       text-decoration:none;  /*超链接无下划线*/
+      /* padding: 10px 100px;*/
+      text-align: center;
+      -webkit-transition:all linear 0.30s;  
+      -moz-transition:all linear 0.30s;  
+      transition:all linear 0.30s;  
+
+    }
+    #ha{
+     
+     left:0px;
+     top: 130px;
+     
+}
+ #ha1{
+   
+     left:0px;
+     top: 180px;
+     
+     
+}
+ #ha2{
+    
+     left:0px;
+     top: 230px;
+      background-color:#59b0fb  ;
+    
+}
+ #ha3{
+  
+     left:0px;
+     top: 280px;
+    
+}
+ #ha4{
+   
+     left:0px;
+     top: 330px;
+    
+}
+ .Left a:hover { background-color: #acd6ff; } 
+  .search{
+         position:absolute;
+         background-color: #ECECFF;
+         top: 65px;
+         left: 200px;
+         width:330px;
+         height: 95px;
+
+           z-index: 2;
+        
+    }
+    .searchBar{
+     position: absolute;
+     width: 280px;
+     height: 30px;
+     left: 10px;
+     top: 14px;
+     background-color: #dbdcdd;
+     border: 1px solid #0080FF;
+     border-radius:5px;
+     color:gray;
+      text-indent:8px;
+    }
+     search input:hover{
+       transition-property:box-shadow ;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
+      box-shadow:2px 2px 5px #333333;/*阴影*/
+  }
+
+.searchButton{
+     position: absolute;
+   
+     left: 257px;
+     top: 15px;
+}
+.refresh{
+     position: absolute;
+   
+     left: 294px;
+     top: 14px;
+}
+.news{
+      position: absolute;
+      width:100px;
+      height: 25px;
+      left: 18px;
+      top: 60px;
+      font-family: "微软雅黑";
+        font-size: 17px;
+}
+.del{
+     position: absolute;
+  
+     left: 294px;
+     top: 56px;
+}
+#add{
+     position: absolute;
+    
+     left: 266px;
+     top: 62px;
+}
+.FUPIC{
+   width:32px;
+     height: 32px;
+
+}
+.FUPIC:hover{
+  background-color: #8fc9fb;
+}
+#add{
+     width:32px;
+     height: 32px; 
+      left: 260px;
+     top: 56px;
+
+}
+#addEdit{
+  position: absolute;
+    left: 6px;
+     top:5px;
+}
+#add:hover{
+   background-color: #8fc9fb;
+}
+    .middleSide{
+          position:absolute;
+          top: 160px;
+          left: 200px;
+          width: 330px;
+          height: 515px;
+          background-color: #ECECFF;
+          overflow-y: scroll;    
+         box-shadow: 1px 1px 10px #333333; 
+          scrollbar-face-color: #D4D4D4;                  /*滚动条滑块颜色*/  
+          scrollbar-hightlight-color: #ffffff;   /*滚动条3D界面的亮边颜色*/                       
+          scrollbar-shadow-color: #919192;                    /*滚动条3D界面的暗边颜色*/  
+          scrollbar-3dlight-color: #ffffff;               /*滚动条亮边框颜色*/  
+          scrollbar-arrow-color: #919192;                 /*箭头颜色*/  
+          scrollbar-track-color: #ffffff;                 /*滚动条底色*/  
+          scrollbar-darkshadow-color: #ffffff;                /*滚动条暗边框颜色*/  
+            z-index: 2;
+
+    }
+   .movebar{
+      position: absolute;
+      background-color:#59b0fb;
+      width: 10px;
+      height: 50px;
+      left: -10px;
+
+    }
+   
+   
+
+    @keyframes mysecond   /*鼠标点击*/ 
+{
+from {opacity: 1;}
+to {width: 330px;opacity: 1;}
+}
+
+.m{
+     width: 303px;
+     height: 50px;
+      line-height: 40px;
+     background-color: white;
+     font-family:微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif; 
+     font-size:17px;
+     color: black;
+     position: relative;
+         margin-top: 10px;
+     margin-left: 12px;
+     text-decoration:none;  /*超链接无下划线*/
+    /* padding: 10px 100px;*/
+     -webkit-transition:all linear 0.30s;  
+     -moz-transition:all linear 0.30s;  
+     transition:all linear 0.30s;  
+
+}
+
+.MTITLE{                     /*宏观调控*/
+        font-size: 18px;
+        position: absolute;
+        top: 6px;
+        left: 8px;
+
+}
+.WRITER{
+        font-size: 12px;
+        position: absolute;
+        top: 18px;
+        left: 8px;
+}
+.MTIME{
+        font-size: 12px;
+        position: absolute;
+        top: 18px;
+        left: 233px; width: 150px;
+  height: 40px; overflow: hidden;
+
+  }
+  .MCHECK{
+        font-size: 12px;
+        position: absolute;
+        border-color: black;
+        opacity:0.6;
+        filter:alpha(opacity=50);
+        background:#000;
+        left: 265px; z-index: 20;
+       top:10px;
+
+  } 
+
+.m:hover{
+     background-color: #8fc9fb;
+}
+   #RightHead{
+        position:absolute;
+        display: block;
+        background-color: white;
+        top: 66px;
+        left: 530px;
+        width: 750px;
+        height: 95px;
+         box-shadow: 1px 1px 10px #333333; 
+         z-index: 1;
+    }
+
+   #rightHeadPic{
+      position:absolute;
+      top: 15px;
+      left: 18px;
+      height: 90px;
+        width: 60px;
+   }
+   #rightHeadTitle{
+         position: absolute;
+      width:600px;
+      height: 25px;
+      left: 100px;
+      top: 22px;
+      font-family: "微软雅黑";
+        font-size: 17px;
+   }
+    #rightHeadTime{
+      position: absolute;
+      width:250px;
+      height: 25px;
+      left: 100px;
+      top: 45px;
+      font-family: "微软雅黑";
+      font-size: 17px;
+   }
+    #rightSide{
+        display: block;
+          position:absolute;
+           z-index: 1;
+          top: 160px;
+          left: 530px;
+          width: 750px;
+          height: 515px;
+          background-color: #ECECFF;
+          overflow-y: scroll;    
+          scrollbar-face-color: #DDDDFF;                  /*滚动条滑块颜色*/  
+          scrollbar-hightlight-color: #ffffff;                /*滚动条3D界面的亮边颜色*/  
+          scrollbar-shadow-color: #919192;                    /*滚动条3D界面的暗边颜色*/  
+          scrollbar-3dlight-color: #ffffff;               /*滚动条亮边框颜色*/  
+          scrollbar-arrow-color: white;                 /*箭头颜色*/  
+          scrollbar-track-color: #ffffff;                 /*滚动条底色*/  
+          scrollbar-darkshadow-color: #ffffff;                /*滚动条暗边框颜色*/  
+        
+
+
+}
+
+
+#rightEditTitle{
+        position:absolute;
+        display: none;
+        background-color: white;
+        top: 66px;
+        left: 530px;
+        width: 750px;
+        height: 60px;
+        box-shadow: 1px 1px 10px #333333; 
+         z-index: 1;
+
+}
+
+.boss{
+      position:absolute;
+      top: 40px;
+      left: 100px;
+      height: 40px;
+      width: 90px; 
+      font-size: 18px;
+   }
+    #bossName{
+      position:absolute;
+      top: 43px;
+      left: 170px;
+      height: 40px;
+      width: 600px; 
+      font-size: 15px;
+   }
+ .neirongTitle{
+      position:absolute;
+      top: 70px;
+      left: 100px;
+      height: 40px;
+      width: 90px; 
+      font-size: 18px;
+   }
+    #zhuceneirong{
+      position:absolute;
+      top: 96px;
+      left: 100px;
+      height: 100px;
+      width: 500px; 
+      font-size: 15px;
+      color: black;
+
+}
+
+#sendPicture2{
+     position:absolute;
+    left: 568px;
+    top: 14px;
+    height: 30px;
+    width: 30px;
+
+}
+#sendPic2{
+    position:absolute;
+    left: 600px;
+    top: 20px;
+    font-size: 20px;
+    color: grey;
+    text-decoration: none;
+
+}
+
+#sendPic3{
+    position:absolute;
+    left: 50px;
+    top: 20px;
+    font-size: 20px;
+    color: grey;
+    text-decoration: none;
+    cursor:pointer;
+
+}
+
+.showContact{
+   width:150px;
+ 
+   background-color: white;
+   position: absolute;
+   left:580px;
+   top: 70px;
+   z-index: 5;
+}
+
+.send{
+
+  margin-top: 7px;
+  font-size: 20px;
+  color: grey;
+  cursor:pointer;
+  margin-left: 10px;
+
+
+}
+.selectContact li{
+
+  list-style: none;
+  margin-left: -26px;
+  cursor: pointer;
+}
+.saveContact{
+ display: none; 
+}
+#rightSideEdit{
+        display: none;
+          position:absolute;
+           z-index: 1;
+          top: 125px;
+          left: 530px;
+          width: 750px;
+          height: 555px;
+          background-color: #ECECFF;
+        box-shadow: 1px 1px 10px #333333; 
+
+
+}
+
+
+#shoujianren{
+    position: absolute;
+    width: 650px;
+    height: 30px;
+    background-color: #D4D4D4;
+    border-bottom: 1px;
+    border-bottom-color: grey;
+    left: 30px;
+    top: 30px;
+     text-indent:8px;
+    BORDER-TOP-STYLE: none; 
+    BORDER-RIGHT-STYLE: none; 
+    BORDER-LEFT-STYLE: none; 
+    BORDER-BOTTOM-STYLE: solid
+  
+}
+#biaoti{
+    position: absolute;
+    width: 650px;
+    height: 30px;
+    background-color: #D4D4D4;
+    border-bottom: 1px;
+    border-bottom-color: grey;
+    left: 30px;
+    top: 70px;
+     text-indent:8px;
+    BORDER-TOP-STYLE: none; 
+    BORDER-RIGHT-STYLE: none; 
+    BORDER-LEFT-STYLE: none; 
+    BORDER-BOTTOM-STYLE: solid
+  
+}
+
+#peoplePic{
+     position:absolute;
+    left: 576px;
+    top: 32px;
+    height: 30px;
+    width: 30px;
+
+}
+#people{
+    position:absolute;
+    left: 611px;
+    top: 39px;
+    font-size: 20px;
+    color: grey;
+    text-decoration: none;
+
+}
+
+
+#neirong{
+    position: absolute;
+    width: 650px;
+    height: 390px;
+    background-color: #D4D4D4;
+    border-bottom: 2px;
+    border-bottom-color: grey;
+    border-radius: 7px;
+    left: 30px;
+    top: 140px;
+    border-bottom-color: grey;
+     text-indent:10px;
+  
+  
+}
+.RightShadow{
+           position:absolute;
+           z-index: 1;
+          top: 160px;
+          left: 530px;
+          width: 750px;
+          height: 515px;
+          box-shadow: 1px 1px 10px #333333; 
+
+}
+.shadow{
+      position:absolute;
+         background-color: white;
+         top: 67px;
+         left: 200px;
+         width: 330px;
+         height: 93px;
+          box-shadow: 1px 1px 10px #333333; 
+           z-index:1;
+
+    }
+    .footTitle{
+        position:relative;
+        margin:20px auto;
+        font-family: "微软雅黑";
+        font-size: 15px;
+        width: 350px;
+        height: 65px;
+        color: white;
+       
+    }
+    .clubFoot{
+        position: absolute;
+        background-color: #0080FF;
+        width: 100%;
+        height: 65px;
+        top: 675px;
+         z-index: 4;
+        overflow:hidden;
+        min-width:1350px;
+        border: 0;
+
+    }

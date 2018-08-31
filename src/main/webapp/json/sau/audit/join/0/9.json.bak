@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": {
+    "auditId": 9,
+    "userName": "person2@126.com",
+    "registerTime": 1191988834000,
+    "personLogo": "eRr6Q47BHQDeAuY0VQlQ.jpg",
+    "realName": "个人用户2",
+    "studentId": "151612222",
+    "gender": "男",
+    "birthday": 1520762434000,
+    "phone": "1234567892",
+    "email": "person2@126.com",
+    "departmentName": "互联网金融与信息工程学院",
+    "majorName": "计算机科学与计算专业",
+    "address": "8#111",
+    "auditSate": 1,
+    "auditResult": null
+  }
+}

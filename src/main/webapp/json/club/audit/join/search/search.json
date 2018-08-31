@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": [
+    {
+      "auditMsgId": 10,
+      "auditTitle": "个人用户1",
+      "registerTime": 1191988800000,
+      "auditState": 2
+    },
+    {
+      "auditMsgId": 11,
+      "auditTitle": "个人用户2",
+      "registerTime": 1191988800000,
+      "auditState": 2
+    },
+    {
+      "auditMsgId": 12,
+      "auditTitle": "个人用户3",
+      "registerTime": 1341348834000,
+      "auditState": 2
+    }
+  ]
+}

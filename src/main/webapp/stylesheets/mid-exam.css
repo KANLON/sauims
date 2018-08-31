@@ -1,0 +1,42 @@
+.main,
+#main {
+  height: 600px;
+}
+
+.middleSide,
+#middleSide,
+.rightSide,
+#rightSide {
+  overflow-x: hidden;
+  background: #e4e8ec;
+}
+
+.search {
+  background: #e4e8ec;
+}
+
+.news {
+  color: #333;
+}
+
+.ha {
+  width: 200px;
+  height: 40px;
+  line-height: 38px;
+  background-color: none;
+  font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
+  font-size: 18px;
+  /* padding: 0.75rem; */
+  color: black;
+  position: absolute;
+  text-decoration: none;
+  /* padding: 10px 100px; */
+  text-align: center;
+  -webkit-transition: all linear 0.30s;
+  -moz-transition: all linear 0.30s;
+  transition: all linear 0.30s;
+}
+
+.MPASS {
+  top: 4px;
+}

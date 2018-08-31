@@ -1,0 +1,20 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "messageId": 4,
+    "orgId": 0,
+    "messageTitle": "测试的第4消息标题",
+    "messageContent": "测试id第4消息内容 ",
+    "releaseTime": 1407608056000,
+    "releaseName": "王五",
+    "messageType": 1,
+    "messageAnnex": null,
+    "messageState": 1,
+    "id": 1,
+    "receiveId": 48,
+    "available": 1,
+    "readFlag": 0,
+    "receives": null
+  }
+}

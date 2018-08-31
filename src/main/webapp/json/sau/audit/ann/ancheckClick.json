@@ -1,0 +1,15 @@
+{
+  "code": 0,
+  "msg": "",
+  "data": {
+    "auditMsgId": 1,
+    "clubName": "Idea精英汇",
+    "adminName": "李四",
+    "submitTime": 1520762704000,
+    "fileName": "48.docx",
+    "description": "Idea精英汇年度审核描述",
+    "auditState": 2,
+    "auditResult": "",
+    "auditTime": null
+  }
+}

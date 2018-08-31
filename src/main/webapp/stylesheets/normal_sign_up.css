@@ -25,6 +25,9 @@
 .uncheckedSign {
   margin-left: 10px;
   padding-top: 5px;
+  cursor: pointer;
+
+   box-shadow: 3px -1px 1px rgba(0, 0, 0, 0.3);
 }
 
 /******************************************************************************/
@@ -38,7 +41,15 @@
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
   z-index: 1000;
 }
-
+.normalForm1 {
+  height: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 6px;
+  padding: 30px 100px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
 .verifyText {
   width: 120px;
 }
@@ -46,4 +57,46 @@
 .verifySend {
   width: 120px;
   margin-left: 9px;
+}
+
+/******************************************************************************/
+
+.T {
+  position: absolute;
+  display: none;
+}
+
+.F {
+  position: absolute;
+  display: none;
+}
+
+#mailWrong {
+  position: absolute;
+  display: none;
+  font-size: 18px;
+  color: red;
+  top: 195px;
+  left: 780px;
+  width: 200px;
+}
+
+#PWWrong {
+  position: absolute;
+  display: none;
+  font-size: 18px;
+  color: red;
+  top: 308px;
+  left: 780px;
+  width: 200px;
+}
+
+#notSame {
+  position: absolute;
+  display: none;
+  font-size: 18px;
+  color: red;
+  top: 362px;
+  left: 780px;
+  width: 200px;
 }

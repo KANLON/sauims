@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-        xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:mvc="http://www.springframework.org/schema/mvc"
-        xmlns:p="http://www.springframework.org/schema/p"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xmlns:aop="http://www.springframework.org/schema/aop"
-        xmlns:tx="http://www.springframework.org/schema/tx"
-        xmlns:util="http://www.springframework.org/schema/util"
-        xsi:schemaLocation="
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-      ">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--    通过配置方式来配置用来实现依赖注入，用于service，dao，web层之间的交互
-     <bean id="user" class="org.KANLON.domian.User">
-         <constructor-arg name="age" value="100"></constructor-arg>
-         <constructor-arg name="name" value="jack"></constructor-arg>
-     </bean>
+    <context:component-scan base-package="com.fekpal.service"/>
 
-     <bean id="userDao" class="org.KANLON.dao.UserDao">
-         <property name="user" ref="user"></property>
-     </bean>
+    <!--spring-session配置，代替传统的session，数据存储在redis-->
+    <bean id="redisHttpSessionConfiguration"
+          class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+        <!-- session 过期时间,30分钟-->
+        <property name="maxInactiveIntervalInSeconds" value="1800"/>
+    </bean>
 
-     <bean id="userService" class="org.KANLON.service.UserService">
-         <property name="userDao" ref="userDao"></property>
-     </bean>
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"
+          p:maxIdle="${redis.jedis.pool.maxIdle}"
+          p:maxTotal="${redis.jedis.pool.maxTotal}"
+          p:maxWaitMillis="${redis.jedis.pool.maxWait}"
+          p:testOnReturn="true"
+          p:testOnBorrow="true"/>
 
-     <bean id="userAction" class="org.KANLON.web.UserAction">
-         <property name="userService" ref="userService"></property>
-     </bean>-->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          destroy-method="destroy"
+          p:hostName="${redis.hostname}"
+          p:port="${redis.port}"
+          p:password="${redis.password}"
+          p:timeout="${redis.timeout}"
+          p:usePool="true"
+          p:poolConfig-ref="jedisPoolConfig"/>
 
-    <!--- 开始注解扫描-->
-    <context:component-scan base-package="com.fekpal"></context:component-scan>
+    <!--Redis客户端连接池-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool"
+          c:host="${redis.hostname}"
+          c:port="${redis.port}"
+          c:password="${redis.password}"
+          c:timeout="${redis.timeout}"
+          c:poolConfig-ref="jedisPoolConfig"/>
 
 </beans>
