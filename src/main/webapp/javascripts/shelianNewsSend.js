@@ -363,18 +363,17 @@
   }
 
   function addNewsFirst(jsonx) {
-    var messageId = jsonx.data[0].messageId;
     $.ajax({
-        url: '/msg/' + messageId + '',
+        url: '/msg/' + jsonx.data[0].messageId + '',
         type: 'get',
         headers: {
           'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
         dataType: 'json',
       })
-      .done(function(json1) {
-
-        news(json1.data.messageTitle, json1.data.messageTitle, json1.data.sendTime, json1.data.messageTitle);
+      .done(function(JSON1) {
+        console.log(JSON1);
+        news(JSON1.data.messageTitle, JSON1.data.messageTitle, JSON1.data.sendTime, JSON1.data.messageTitle);
       })
       .fail(function() {
         console.log('error');

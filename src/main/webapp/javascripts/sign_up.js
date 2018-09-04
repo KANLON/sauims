@@ -97,7 +97,7 @@
     } else {
       $.ajax({
         type: 'get',
-        url: '/reg/code',
+        url: '/reg/person/captcha',
         // headers: {'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'},
         dataType: 'json',
         data: {
@@ -136,7 +136,7 @@
     }
   }
   function forbidClick(second) {
-    var target = document.getElementById('verifySend');
+    var target = document.getElementById('verifySendMember');
 
     if (second > 0) {
       target.style.cursor = 'not-allowed';
@@ -231,10 +231,12 @@ function clubSignUp() {
 
   function init() {
     addHandler('email', 'blur', checkEmail);
-    addHandler('pw', 'blur', checkPW);
-    addHandler('repw', 'blur', checkSame);
-    addHandler('verifySend', 'click', verifySend);
-    addHandler('verifySend', 'click', verifySend1);
+    addHandler('pwMember', 'blur', checkPW);
+    addHandler('pwClub', 'blur', checkPW);
+    addHandler('repwMember', 'blur', checkSame);
+    addHandler('repwClub', 'blur', checkSame);
+    addHandler('verifySendMember', 'click', verifySend);
+    addHandler('verifySendClub', 'click', verifySend1);
     addHandler('signButton', 'click', normalSignUp);
     addHandler('signButton1', 'click', clubSignUp);
   }
