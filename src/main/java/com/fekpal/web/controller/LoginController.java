@@ -9,7 +9,8 @@ import com.fekpal.common.utils.IPUtil;
 import com.fekpal.common.utils.TimeUtil;
 import com.fekpal.service.model.domain.SecureMsg;
 import com.fekpal.service.model.domain.LoginResult;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ import java.io.OutputStream;
 @Controller
 public class LoginController {
 
-    private Logger logger = Logger.getLogger(LoginController.class);
+    private static Logger logger =     LogManager.getLogger(LoginController.class);
 
     @Autowired
     private AccountAccessService accountAccessService;

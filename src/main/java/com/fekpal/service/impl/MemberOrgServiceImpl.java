@@ -14,7 +14,9 @@ import com.fekpal.dao.mapper.MemberOrgMapper;
 import com.fekpal.dao.mapper.PersonMapper;
 import com.fekpal.dao.model.MemberOrg;
 import com.fekpal.dao.model.Person;
-import org.apache.log4j.Logger;
+import com.fekpal.web.controller.sau.SauCenterController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -31,7 +33,7 @@ import java.util.List;
 @Service
 public class MemberOrgServiceImpl extends BaseServiceImpl<MemberOrgMapper, MemberOrg> implements MemberOrgService {
 
-    Logger logger = Logger.getLogger(MemberOrgService.class);
+    private static Logger logger =     LogManager.getLogger(MemberOrgServiceImpl.class);
 
     @Autowired
     private HttpSession session;

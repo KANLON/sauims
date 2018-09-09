@@ -11,6 +11,8 @@ import com.fekpal.web.model.DeleteMsgIdsModel;
 import com.fekpal.web.model.NewMsgDetail;
 import com.fekpal.web.model.NewMsgListDomain;
 import com.fekpal.web.model.SearchPage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -35,7 +37,7 @@ public class ReceiveMsgController {
     @Autowired
     private MessageReceiveService messageReceiveService;
 
-    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ReceiveMsgController.class);
+    static Logger logger =   LogManager.getLogger(ReceiveMsgController.class);
 
     /**
      * 根据用户id返回全部有效消息

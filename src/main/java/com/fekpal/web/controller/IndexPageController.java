@@ -9,7 +9,8 @@ import com.fekpal.dao.model.Org;
 import com.fekpal.web.model.OrgDetail;
 import com.fekpal.web.model.OrgListMsg;
 import com.fekpal.web.model.PageList;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +24,12 @@ import java.util.List;
 
 /**
  * 首页的控制类
- * Created by hasee on 2017/8/15.
+ * @author zhangcanlong
  */
 @Controller
 public class IndexPageController {
 
-    private static Logger logger = Logger.getLogger(IndexPageController.class);
+    private  static Logger logger =  LogManager.getLogger(IndexPageController.class);
 
 
     @Autowired

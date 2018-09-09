@@ -125,6 +125,28 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
+    <!--  日志配置 -->
+    <!-- log4j2 -->
+    <listener>
+        <listener-class>
+            org.apache.logging.log4j.web.Log4jServletContextListener
+        </listener-class>
+    </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>
+            org.apache.logging.log4j.web.Log4jServletFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
     <!-- 通过错误码来配置error-page ,配置了当系统发生404错误时，跳转到错误处理页面。 -->
     <error-page>
         <error-code>404</error-code>

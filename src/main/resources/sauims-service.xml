@@ -4,12 +4,19 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
 
     <context:component-scan base-package="com.fekpal.service"/>
+
+
+    <!--启用缓存 -->
+    <cache:annotation-driven />
 
     <!--spring-session配置，代替传统的session，数据存储在redis-->
     <bean id="redisHttpSessionConfiguration"
@@ -41,5 +48,24 @@
           c:password="${redis.password}"
           c:timeout="${redis.timeout}"
           c:poolConfig-ref="jedisPoolConfig"/>
+
+    <!-- redis模板 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory" />
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <!-- 这里可以配置多个redis -->
+                <bean class="com.fekpal.common.utils.RedisCache">
+                    <property name="redisTemplate" ref="redisTemplate" />
+                    <property name="name" value="org"/>
+                    <!-- name对应的名称要在类或方法的注解中使用 -->
+                </bean>
+            </set>
+        </property>
+    </bean>
+
 
 </beans>

@@ -11,7 +11,8 @@ import com.fekpal.common.session.SessionLocal;
 import com.fekpal.dao.mapper.LikeOrgMapper;
 import com.fekpal.dao.model.LikeOrg;
 import com.fekpal.dao.model.Org;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -35,7 +36,7 @@ public class LikeOrgServiceImpl extends BaseServiceImpl<LikeOrgMapper, LikeOrg> 
     @Autowired
     private OrgService orgService;
 
-    Logger logger = Logger.getLogger(LikeOrgServiceImpl.class);
+    private static Logger logger =     LogManager.getLogger(LikeOrgServiceImpl.class);
 
     /**
      * 根据根据社团id和用户自己的查看该社团的点赞状态

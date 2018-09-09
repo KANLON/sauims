@@ -9,8 +9,10 @@ import com.fekpal.common.json.JsonResult;
 import com.fekpal.dao.model.LikeOrg;
 import com.fekpal.dao.model.Org;
 import com.fekpal.dao.model.PersonOrgView;
+import com.fekpal.service.impl.MemberOrgServiceImpl;
 import com.fekpal.web.model.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +30,7 @@ import java.util.List;
 @Controller
 public class MemberOrgMsgController {
 
-    private Logger logger = Logger.getLogger(MemberCenterController.class);
+    private static Logger logger =   LogManager.getLogger(MemberOrgMsgController.class);
 
     @Autowired
     private OrgService orgService;

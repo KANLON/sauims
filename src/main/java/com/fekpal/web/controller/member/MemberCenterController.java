@@ -6,13 +6,15 @@ import com.fekpal.api.UserService;
 import com.fekpal.common.constant.Operation;
 import com.fekpal.common.constant.ResponseCode;
 import com.fekpal.common.json.JsonResult;
+import com.fekpal.common.utils.RedisCache;
 import com.fekpal.dao.model.MemberOrg;
 import com.fekpal.dao.model.Person;
 import com.fekpal.service.model.domain.PersonMsg;
 import com.fekpal.web.model.MemberOrgDetail;
 import com.fekpal.web.model.PageList;
 import com.fekpal.web.model.PersonDetail;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +33,7 @@ import java.util.List;
 @Controller
 public class MemberCenterController {
 
-    private Logger logger = Logger.getLogger(MemberCenterController.class);
+    private static Logger logger =     LogManager.getLogger(MemberCenterController.class);
 
     @Autowired
     private PersonService personService;

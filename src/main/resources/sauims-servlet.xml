@@ -49,6 +49,7 @@
         <aop:scoped-proxy/>
     </bean>
 
+
     <bean id="emailSender" class="com.fekpal.common.utils.msg.email.EmailSender"
           p:mailSender-ref="mailSender"
           p:defaultFrom="${mail.username}"/>

@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -57,7 +58,6 @@ public class OrgServiceImpl extends BaseServiceImpl<OrgMapper, Org> implements O
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = {Exception.class})
     public PersonOrgView selectByIdForPerson(int id) {
         PersonOrgView org = mapper.selectByPrimaryIdForPerson(id);
         if(org == null ){return  null;}
@@ -79,6 +79,7 @@ public class OrgServiceImpl extends BaseServiceImpl<OrgMapper, Org> implements O
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = {Exception.class})
     public int likeByOrgId(int orgId) {
         LikeOrgService likeOrgService = new LikeOrgServiceImpl();
         LikeOrg likeOrg ;
@@ -104,7 +105,8 @@ public class OrgServiceImpl extends BaseServiceImpl<OrgMapper, Org> implements O
     public List<Org> loadAllOrg(int offset, int limit) {
         ExampleWrapper<Org> example = new ExampleWrapper<>();
         example.eq("org_state", AvailableState.AVAILABLE);
-        return mapper.selectByExample(example, offset, limit);
+        List<Org> orgs = mapper.selectByExample(example, offset, limit);
+        return orgs;
     }
 
     /**
@@ -164,5 +166,4 @@ public class OrgServiceImpl extends BaseServiceImpl<OrgMapper, Org> implements O
         }
         return memberMapper.countOrgGradeNum(orgId,realGrade+"%");
     }
-
 }

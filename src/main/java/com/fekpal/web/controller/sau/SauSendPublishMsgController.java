@@ -12,7 +12,8 @@ import com.fekpal.dao.model.Message;
 import com.fekpal.dao.model.Org;
 import com.fekpal.service.model.domain.SRMsgRecord;
 import com.fekpal.web.model.*;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class SauSendPublishMsgController {
     @Autowired
     private PersonService personService;
 
-    Logger logger = Logger.getLogger(SauSendPublishMsgController.class);
+    private static Logger logger =   LogManager.getLogger(SauSendPublishMsgController.class);
     /**
      * 根据用户id和消息类型，返回发布对象
      * @param messageType 消息类型

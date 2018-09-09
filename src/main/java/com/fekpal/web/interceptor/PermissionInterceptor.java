@@ -1,7 +1,9 @@
 package com.fekpal.web.interceptor;
 
 import com.fekpal.common.session.SessionLocal;
-import org.apache.log4j.Logger;
+import com.fekpal.web.controller.member.MemberOrgMsgController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +23,7 @@ import java.util.Map;
 
 public class PermissionInterceptor implements HandlerInterceptor {
 
-    private Logger logger = Logger.getLogger(PermissionInterceptor.class);
+    private static Logger logger =   LogManager.getLogger(PermissionInterceptor.class);
 
     private static Map<Integer,String> permissionMap = new HashMap<Integer,String>();
     //将权限的url存入到session中去

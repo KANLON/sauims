@@ -1,7 +1,9 @@
 package com.fekpal.web.interceptor;
 
 import com.fekpal.common.session.SessionLocal;
-import org.apache.log4j.Logger;
+import com.fekpal.web.controller.ReceiveMsgController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
-    private Logger logger = Logger.getLogger(LoginInterceptor.class);
+    static Logger logger =   LogManager.getLogger(LoginInterceptor.class);
 
     //用于执行handle之前来执行，用于用户认证检验/用户授权检验
     @Override
