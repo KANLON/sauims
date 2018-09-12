@@ -18,7 +18,6 @@
     });
     var $div1 = $('<div></div>', {
       'class': 'movebar'
-
     });
     var $div2 = $('<div></div>', {
       'class': 'MTITLE',
@@ -101,17 +100,9 @@
       role = json.data[i].role;
       auditState = json.data[i].auditState;
 
-      var jmz = {};
-      jmz.GetLength = function(str) {
-        return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
-      }
-      if (jmz.GetLength(auditTitle) < 19) {
-        $('#MTITLE' + i).text(auditTitle);
-      } else {
-        $('#MTITLE' + i).text("" + auditTitle.substr(0, 10) + "....");
-      }
       /*获取数据后操作dom*/
       $('#middleSide').append(row(i, json.data[i].auditMsgId + '-' + json.data[i].role));
+      if(auditTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
       $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(registerName);
       $('#MTIME' + i).text(registerTime);
@@ -388,6 +379,7 @@
       auditState = searchData.data[i].auditState;
       /*获取数据后操作dom*/
       $('#middleSide').append(row(i, searchData.data[i].auditMsgId + '-' + searchData.data[i].role));
+      if(aduitTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
       $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(registerName);
       $('#MTIME' + i).text(registerTime);

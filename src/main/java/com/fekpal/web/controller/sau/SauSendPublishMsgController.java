@@ -188,14 +188,15 @@ public class SauSendPublishMsgController {
     }
 
     /**
-     * 根据消息id删除历史发布消息
+     * 根据消息id删除历史发布消息(该功能暂时不要，还不清楚逻辑)
      * @param deleteMsgIdsModel 要删除的消息的id
      * @return 是否成功
      */
     @ResponseBody
     @RequestMapping(value = "/sau/msg/old",method = RequestMethod.DELETE)
     public JsonResult<String> deleteMsgs (@RequestBody DeleteMsgIdsModel deleteMsgIdsModel) {
-        JsonResult<String> result = new JsonResult<>();
+        return null;
+/*        JsonResult<String> result = new JsonResult<>();
         if(deleteMsgIdsModel.getDeleteMsgIds()==null){
             result.setStateCode(ResponseCode.REQUEST_ERROR,"要删除的消息为空，不能执行");
             return result;
@@ -213,7 +214,7 @@ public class SauSendPublishMsgController {
         }else{
             result.setStateCode(ResponseCode.REQUEST_ERROR,"删除失败");
         }
-        return result;
+        return result;*/
     }
 
     /**

@@ -96,20 +96,20 @@
 
       auditState = json.data[i].messageType;
 
+
+
+      /*获取数据后操作dom*/
+      $('.middleSide').append(row(i, json.data[i].messageId));
       var jmz = {};
       jmz.GetLength = function(str) {
         return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
       }
       if (jmz.GetLength(auditTitle) < 19) {
         $('#MTITLE' + i).text(auditTitle);
+         var lengthA =  jmz.GetLength(auditTitle);
       } else {
         $('#MTITLE' + i).text("" + auditTitle.substr(0, 10) + "....");
       }
-      
-
-      /*获取数据后操作dom*/
-      $('.middleSide').append(row(i, json.data[i].messageId));
-      $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(auditMsgId);
       $('#MTIME' + i).text(unixTimestamp.toLocaleString());
 
@@ -142,8 +142,6 @@
           .done(function(json) {
             checkID = json.data.messageId;
             news(json.data.messageTitle, '', json.data.sendTime, json.data.messageContent);
-
-
           })
           .fail(function() {
             // json
@@ -168,9 +166,7 @@
     };
     var submitTime = unixTimestamp.toLocaleString();
     $('#rightHeadTime').text(submitTime);
-
     $('#zhuceneirong').text(d);
-
   }
 
 
@@ -364,7 +360,7 @@
 
   function addNewsFirst(jsonx) {
     $.ajax({
-        url: '/msg/' + jsonx.data[0].messageId + '',
+        url: '/sau/msg/old/' + jsonx.data[0].messageId + '',
         type: 'get',
         headers: {
           'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -372,8 +368,7 @@
         dataType: 'json',
       })
       .done(function(JSON1) {
-        console.log(JSON1);
-        news(JSON1.data.messageTitle, JSON1.data.messageTitle, JSON1.data.sendTime, JSON1.data.messageTitle);
+        news(JSON1.data.messageTitle, '', JSON1.data.sendTime, JSON1.data.messageContent);
       })
       .fail(function() {
         console.log('error');
@@ -453,10 +448,7 @@
     document.getElementById("rightEditTitle").style.display = "none";
     document.getElementById("rightSideEdit").style.display = "none";
 
-
   }
-
-
 
   function addHandler(id, action, func) {
     var domID = document.querySelector(`#${id}`);

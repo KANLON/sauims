@@ -124,19 +124,10 @@
       };
       releaseTime = new Date(json.data[i].releaseTime).toLocaleString();
 
-/*      var jmz = {};
-      jmz.GetLength = function(str) {
-        return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
-      }
-      if (jmz.GetLength(messageTitle) < 19) {
-        $('#messageTitle' + i).text(messageTitle);
-      } else {
-        $('#messageTitle' + i).text("" + messageTitle.substr(0, 10) + "....");
-      }*/
-
       console.log(messageId);
       /*获取数据后操作dom*/
       $('#News').append(Row(i, messageId));
+      if(messageTitle.length>10){messageTitle=messageTitle.substring(0,10)+'...';}
       $('.messageTitle' + i).text(messageTitle);
       $('.messageSender' + i).text("by " + releaseName);
       $('.messageTime' + i).text(releaseTime);
