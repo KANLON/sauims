@@ -95,6 +95,8 @@
     var notOKimg = document.getElementById('F1');
     var yzm = document.getElementById('yzmwrong');
     if (response.code === 0) {} else {
+      console.log("验证码错误或账号和密码错误");
+      $('#cap_img').attr('src','/login/captcha?tm='+Math.random());
       notOKimg.style.display = 'block';
       notOKimg.style.left = '68%';
       notOKimg.style.top = '160px';
