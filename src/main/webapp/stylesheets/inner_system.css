@@ -333,17 +333,17 @@ body {
 
 .detail-info-container {
   float: left;
-  width: 200px;
+  /*width: 200px;*/
   height: 60px;
 }
 
 .detail-sender {
-  float: left;
+  /*float: left;*/
   margin: 25px 0 0;
 }
 
 .detail-time {
-  float: left;
+  /*float: left;*/
   /*margin: 60px 0 0 -162px;*/
   /* 基于相对sender右边的定位 */
   margin: 15px 0 0;
