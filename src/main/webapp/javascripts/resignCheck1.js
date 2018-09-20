@@ -98,7 +98,7 @@
 
       /*获取数据后操作dom*/
       $('#middleSide').append(row(i, json.data[i].auditMsgId));
-      if(aduitTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
+      if(auditTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
       $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(registerName);
       $('#MTIME' + i).text(registerTime);
@@ -305,7 +305,7 @@
       auditState = searchData.data[i].auditState;
       /*获取数据后操作dom*/
       $('#middleSide').append(row(i, searchData.data[i].auditMsgId));
-      if(aduitTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
+      if(auditTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
       $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(registerName);
       $('#MTIME' + i).text(registerTime);
