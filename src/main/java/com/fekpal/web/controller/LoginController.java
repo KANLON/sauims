@@ -49,9 +49,9 @@ public class LoginController {
 
         LoginResult state = accountAccessService.login(msg);
         if (state.getResultState() == Operation.CAPTCHA_INCORRECT) {
-            result.setStateCode(ResponseCode.RESPONSE_ERROR, "验证码错误");
+            result.setStateCode(ResponseCode.REQUEST_ERROR, "验证码错误");
         } else if (state.getResultState() == Operation.FAILED) {
-            result.setStateCode(ResponseCode.RESPONSE_ERROR, "用户名或密码错误");
+            result.setStateCode(ResponseCode.REQUEST_ERROR, "用户名或密码错误");
         } else if (state.getResultState() == Operation.SUCCESSFULLY) {
             result.setStateCode(ResponseCode.RESPONSE_SUCCESS, "登录成功");
             result.setData(state.getAuthority());

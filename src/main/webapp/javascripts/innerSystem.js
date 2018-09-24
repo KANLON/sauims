@@ -65,9 +65,7 @@
   };
 
   var json = {}; //全局
-
   function getNewsData() { //从服务器获取数据
-
     $.ajax({
         url: '/msg',
         type: 'get',
@@ -86,13 +84,6 @@
         addNewsClick(json);
         addNewsFirst(json);
       })
-      .fail(function() {
-        console.log('error');
-      })
-      .always(function() {
-        console.log('complete');
-      });
-
   }
 
   getNewsData();
@@ -141,12 +132,6 @@
         };
         news(json1.data.messageTitle, new Date(json1.data.releaseTime).toLocaleString(), json1.data.messageTitle, json1.data.messageContent);
       })
-      .fail(function() {
-        console.log('error');
-      })
-      .always(function() {
-        console.log('complete');
-      });
   }
 
 
@@ -172,17 +157,9 @@
             };
             news(json1.data.messageTitle, new Date(json1.data.releaseTime).toLocaleString(), json1.data.messageTitle, json1.data.messageContent);
           })
-          .fail(function() {
-            console.log('error');
-          })
-          .always(function() {
-            console.log('complete');
-          });
-
       });
     }
   }
-
 
   function news(a, b, c, d) { //点击新闻显示
     $("[data-message-detail='sender']").text(a);
@@ -277,10 +254,6 @@
     $.ajax({
         url: '/msg/search?' + 'findContent='+ $('.search-bar').val() + '&offset=1&limit=1000000',
         type: 'get',
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        dataType: 'json',
         data: null
       })
       .done(function(searchData) {
@@ -308,9 +281,8 @@
     if (searchData1.code === 0) {
 
       for (var i = 0; i < searchData1.data.length; i++) {
-
         messageId = searchData1.data[i].messageId;
-        messageTitle = searchData1.data[i].messageContent;
+        messageTitle = searchData1.data[i].messageTitle;
         releaseName = searchData1.data[i].releaseName;
         //格式化时间格式
         Date.prototype.toLocaleString = function() {

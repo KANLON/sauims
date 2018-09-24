@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     public JsonResult<List> customExceptionHandler(Exception e) {
         e.printStackTrace();
         JsonResult<List> result = new JsonResult<>();
-        result.setStateCode(ResponseCode.REQUEST_ERROR, e.getMessage());
+        result.setStateCode(ResponseCode.RESPONSE_ERROR, e.getMessage());
         return result;
     }
 }

@@ -39,7 +39,7 @@ public class EncodingFilter extends OncePerRequestFilter {
         // 该处可以实现各种业务的自定义的过滤机制
         if ("get".equalsIgnoreCase(method)) {
             try {
-                ret = new String(input.getBytes("ISO8859-1"), this.encoding);
+                ret = new String(input.getBytes("UTF-8"), this.encoding);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

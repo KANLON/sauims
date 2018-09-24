@@ -94,7 +94,7 @@
     var notOK = document.getElementById('pswNotNull');
     var notOKimg = document.getElementById('F1');
     var yzm = document.getElementById('yzmwrong');
-    if (response.code === 0) {} else {
+    if (response.code === 1) {
       console.log("验证码错误或账号和密码错误");
       $('#cap_img').attr('src','/login/captcha?tm='+Math.random());
       notOKimg.style.display = 'block';
@@ -103,6 +103,10 @@
       notOK.style.display = 'block';
       yzm.style.display = 'block';
       notOK.firstChild.data = response.msg;
+    }else if(response.code === 2){
+      //内部错误
+      window.alert("请重试 !!!\n（如果多次重试仍然失败，请反馈到2078697336@qq.com邮箱中）");
+      $('#cap_img').attr('src','/login/captcha?tm='+Math.random());
     }
     if (response.data === 0) {
       //member  个人

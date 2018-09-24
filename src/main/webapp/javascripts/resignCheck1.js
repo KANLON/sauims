@@ -6,7 +6,6 @@
    * 详细审核消息的id(用于同意或驳回注册消息)
    */
   var checkID = 1;
-
   function row(i, id) {
     var $div0 = $('<div></div>', {
       'class': 'm',
