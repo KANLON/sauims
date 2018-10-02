@@ -88,7 +88,7 @@
 
       /*获取数据后操作dom*/
       $('#middleSide').append(row(i, json.data[i].auditMsgId));
-      if(aduitTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
+      if(auditTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
       $('#MTITLE' + i).text(auditTitle);
       $('#WRITER' + i).text(auditMsgId);
       $('#MTIME' + i).text(registerTime);
@@ -201,7 +201,7 @@
         /*获取数据后操作dom*/
         $('#middleSide').append(row(i, searchData.data[i].auditMsgId));
         $('#MTITLE' + i).text(auditMsgId);
-        if(aduitTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
+        if(auditTitle.length>10){auditTitle =auditTitle.substring(0,10)+'...'}
         $('#WRITER' + i).text(auditTitle);
         $('#MTIME' + i).text(registerTime);
       }

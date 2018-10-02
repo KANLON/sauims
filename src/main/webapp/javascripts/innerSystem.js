@@ -301,8 +301,6 @@
     }
 
     addNewsClick(searchData1);
-
-
   }
   /**
    * 详细详细内的删除
