@@ -26,6 +26,7 @@
     </servlet-mapping>
 
     <!-- 解决跨域问题的过滤器，正式发布的时候要删除该过滤器-->
+<!--
     <filter>
         <filter-name>corsFilter</filter-name>
         <filter-class>com.fekpal.web.filter.CorsFilter</filter-class>
@@ -50,6 +51,7 @@
         <filter-name>corsFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+-->
 
     <!--监听session-->
     <filter>
