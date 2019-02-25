@@ -98,7 +98,7 @@ public class ReceiveMsgController {
         logger.info("删除的消息集合" + deleteMsgIds);
         List<String> deleteMsgIdsListTemp = Arrays.asList(deleteMsgIds.split(","));
         List<Integer> deleteMsgIdsList = new ArrayList<>();
-        if (CollectionUtils.isEmpty(deleteMsgIdsListTemp)) {
+        if (!CollectionUtils.isEmpty(deleteMsgIdsListTemp)) {
             for (String ids : deleteMsgIdsListTemp) {
                 deleteMsgIdsList.add(Integer.parseInt(ids));
             }
