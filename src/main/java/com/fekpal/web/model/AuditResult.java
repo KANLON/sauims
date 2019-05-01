@@ -1,5 +1,8 @@
 package com.fekpal.web.model;
 
+
+import javax.validation.constraints.NotNull;
+
 /**
  * 注册审核返回结果的类的
  * @author  zhangcanlong
@@ -9,13 +12,15 @@ public class AuditResult {
     /**
      * 审核状态 auditState（0：驳回。1：通过。2：待审.3:删除）
      */
-    private int auditState;
+    @NotNull
+    private Integer auditState;
     /**
      * 审核结果
      */
+    @NotNull
     private String auditResult;
 
-    public int getAuditState() {
+    public Integer getAuditState() {
         return auditState;
     }
 
@@ -35,7 +40,7 @@ public class AuditResult {
 
     }
 
-    public AuditResult(int auditState, String auditResult) {
+    public AuditResult(Integer auditState, String auditResult) {
 
         this.auditState = auditState;
         this.auditResult = auditResult;

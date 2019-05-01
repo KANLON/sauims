@@ -46,6 +46,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.15.Final</version>
+        </dependency>
+
         <!--spring session相关依赖-->
         <dependency>
             <groupId>org.springframework.session</groupId>
