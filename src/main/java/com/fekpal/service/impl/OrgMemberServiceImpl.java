@@ -10,14 +10,20 @@ import com.fekpal.common.constant.MemberState;
 import com.fekpal.common.constant.Operation;
 import com.fekpal.common.session.SessionLocal;
 import com.fekpal.common.utils.TimeUtil;
+import com.fekpal.common.utils.msg.email.EmailMsg;
+import com.fekpal.common.utils.msg.email.EmailSender;
+import com.fekpal.common.utils.msg.email.EmailUtil;
 import com.fekpal.dao.mapper.OrgMapper;
 import com.fekpal.dao.mapper.OrgMemberMapper;
 import com.fekpal.dao.mapper.PersonMapper;
+import com.fekpal.dao.mapper.UserMapper;
 import com.fekpal.dao.model.Org;
 import com.fekpal.dao.model.OrgMember;
 import com.fekpal.dao.model.Person;
+import com.fekpal.dao.model.User;
 import com.fekpal.web.model.AuditResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +47,13 @@ public class OrgMemberServiceImpl extends BaseServiceImpl<OrgMemberMapper, OrgMe
     private PersonMapper personMapper;
 
     @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private OrgMapper orgMapper;
+
+    @Autowired
+    private EmailSender emailSender;
 
     @Override
     public OrgMember selectByPersonId(int id) {
@@ -148,7 +160,7 @@ public class OrgMemberServiceImpl extends BaseServiceImpl<OrgMemberMapper, OrgMe
     }
 
     /**
-     * 根据真实姓名用模糊搜索个人名姓名和审核状态为未审核的
+     * 根据真实姓名用模糊搜索个人名姓名
      *
      * @param realName 真实姓名
      * @param offset   跳过读数
@@ -197,7 +209,6 @@ public class OrgMemberServiceImpl extends BaseServiceImpl<OrgMemberMapper, OrgMe
         if (mapper.countByExample(example) >= 1) {
             return Operation.FAILED;
         }
-        ;
         OrgMember orgMember = mapper.selectByPrimaryKey(auditId);
         orgMember.setMemberState(auditResult.getAuditState());
         //如果状态是通过的话，在社团表内也增加人数
@@ -209,6 +220,14 @@ public class OrgMemberServiceImpl extends BaseServiceImpl<OrgMemberMapper, OrgMe
         ExampleWrapper<OrgMember> exampleUpdate = new ExampleWrapper<>();
         exampleUpdate.eq("org_id", orgId).and().eq("id", auditId);
         int row = mapper.updateByExample(orgMember, exampleUpdate);
+        //发送邮件通知该申请加入的同学，审核结果
+        EmailMsg emailMsg = new EmailMsg();
+        Person person = personMapper.selectByPrimaryKey(orgMember.getPersonId());
+        User user = userMapper.selectByPrimaryKey(person.getUserId());
+        emailMsg.setTo(user.getEmail());
+        emailMsg.setSubject(auditResult.getAuditState() == AuditState.PASS?"申请加入通过":"申请加入失败，请重新修改申请信息");
+        emailMsg.setText("申请加入社团："+orgMapper.selectByPrimaryKey(orgId).getOrgName()+"。审核结果为："+auditResult.getAuditResult());
+        emailSender.send(emailMsg);
         return row == 1 ? Operation.SUCCESSFULLY : Operation.FAILED;
     }
 }

@@ -32,9 +32,6 @@ public class ClubAuditRegController {
     private OrgMemberService orgMemberService;
 
     @Autowired
-    private ClubService clubService;
-
-    @Autowired
     PersonService personService;
 
     @Autowired
@@ -131,7 +128,7 @@ public class ClubAuditRegController {
             for (OrgMember orgMember : orgMemberList) {
                 ClubRegisterAuditListMsg audit = new ClubRegisterAuditListMsg();
                 audit.setAuditMsgId(orgMember.getId());
-                audit.setAuditState(orgMember.getMemberState());
+                audit.setAuditState(orgMember.getAvailable());
                 int personId = orgMember.getPersonId();
                 Person person = personService.selectByPrimaryKey(personId);
                 audit.setAuditTitle(person.getRealName());

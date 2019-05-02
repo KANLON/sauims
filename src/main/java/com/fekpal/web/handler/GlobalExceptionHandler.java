@@ -7,8 +7,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,11 +32,11 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         JsonResult<Map<String, String>> result = new JsonResult<>();
         //处理验证错误，MethodArgumentNotValidException,不用再需要在controller加上BindingResult、Locale参数和判断
-        if( e instanceof MethodArgumentNotValidException){
+        if (e instanceof MethodArgumentNotValidException) {
             HashMap<String, String> messagesData = new HashMap<>(16);
-            List<FieldError> fieldErrors=((MethodArgumentNotValidException)e).getBindingResult().getFieldErrors();
-            for (FieldError error:fieldErrors){
-                messagesData.put(error.getField(),error.getDefaultMessage());
+            List<FieldError> fieldErrors = ((MethodArgumentNotValidException) e).getBindingResult().getFieldErrors();
+            for (FieldError error : fieldErrors) {
+                messagesData.put(error.getField(), error.getDefaultMessage());
             }
             result.setStateCode(ResponseCode.RESPONSE_ERROR, messagesData.toString());
             return result;

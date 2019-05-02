@@ -71,7 +71,8 @@ public class MemberOrgServiceImpl extends BaseServiceImpl<MemberOrgMapper, Membe
         ExampleWrapper<MemberOrg> example = new ExampleWrapper<>();
         example.eq("member.person_id",person.getPersonId())
                 .and().eq("member.org_id",id)
-                .and().eq("member_state",MemberState.STILL_BEING);
+                .and().eq("member_state",MemberState.STILL_BEING)
+        .or().eq("member_state",MemberState.AUDITING);
         if(mapper.countByExample(example)>=1){
             return Operation.FAILED;
         }
@@ -81,8 +82,8 @@ public class MemberOrgServiceImpl extends BaseServiceImpl<MemberOrgMapper, Membe
         memberOrg.setOrgId(id);
         memberOrg.setMemberDuty(ClubRole.MEMBER);
         memberOrg.setJoinTime(new Timestamp(TimeUtil.currentTime()));
-        memberOrg.setMemberState(MemberState.STILL_BEING);
-        memberOrg.setAvailable(AvailableState.AUDITING);
+        memberOrg.setMemberState(MemberState.AUDITING);
+        memberOrg.setAvailable(AvailableState.AVAILABLE);
         int row = mapper.insert(memberOrg);
         if (row != 1) throw new CRUDException("加入组织操作异常：" + row);
         return Operation.SUCCESSFULLY;

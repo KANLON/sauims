@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 邮件发送工具
+ * @author zhangcanlong
  */
 public class EmailSender {
 

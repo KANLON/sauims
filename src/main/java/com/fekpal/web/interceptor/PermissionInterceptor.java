@@ -63,7 +63,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
         }
         //执行到这里拦截，跳转到无权访问的提示页面
         logger.info("跳转到无权访问的提示页面");
-        return CommonErrorHandle.errorHandle(request,response,"无权访问！");
+        return CommonErrorHandle.errorHandle(request, response, "无权访问！");
     }
 
     @Override
@@ -72,6 +72,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+            Exception ex) throws Exception {
     }
 }

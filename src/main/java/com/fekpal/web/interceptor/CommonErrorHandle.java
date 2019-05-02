@@ -47,9 +47,8 @@ public class CommonErrorHandle {
      * @return java.lang.Boolean 返回false
      **/
     public static Boolean errorHandle(HttpServletRequest request, HttpServletResponse response, String result) throws IOException {
-         boolean isAjax =  (request.getHeader("X-Requested-With") != null
-                 && "XMLHttpRequest".equals(request.getHeader("X-Requested-With")))
-                 || "application/json".equals(request.getHeader("Content-Type"));
+        boolean isAjax = (request.getHeader("X-Requested-With") != null && "XMLHttpRequest".equals(request.getHeader(
+                "X-Requested-With"))) || "application/json".equals(request.getHeader("Content-Type"));
 
         //同步请求
         if (!isAjax) {

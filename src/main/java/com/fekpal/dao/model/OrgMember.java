@@ -13,7 +13,7 @@ public class OrgMember extends Person {
     private Integer memberDuty;
 
     /**
-     * 默认状态是存在的
+     * 审核状态，同时也是在不在部门的状态，0不在，审核不通过，1在，审核通过，2在审核中，不在部门
      */
     private Integer memberState=1;
 
@@ -22,7 +22,9 @@ public class OrgMember extends Person {
     private Timestamp leaveTime;
 
     private String orgDepartment;
-
+    /**
+     * 状态，是否有效，默认有效
+     **/
     private Integer available;
 
     public Integer getOrgId() {
