@@ -36,6 +36,7 @@ public class CommonErrorHandle {
         open_urls.add("/favicon.ico");
         open_urls.add("/sign");
         open_urls.add("/clubNews");
+        open_urls.add("/system");
     }
 
     /**
